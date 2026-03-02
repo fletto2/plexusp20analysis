@@ -35,6 +35,7 @@ Watch the Plexus P/20 video series:
 | `docs/registers.md` | Hardware register map — memory-mapped I/O addresses |
 | `docs/ROM_boot_menu.md` | Boot ROM menu interface and commands |
 | `docs/ROM_debug.md` | ROM debug monitor details |
+| `docs/notable_files.md` | Curated guide to the most interesting files on the disk |
 | `docs/Jumper List Mainboard.md` | Mainboard jumper configuration reference |
 
 ### ROM Analysis
