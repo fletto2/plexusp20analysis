@@ -48,7 +48,6 @@ Watch the Plexus P/20 video series:
 
 | File | Description |
 |------|-------------|
-| `identify_functions.py` | Parses m68k objdump output to identify function boundaries |
 | `s5fs_tool.py` | Read/write tool for AT&T System V s5fs filesystem disk images — list, extract, cat, create, mkdir, rm |
 
 ### Extracted Source Code (`extracted-source/`)
@@ -92,7 +91,7 @@ The kernel build system supports four Plexus models:
 ## How the Analysis Was Done
 
 1. ROM binaries were disassembled with `m68k-linux-gnu-objdump`
-2. `identify_functions.py` parsed the disassembly to find function boundaries
-3. Functions were sent to local LLMs with full hardware context for analysis
+2. Function boundaries were identified from the disassembly
+3. Functions were sent to LLMs with full hardware context for analysis
 4. Results were compiled into the ROM analysis documents
 5. Disk image contents were extracted and cataloged from the original tar archives
