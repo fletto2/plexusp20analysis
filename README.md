@@ -32,6 +32,10 @@ Watch the Plexus P/20 video series:
 | `docs/filesystem.md` | Detailed s5fs filesystem implementation from ROM disassembly |
 | `docs/debug_monitor.md` | U17 debug monitor — all commands, memory layout, SCSI operations |
 | `docs/disk_contents.md` | Complete catalog of all 4,584 files across rootfs and stocku partitions |
+| `docs/registers.md` | Hardware register map — memory-mapped I/O addresses |
+| `docs/ROM_boot_menu.md` | Boot ROM menu interface and commands |
+| `docs/ROM_debug.md` | ROM debug monitor details |
+| `docs/Jumper List Mainboard.md` | Mainboard jumper configuration reference |
 
 ### ROM Analysis
 
@@ -46,6 +50,7 @@ Watch the Plexus P/20 video series:
 | File | Description |
 |------|-------------|
 | `identify_functions.py` | Parses m68k objdump output to identify function boundaries |
+| `s5fs_tool.py` | Read/write tool for AT&T System V s5fs filesystem disk images — list, extract, cat, create, mkdir, rm |
 
 ### Extracted Source Code (`extracted-source/`)
 
