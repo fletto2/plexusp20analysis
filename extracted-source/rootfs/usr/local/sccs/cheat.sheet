@@ -1,0 +1,163 @@
+
+
+
+       ***   SCCS Cheat Sheet   ***      3/23/83 twl
+
+
+This is an "easy reference guide" for the Plexus system SCCS files.
+
+Some special commands are necessary to use these SCCS files.
+There are a number of reason's for this:
+    1) The SCCS directories are not publically writeable to avoid
+       accidental removal and junk collection.
+    2) When creating new system SCCS files it is desireable to have
+       consistent delta permissions and control flags.
+    3) Some of the commands are merely conveniences, (e.g. qdel)
+
+All of the commands necessary to use the system SCCS files are in:
+    /sccs/bin
+or /bin or /usr/bin.
+
+ADD /sccs/bin TO YOUR $PATH environment variable. (or setup aliases)
+***************************
+
+This directory contains:
+
+    - setuid owned by sccs copies of SCCS commands.
+      They have an 's' appended to their names to distinguish them from
+      the /usr/bin versions. (e.g. get ==> gets) (s for "system SCCS")
+
+    - simple shell files useful to all system SCCS users. 
+      (e.g. adm for creating new systen SCCS files)
+
+    - other shell files useful to the system SCCS administrator.
+      (e.g. initdir to create a new system SCCS directory)
+
+Here is a brief summary of the publically useful commands and options:
+
+adm     src_file sccs_dir
+
+    This shell files creates new system SCCS files.
+    You must be in the directory where src_file is, and sccs_dir
+    must be fully specified.
+    (e.g. cd /usr/src/cmd/plx/ex;adm new_ex_file.c /sccs/cmd/plx/ex 
+    creates /sccs/cmd/plx/ex/s.new_ex_file.c from
+    /usr/src/cmd/plx/ex/nex_ex_file.c)
+    Note that there is no need to be in a /usr/src directory, you could
+    be anywhere the src_file is.
+    This command must have exactly two parameters, i.e. no flags or
+    multiple files.
+
+admins [-fFLAGS] [-dFLAGS] [-aUID] [-eUID] full_s.filenames_or_dir
+
+    This is the setuid owned by sccs version of /usr/bin/admin.
+    It is used by adm and should NOT be generally used unless there
+    is some special reason, such as an absolute need to changed the
+    SCCS file's flags etc.
+    Indiscriminate use of this command to create new files can result
+    in system SCCS files with inappropriate flags and permissions.
+    -f turns on the specified flag
+    -d turns off the specified flag
+    -a adds delta permission for UID
+    -e removes delta permission for UID
+
+back cmd args ...
+
+    This command nohups $* in the background.
+    It redirects stdin to $1.out and stderr to $1.err.
+
+deltas [-y'comments'] full_s.filenames_or_dir
+
+    This is the setuid version of /usr/bin/delta.
+    It releases a new version of the specified file(s) from the
+    equivalent files in the current directory.
+    -y useful for global comments on full directories, you will be
+       prompted for comments if not specified.
+
+gets [-rREV] [-e] [-g] [-k] full_s.filenames_or_dir
+
+    This is the setuid version of /usr/bin/get.
+    It extracts versions of SCCS files into the current directory.
+    Note that it will replace mode 444 files, assuming they are standard
+    versions of the SCCS files.
+    Also, it will fail if there is a writeable version of the file in
+    the current directory, as it assumes the file is being edited.
+    -r If you wish to get a down level version, you may specify its rev.
+       Normally the highest rev is gotten.
+    -e MUST BE USED PRIOR TO A DELTA!
+       It gets an "editable" version of the files.
+       Note that idkeywords (e.g. %I% will not be substituted).
+       Versions gotten with -e should NOT be used for real builds, as
+       the what command won't work because of no rev levels.
+       'get -e' will fail if the file is being edited already.
+    -g Useful for faking out SCCS. If you have a version of the file
+       which you wish to release but did not get it with get -e,
+       the command 'get -e -g full_s.filename' will allow you to delta
+       your "bootleg" version, as -g specifies not to create the file.
+    -k Also useful for faking out SCCS. If you loose a file acquired
+       with 'get -e', 'get -k' will get a copy the same as 'get -e'
+       (i.e. the idkeywords will not be substituted), but the delta will
+       not be setup again.
+
+gettr sccs_tree src_tree
+    
+    This is a shell file that gets a subtree of source files from the
+    SCCS files. It is very useful for getting a copy of subsystems, or
+    even all of the source.
+    sccs_tree is the name of the SCCS directory at the top of the tree
+    an image is desired of.
+    src_tree is the name of a non-existent diredctory where the new 
+    tree will be put. It's parent directory must exist.
+    (e.g. 'gettr /sccs/cmd /user/twl/mycopy/cmd' will copy the directory
+    structure under /sccs/cmd to mycopy/cmd, and get all of the source
+    files (not editable) into the appropriate directories.)
+    Note that /user/twl/mycopy must exist, but if cmd or any subdirs
+    exist, error messages will result (but it may still work!).
+    This command takes about 1 hour on an unloaded z8000 and uses
+    about 10Meg of disk space, so use gettr wisely.!
+    (e.g. 'gettr /sccs/cmd/cc/m68 /user/craig/cc.m68' is a more
+    reasonable example, which gets a private copy of the m68 cc source
+    into craig's space.)
+
+mailsccs <file_to_mail
+
+    A shell file, which mails its standard input to all users on the
+    delta list, i.e. capable of updating the system SCCS files.
+
+qdel src_file sccs_dir
+
+   This is a simple shell file that is useful for making quick deltas.
+   It does a 'get -e $2/s.$1;vi $1;delta $2/s.$1'.
+   It only works on one file at a time, and no options can be specified.
+   Because it does a get, it will wipeout any 444 version of the file
+   in the current directory or fail if a writable version exists.
+   For example: 'qdel cp.c /sccs/cmd' will invoke vi on a copy of cp.c
+   and delta the result when you quit.
+
+rmdel -rREV full_s.filenames_or_dir
+
+   This is the setuid version of /usr/bin/rmdel, it doesn't have an 's'
+   at the end because this (#@?!ing) program looks at argv[0]!
+   You needn't know about its existence, because of rmdels, see below.
+
+rmdels -rREV full_s.filenames_or_dir
+
+   This is a simple shell file that invokes /sccs/bin/rmdels.
+   It is used if you change your mind about the last delta you made,
+   and wish to remove it.
+   -r This specifies the version to remove, it is not optional.
+
+ungets full_s.filenames_or_dir
+
+   This is the setuid version of /usr/bin/ungets.
+   It is useful if you do a 'gets -e' and then decide you don't want
+   to make a change after all.
+   It removes the lock file, and permits other people to delta the file.
+
+
+There is no "cdcs" yet, but I'll set one up.
+
+There is also no "prss" or "sccsdiffs" or "sacts" because these
+commands do not require write access, just use the standard ones:
+prs, sccsdiff and sact.
+

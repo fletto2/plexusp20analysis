@@ -1,0 +1,44 @@
+#Q/SR/usr/2020/tutor/tut5.tmf#/#/#/>0,13#//WH#/;#TA>0,0#/#N
+#TE[5,0]
+So far, all the labels in your model have been left-justified
+because you preceded each with an apostrophe (').  The MEALS
+and LODGING labels should be right-justified.
+#TF
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TB
+>0,9#/
+#TE[5,0]
+We've positioned the cursor at cell [0,9] for you.
+    To right-justify the MEALS label, precede
+        it with quotes (").
+
+Type:  "MEALS<CR>
+#TF
+#TR"MEALS#/#TT#TB
+#TE[5,3]Notice that the label is right-justified in column 0.
+#TF
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TB
+#TE[5,0]
+We'll enter the remaining labels for you:
+   LODGING in cell [0,10],   FARES in cell [0,15],  TAXIS in cell [0,16]
+   MILES   in cell [0,22],   at    in cell [0,23],  TOLLS in cell [0,24]
+#TF#V
+>0,10#/
+"LODGING#/
+>0,15#/
+"FARES#/
+>0,16#/
+"TAXIS#/
+>0,22#/
+"MILES#/
+>0,23#/
+"at#/
+>0,24#/
+"TOLLS#/#N
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TB
+/SIC/usr/2020/tutor/exp6.tut#/#/#/

@@ -1,0 +1,1159 @@
+                                                       RELEASE.TXT
+
+
+
+
+ 
+ 
+                            RELEASE.TXT
+ 
+       TECHNICAL NOTES FOR 20/20 ON THE PLEXUS P-35 COMPUTER
+ 
+ 
+                    This  file   contains   information  about  the
+                    following system specific aspects of 20/20:
+ 
+                    o   Graphics Output Device Configuration
+ 
+                    o   Graphics Output Device Installation
+ 
+                    o   20/20 Shell Script Settings (s2020)
+ 
+                    o   Terminal Definition File Settings (tfil)
+ 
+ 
+ 
+Graphics Output Device Configuration
+____________________________________
+ 
+                    NOTE:  If you  do  not  wish  to use a graphics
+                    output device, skip this section.
+ 
+                    With the  Plexus  P-35  computer, 20/20 Version
+                    1.1 supports the following plotting devices:
+ 
+                        Hewlett-Packard 7475A 6-pen and 7550A 8-pen
+                        plotters
+ 
+                        Digital  LA-50  or   LA-100  printer,  when
+                        attached to a DEC VT125 or VT240 terminal.
+ 
+                    Configuration instructions follow.
+ 
+ 
+HP 7475A 6-Pen Plotter Drive Through a VT125
+ 
+                    If your HP  plotter  is  driven through a VT125
+                    printer connection, the VT125  should be set to
+                    send 8-bit data on the auxiliary port.  Set the
+                    port and the plotter  to  a baud rate that does
+                    not exceed the terminal's baud rate.
+ 
+
+
+
+
+
+
+
+
+                                   1
+
+RELEASE.TXT
+
+
+
+
+                    Special  cabling  is   needed  to  connect  the
+                    plotter   and   the   VT125   terminal.     Pin
+                    assignments are:
+ 
+                    Terminal pin 1 to Plotter pin 1
+                    Terminal pin 2 to Plotter pin 3
+                    Terminal pin 3 to Plotter pin 2
+                    Terminal pin 5 to Plotter pin 20
+                    Terminal pin 6 to Plotter pin 20
+                    Terminal pin 7 to Plotter pin 7
+ 
+                    Use the XON/XOFF  protocol  unless the terminal
+                    uses a hardwire handshake.   Both cabling types
+                    appear in the  terminal definition file (tfil),
+                    and can be enabled.   For more information, see
+                    the  Terminal  Definition  File  Setting (tfil)
+                    section of this RELEASE.TXT file.
+ 
+ 
+HP 7475A 6-Pen Plotter Driven Through a VT240
+ 
+                    Use Set-up to  configure  the  printer port as:
+                    Normal Print Mode,  8  bits,  no Parity, 1 stop
+                    bit, all  characters.    The  baud  rate cannot
+                    exceed  the  terminal's  baud  rate.    If  the
+                    XON/XOFF line control is used, set it to XOFF.
+ 
+                    If a VT240  printer  cable  is used between the
+                    VT240 terminal and  the  plotter,  then the pin
+                    assignments between the 25-pin end of the cable
+                    and the plotter are:
+ 
+                    Terminal pin 1 to Plotter pin 1
+                    Terminal pin 2 to Plotter pin 2
+                    Terminal pin 3 to Plotter pin 3
+                    Terminal pin 5 to Plotter pin 20
+                    Terminal pin 7 to Plotter pin 7
+                    Terminal pin 20 to Plotter pin 20
+ 
+ 
+HP 7475A 6-Pen Plotter Driven through an Eavesdrop Cable
+ 
+                    The terminal  must  be  on  any  time  that the
+                    plotter is used.   The plotter's D-Y dip switch
+                    must be in the Y position.
+ 
+                    Refer   to   the    HP7475A   INTERFACING   AND
+                    PROGRAMMING MANUAL for the pin assignments.
+ 
+ 
+
+
+
+
+                                   2
+
+                                                       RELEASE.TXT
+
+
+
+
+HP 7550A 8-Pen Plotter Setup
+ 
+                    The HP 7550A must  be  set up through the front
+                    panel (the  plotter  must  be  connected to the
+                    host through the terminal connector port).  The
+                    plotter should be configurated as follows:
+ 
+                    At level 2, set:
+ 
+                    -SERIAL
+                           -DATA FLOW
+                              -LOCAL, STAND-ALONE
+                           -BYPASS
+                              -OFF
+                        -HANDSHAKE
+                              -XON/XOFF, DIRECT
+                        -DUPLEX
+                           -DUPLEX HALF
+                        -PARITY
+                           -8-BITS OFF
+                        -BAUD
+                           -1200 (recommended)
+ 
+ 
+DECwriter LA-50 and LA-100 Attached to a VT125 or VT240
+ 
+                    You can use a  VT125  or VT240 terminal to plot
+                    with the Digital LA-50 or LA-100 printer.
+ 
+                    For  direct   terminal   to   LA-50  or  LA-100
+                    plotting, the VT125  must  be  connected with a
+                    null modem cable, #BC22D.  The VT240 requires a
+                    custom cable, #BCC05.
+ 
+                    Off-line plot files  can  be copied or spooled.
+                    Files are interchangeable between the LA-50 and
+                    LA-100.    However,  the   width  of  the  plot
+                    produced differs from the set chart width.
+ 
+                    NOTE:  DO NOT touch the terminal keyboard while
+                    the plot is being generated.
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+                                   3
+
+RELEASE.TXT
+
+
+
+
+Graphics Output Device Installation
+___________________________________
+ 
+                    NOTE:  If you  do  not  wish  to use a graphics
+                    output device, skip this section.
+ 
+                    To  plot  20/20   graphs,   you   must  have  a
+                    communications port  dedicated  to  a supported
+                    plotter (e.g.,  /dev/plot).   Therefore, before
+                    you set up  your  plotter,  you must remove any
+                    login jobs from the plotter  port.  To do this,
+                    edit /etc/ttys,  and  disable the corresponding
+                    communication line by  changing the leading "1"
+                    to "0".    Then,  re-initialize the login ports
+                    by issuing the command:
+ 
+                           kill -l l<CR>
+ 
+                    where <CR> is the Carriage Return key.
+ 
+                    You must set up the  plotter, connect it to the
+                    plotter line,  and  set  the  baud  rate.   The
+                    recommended baud rate is 1200.  However, if the
+                    plotter is  attached  to  a  terminal, the baud
+                    rate of the plotter cannot exceed the baud rate
+                    of the terminal.
+ 
+                    The following demonstrates  how  to  set up the
+                    plotter:
+ 
+                    1.  Set the baud  rate  of  the graphics output
+                        device.  The recommended baud rate is 1200.
+ 
+                    2.  Connect the plotter to your computer, using
+                        a null modem cable.
+ 
+                    3.  Log  in  as  root.    Enter  a  password if
+                        needed.
+ 
+                    4.  Change to the /usr/2020 directory.  Type:
+ 
+                           cd /usr/2020<CR>
+ 
+                    5.  Edit  setport  and  enter  the  proper baud
+                        rate.  For  example, setport should include
+                        the following lines:
+ 
+                           sleep 360000 </dev/plot&
+                           stty 1200 raw -echo...
+ 
+
+
+
+
+                                   4
+
+                                                       RELEASE.TXT
+
+
+
+
+                    6.  Change to the device directory.  Type:
+ 
+                           cd /dev<CR>
+ 
+                    7.  Use the Unix link  command (ln) to link the
+                        device port to the device name.  Type:
+ 
+                           ln tty1 plot<CR>
+ 
+                        where "tty1"  is  the  name  of the plotter
+                        port and "plot" is  the device name used by
+                        20/20.
+ 
+                    8.  Edit /etc/rc and  enter  the following line
+                        at the bottom of the file:
+ 
+                        nohup /usr/2020/setport >/dev/null 2>&1 &
+ 
+                        and reboot the system.
+ 
+                        OR,  if  you  do  not  wish  to  reboot the
+                        system, run setport  before  issuing an on-
+                        line plot.
+ 
+                        NOTE:       The    setport   process   runs
+                        approximately ten hours.   After ten hours,
+                        you  must  rerun  the  process  to reenable
+                        plotting with 20/20.    However, do not run
+                        this process more  than  once  during a ten
+                        hour period.    Running  setport  more than
+                        once within a ten hour period causes excess
+                        sleep processes to  run simultaneously, and
+                        can   therefore   interfere   with  on-line
+                        plotting  or  slow  down  the  system.   To
+                        determine if more  than one setport process
+                        is running in the background:
+ 
+                           a. Check the process status.  Type:
+ 
+                                 ps -eaf<CR>
+ 
+                              A  listing  appears  that  shows  the
+                              currently  active  processes.   Under
+                              the COMMAND column, "sleep" is listed
+                              where setport  processes  are running
+                              in the background.
+ 
+
+
+
+
+
+
+
+                                   5
+
+RELEASE.TXT
+
+
+
+
+                           b. Check to make  sure  that the setting
+                              on the communication port is correct.
+                              Type:
+ 
+                                 stty </dev/plot<CR>
+ 
+                              If an error  is indicated, check your
+                              cable connection.
+ 
+                    11. Next, check  the  20/20 terminal definition
+                        file  (tfil).     The  tfil  contains  four
+                        enabled  device  definitions   to  run  the
+                        plotter from  20/20,  and  several disabled
+                        definitions at the bottom of the tfil.
+ 
+                        On-line plotting  device  entries appear in
+                        the tfil in this form:
+ 
+ ;!DEVICE HP7475A is 6PEN_ON ON PORT /dev/plot
+ ;       is = \033.Y\033.J\033.K\033.R\033.@1024;0:\033.I80;;17:\033.N;19:
+ ;       ts = \033.Z
+ ;       ph = 8.5
+ ;       pw = 11
+ 
+                        Off-line plotting device entries appear in
+                        the tfil in this form:
+ 
+ ;!DEVICE HP7475A is 6PEN_OFF ON PORT /dev/null
+ ;       ph = 8.5
+ ;       pw = 11  
+ ;       is = \033.Y\033.R\033.@1024;0:\033.I80;;17:\033.N;19:
+ ;       ts = \033.Z
+ ;       of = offline
+ 
+                        Enable the appropriate  definition for your
+                        site by removing  the semicolon (;) comment
+                        characters that appear at the start of each
+                        line.  If the  semicolons  do not appear at
+                        the start of  each  line,  then that device
+                        has been enabled by default.
+ 
+                        Move the activated device specifications to
+                        the top of  the  tfil,  between the !DEVICE
+                        heading  and   the  concluding  exclamation
+                        point (!).
+ 
+                        Note:  At most, four device definitions can
+                        be  enabled  at   one   time.     For  more
+                        information,   see   the   following   tfil
+                        section, in these on-line technical notes.
+ 
+
+
+
+                                   6
+
+                                                       RELEASE.TXT
+
+
+
+
+                        Note:  To reassign the plotter port used by
+                        20/20, follow these steps:
+ 
+                        a.  cd /dev<CR>
+ 
+                        b.  Type:
+ 
+                                rm plot
+ 
+                        You can then relink  the device port to the
+                        device name,  substituting  the "tty1" port
+                        with a new  port.    For example, to assign
+                        the device port "tty2," type:
+ 
+                                ln tty2 plot
+ 
+                        Refer to your  Unix  documentation for more
+                        information about Unix commands.
+ 
+ 
+Verify the Graphics Output Device Installation
+----------------------------------------------
+ 
+                    To   verify   the    graphics   output   device
+                    installation, follow these steps:
+ 
+                    1.  Type:
+ 
+                            s2020 <CR>
+ 
+                        to enter the 20/20 program.  20/20 displays
+                        the  default  terminal   type.     If  your
+                        terminal  type   is   different   from  the
+                        default, see the beginning of "Using 20/20"
+                        (in  the  GETTING  STARTED  section  of the
+                        20/20  manual)  for  details  about  how to
+                        proceed.
+ 
+                    2.  Create  a  small  graph.    For information
+                        about how to create a 20/20 graph, refer to
+                        the  /GRAPH   command,   in   the  COMMANDS
+                        REFERENCE section of the 20/20 manual.
+ 
+                    3.  Use /GRAPH PLOT  DEVICE  to  select an off-
+                        line plotter device.    Your selection must
+                        match  the  Mini-HELP  description  exactly
+                        (e.g., 6PEN_OFF).
+ 
+                    4.  Use /GRAPH PLOT  GRAPH  to write your graph
+                        to a disk file.
+ 
+                    5.  Use /QUIT to exit from 20/20.
+
+
+                                   7
+
+RELEASE.TXT
+
+
+
+
+ 
+                    6.  Next, send the  graph  to  the plotter.  At
+                        the Unix prompt, type:
+ 
+                            cat filename >/dev/plot
+ 
+                        where "filename" is  the  name of the graph
+                        file,  created  by  the  /GRAPH  PLOT GRAPH
+                        command.
+ 
+                    Note:  If a hardcopy  plot is not generated, or
+                    if the terminal  hangs,  check  the cabling and
+                    then make sure  that  the  plotter dip switches
+                    are set  correctly,  and  that  your computer's
+                    communication line baud  rate  is properly set.
+                    Follow these steps:
+ 
+                    a.  Set the plotter dip switches.  For example,
+                        with the HP 7475A 6-pen plotter, set:
+ 
+                            s2 = 0
+                            s1 = 0
+                            d/y = d
+                            us/met= us
+                            a4/a3 = a4
+                            b4 = 0
+                            b3 = 1
+                            b2 = 1
+                            b1 = 1
+ 
+                        This sets  the  baud  rate  to  1200.   For
+                        information about setting  up  the HP 7550A
+                        8-pen  plotter,   see   page   3   of  this
+                        RELEASE.TXT file.
+ 
+                    b.  Check  the  communication  line  baud rate.
+                        Type:
+ 
+                                stty </dev/plot<CR>
+ 
+                        If  no  message  is  returned,  check  your
+                        cabling.
+ 
+                        If the plotter  line  baud rate is returned
+                        as 9600, change the  plotter line baud rate
+                        to 1200, using the command:
+ 
+                        stty 1200 raw -echo ixon </dev/plot
+ 
+                    Verify the  plotter  installation  by following
+                    steps 1 through 6 above.
+ 
+
+
+                                   8
+
+                                                       RELEASE.TXT
+
+
+
+
+20/20 Shell Script Settings (s2020)
+___________________________________
+ 
+                    You start 20/20  by  executing the shell script
+                    named:
+ 
+                        /s2020<CR>
+ 
+                    This script:
+ 
+                    o   Sets defaults for run-time options
+ 
+                    o   Defines the maximum memory allocation
+ 
+                    o   Assigns access to the 20/20 HELP utility.
+ 
+ 
+s2020 Shell Script:
+ 
+Where=/usr/2020
+#SuTERM=vt100                # default terminal type
+SuTFIL=${where}/tfil         # terminal database
+SuHFIL=${where}/hfil         # help file (table of contents)
+SuMEMR=200000                # maximum model size
+#SuPRLN=60                   # printer page length
+SuPRWD=80                    # printer page width
+SuPRDF='|lpr'                # lp spooler
+export SuTERM SuTFIL SuHFIL SuPRLN SuPRWD SuPFDF SuMEMR
+stty -echo raw ixon
+${where}/2020V11 $@
+stty echo -raw -nl           # opost
+ 
+ 
+                    The 20/20 shell  script  contains the following
+                    run-time options:
+ 
+                    o   Terminal type (SuTERM)
+ 
+                    o   Printer default (SuPRDF)
+ 
+                    o   Printer page length (SuPRLN)
+ 
+                    o   Printer page width (SuPRWD)
+ 
+                    You can change these options interactively from
+                    within 20/20 with the /OPTION command (to reset
+                    the terminal type), and with the /PRINT command
+                    (to reset the printer  device, page length, and
+                    page width).    For  more  information, see the
+                    /OPTION and  /PRINT  commands,  in the COMMANDS
+                    REFERENCE section of the 20/20 manual.
+ 
+
+
+                                   9
+
+RELEASE.TXT
+
+
+
+
+ 
+20/20 Terminal Specifications
+ 
+                    NOTE:  The SuTERM  line  has been commented out
+                    of the shell script.   To enable SuTERM, remove
+                    the preceding comment character (#).
+ 
+                    When 20/20  starts  (with  SuTERM  enabled), it
+                    assumes that you are using the default terminal
+                    type (VT100) defined  in  s2020.   If SuTERM is
+                    not defined in s2020, the program prompts for a
+                    terminal type.   If  the  terminal  type is the
+                    default (VT100),  press  <CR>.    To change the
+                    default, enter  the  shell  script,  delete the
+                    preceding comment character  (#),  and edit the
+                    SuTERM line to  list  a different terminal type
+                    code (SuTERM=VT240, for example).  If SuTERM is
+                    enabled with an  assigned  terminal code, 20/20
+                    starts without prompting for the terminal type.
+ 
+                    The shell  script  also  sets  the  terminal to
+                    "raw" mode to prevent echoing and interruptions
+                    caused by  control  characters.   Exiting 20/20
+                    changes the terminal line back to normal.
+ 
+                    All terminals  used  with  20/20  should be set
+                    with their local XON-XOFF protocols enabled.
+ 
+                    If you have a terminal that is not defined, you
+                    can edit the terminal definition file to define
+                    your  terminal.    For  more  information,  see
+                    "Terminal Definition  File  Settings (tfil)" on
+                    page 12 of this RELEASE.TXT file.
+ 
+20/20 Printer Specifications
+ 
+                    Print  files   created   using  20/20's  /PRINT
+                    command are piped to  the line printer spooler.
+                    The default printer  specifications are defined
+                    by three entries  in  the file /usr/2020/s2020.
+                    These entries are:
+ 
+                    SuPRLN=60          (default paper length)
+ 
+                    SuPRWD=80          (default paper width)
+ 
+                    SuPQDF=|lpr        (default printer spooler)
+ 
+                    SuPFDF='s2020.prt' (default print filename)
+ 
+                    You can  change  the  default specifications by
+                    editing  these  entries   in  the  20/20  shell
+                    script.
+
+                                   10
+
+                                                       RELEASE.TXT
+
+
+
+
+ 
+Memory Specifications
+ 
+                    The maximum memory  allocated  (SuMEMR) for any
+                    particular  spreadsheet   defaults  to  200,000
+                    bytes of  work  space.    You  can increase the
+                    amount of work  space  by  increasing SuMEMR in
+                    the 20/20 shell script.    You are limited only
+                    by the physical memory of your system.
+ 
+20/20 Program Specifications
+ 
+                    The 20/20 program  specifications establish the
+                    names for  20/20  and  its  utilities.   DO NOT
+                    CHANGE THESE NAMES.  Altering these names makes
+                    them inconsistent  with  printed 20/20 manuals.
+                    The defined names in /usr/2020 are:
+ 
+                    2020V12     - 20/20 executable file
+                    s2020       - Unix command procedure to run
+                                   20/20
+                    hfilidx     - 20/20 index to the HELP file
+                    hfil        - 20/20 HELP file text
+                    tfil        - 20/20 terminal definition file
+                    setport     - Plotter port setup file
+                    tutor       - Subdirectory containing on-line
+                                   20/20 tutorial files (on live
+                                   version only).
+                    demo        - Subdirectory containing on-line
+                                   20/20 demonstration files (on
+                                   evaluation version only).
+                    release.txt - ASCII file containing 20/20
+                                   technical notes
+ 
+ 
+Terminal Definition File Settings (tfil)
+________________________________________
+ 
+                    You  can  assign  and  enable  graphics  output
+                    devices  for   use   with   20/20,  define  new
+                    terminals, and  redefine  the  keys of existing
+                    terminals by  editing  the  terminal definition
+                    file  (/usr/2020/tfil)  which  is  used  by the
+                    20/20  shell  script  (/usr/2020/s2020).   This
+                    section describes the  rules  for modifying the
+                    terminal definition file.
+ 
+
+
+
+
+
+
+
+                                   11
+
+RELEASE.TXT
+
+
+
+
+                    The tfil consists of two sections:
+ 
+                    1)  DEVICES: Specifications
+ 
+                    2)  TERMINAL DEFINITIONS
+ 
+                       a. The terminal name
+ 
+                       b. The terminal INPUT definition statements
+ 
+                       c. The terminal OUTPUT definition statements
+ 
+                       d. The closing line
+ 
+                    Each of these sections is described below.
+ 
+ 
+1) DEVICES:  Specifications
+---------------------------
+ 
+                    Sites using graphics  output devices (to create
+                    hardcopy graphics) must access a section of the
+                    terminal  definition  file   that  defines  the
+                    plotting device.    This  section  includes the
+                    plotting device  type,  its  logical name, port
+                    assignment, and paper size.   This section must
+                    be named "DEVICES."
+ 
+                    It is recommended that  this  section be at the
+                    beginning  of  the  terminal  definition  file,
+                    since it  is  read  every  time  that you enter
+                    20/20.  A  sample  plotter  definition is shown
+                    below:
+ 
+                    !DEVICES
+                     DEVICE HP7475A IS plotb ON PORT /dev/plot
+                          ph = 11
+                          pw = 17
+                    !
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                   12
+
+                                                       RELEASE.TXT
+
+
+
+
+                    Plotting device definitions must begin with the
+                    single line  "!DEVICES"  and  end  with  a line
+                    consisting of a  single  exclamation point (!).
+                    Each device definition line has the syntax:
+ 
+              DEVICE device_name IS logical_name ON PORT port_name
+ 
+                    where:
+ 
+                    "device-name" is the plotting device name (e.g.
+                    HP7475A);
+ 
+                    "logical_name"   determines   the   plotter  or
+                    printer choices displayed  by  the 20/20 /GRAPH
+                    PLOT DEVICE command (e.g. hp6on); and
+ 
+                    "port_name"  indicates   the  device  directory
+                    (e.g. /dev/plot).
+ 
+                    The device  dependent  information for plotting
+                    surface dimensions are defined  in the next two
+                    lines, where:
+ 
+                    "ph" indicates the paper height in inches; and
+ 
+                    "pw" indicates the paper width in inches.
+ 
+                    Plotting devices  are  assumed  to be available
+                    for  on-line  plotting  (directly  from  within
+                    20/20).   Off-line  plotting  is established by
+                    adding a line that  defines the setting "of" as
+                    "off-line."
+ 
+                    The tfil includes a  number of disabled plotter
+                    definitions.   To  enable  the appropriate ones
+                    for  your  site,  you   need  only  remove  the
+                    semicolons (;)  from  the  start  of each line.
+                    Each enabled device  must  have  a unique name.
+                    Therefore, you need to  check the 20/20 logical
+                    device  names  (between   IS   and  ON  in  the
+                    definition) for conflicts.    There  can be, at
+                    most, four  enabled  plotter  definitions.   Be
+                    sure  that  plotter  definitions  that  are not
+                    needed are disabled.   Definitions are disabled
+                    when the  first  character  in  each  line is a
+                    semicolon (;).
+ 
+ 
+
+
+
+
+
+
+                                   13
+
+RELEASE.TXT
+
+
+
+
+2) Terminal Definitions
+-----------------------
+ 
+                    The  terminal  definition  section  defines the
+                    translation of  keyboard  signals  sent  from a
+                    particular   terminal   to   20/20,   and   the
+                    translation of 20/20  signals to the terminal's
+                    screen display.    You  can  alter any terminal
+                    definition by editing its entry in the terminal
+                    definition file, and you  can add new terminals
+                    by creating  new  entries  in  this  file.  The
+                    default terminal  is  defined  by the parameter
+                    SuTERM,  in  the  shell  script /usr/2020/s2020
+                    that  executes  20/20.     Since  the  terminal
+                    definition file is read sequentially when 20/20
+                    is invoked, start-up performance is improved by
+                    moving your most frequently used terminal types
+                    to the top of the file.
+ 
+ 
+a. The Terminal Name
+ 
+                    The  first  line  of  each  terminal definition
+                    tells the name of  the  terminal and the length
+                    and width of  its  screen.    The terminal name
+                    line must begin  with  an exclamation point (!)
+                    in  column  one,  followed  immediately  by the
+                    terminal name.  At  least one space follows the
+                    terminal  name,  then  the  screen  length  (in
+                    lines) and width  (in  characters) are defined.
+                    There can be any  number  of spaces between the
+                    screen length and screen width numbers, and any
+                    text that follows  the  screen  width number is
+                    treated as a comment.
+ 
+ 
+Example:                !VT100    24   80  Normal-Video VT100
+ 
+                    This  example  defines   a   terminal  that  is
+                    referenced by the name VT100.   It has 24 lines
+                    per screen, and  80  characters  per line.  The
+                    text  "Normal-Video  VT100"  is  treated  as  a
+                    comment.
+ 
+b. INPUT Statements
+ 
+                    INPUT  statements  are  lines  that  define the
+                    character sequences  that  20/20  receives from
+                    the terminal.    These  character sequences are
+                    translated by 20/20 into  internal codes.  Each
+                    internal code  indicates  that  some particular
+                    action is required.
+
+
+                                   14
+
+                                                       RELEASE.TXT
+
+
+
+
+ 
+The internal codes and the resulting actions are listed below:
+ 
+ 
+Internal Code        20/20 Action 
+-----------------------------------------------------------------
+  1                  Move one cell UP
+  2                  Move one cell DOWN
+  3                  Move one cell RIGHT
+  4                  Move one cell LEFT
+  5                  Point-to a cell
+  7                  Pause character (for shell script)
+ 10                  Backup
+ 11                  Page UP
+ 12                  Page DOWN
+ 13                  Page RIGHT
+ 14                  Page LEFT
+ 15                  HELP
+ 16                  TAB
+ 21                  Home (go to beginning of worksheet)
+ 22                  End (go to end of worksheet)
+ 25                  Do (execute a shell script)
+ 35                  Quiet mode (for shell script)
+ 36                  Verbose mode (for shell script)
+ 37                  Rubout character beneath cursor
+ 76                  Go to (move to a cell)
+100                  Continue (resume) a command file
+177                  Delete character to left of cursor
+200                  CARRIAGE RETURN or ENTER
+300 - 315            Soft function keys
+377                  Ignore 
+ 
+ 
+                    The general format of an INPUT statement is:
+ 
+      INPUT = \terminal-generated-code\200\(20/20-internal code)
+      
+                    Comments can  be  included  at  the  end of the
+                    INPUT statement.
+ 
+                    The  following  syntax  rules  apply  to  INPUT
+                    statements:
+ 
+                    a) There should be  exactly one space preceding
+                       the word input, and  one space preceding and
+                       following the equal sign (=).
+ 
+                    b) Octal codes are indicated by a backslash (\)
+                       followed by the octal value.
+ 
+
+
+
+
+                                   15
+
+RELEASE.TXT
+
+
+
+
+                    c) A normal  printing  character,  such  as the
+                       letter "S" can be indicated by itself, or by
+                       its octal code.
+ 
+                    d) The sequence to  be translated is terminated
+                       by an octal  200  code, followed immediately
+                       by the internal 20/20 code that the sequence
+                       should be translated into.
+ 
+Example:            The question  mark  key  (?)  on most terminals
+                    transmits the single ASCII  octal  code 77.  To
+                    use the question mark key to invoke 20/20 HELP,
+                    include the following INPUT line:
+ 
+                           INPUT = \77\200\15
+ 
+                    This INPUT  line  says  "Translate any sequence
+                    consisting of the  single  ASCII  code octal 77
+                    into internal 20/20  code  15."  Internal 20/20
+                    code 15 represents  HELP.  If  there  is also a
+                    <HELP>  key  on  your  keyboard,  and  this key
+                    transmits the double  code <ESCAPE><5>, you can
+                    include this as a 20/20 HELP key by typing:
+ 
+                          INPUT = \33\5\200\15
+ 
+                    where  the  standard   ASCII   octal  code  for
+                    <ESCAPE> is "33."
+ 
+                    You can  combine  both  of these specifications
+                    into one line by typing:
+ 
+                          INPUT = \77\200\15\33\5\200\15
+ 
+                    You can include any number of INPUT lines.
+ 
+                    You must use octal code 40 to designate spaces.
+                    If you  leave  a  space  within  the tfil INPUT
+                    line, the rest of the line is ignored.
+ 
+ 
+c. OUTPUT Definition Statements
+ 
+NOTE:    It  is  not   advisable  to  edit  the  OUTPUT  definition
+statements.    They  have  been  written  to  produce  a  standard,
+comprehensible worksheet display on  your  screen.  However, if you
+wish to remove  highlighting  on  any  part  of the screen display,
+place a semicolon (;) at the beginning of the appropriate line.
+ 
+
+
+
+
+
+                                   16
+
+                                                       RELEASE.TXT
+
+
+
+
+                    20/20 must  know  what  characters  to send the
+                    terminal    during    various   screen-painting
+                    operations.  These are defined with a series of
+                    lines using  two-character  abbreviations.  The
+                    abbreviations and their  meanings are listed in
+                    the chart below.
+ 
+ 
+Abbreviation      Meaning and Definition
+------------      ---------------------------------------
+ho                HOME- moves the cursor to the upper left corner
+                          of the screen
+el                ERASE LINE- erases from the current cursor
+                          position to the end of the current line
+es                ERASE SCREEN- erases from the current cursor
+                          position to  the  end  of  the screen, or
+                          erases the entire screen
+ri                RIGHT ARROW- Moves the cursor one character
+                          position to  the  right,  without erasing
+                          the current character
+nl                NEW LINE- Moves the cursor to the beginning of
+                          the  next  line.    Usually,  this  is  a
+                          Carriage Return/Line Feed, or 
+                          \15\12.  For Unix systems, \12 is 
+                          usually sufficient.
+fs                FORWARD SCROLL- Scrolls screen upward when you
+                          move the  cursor  off  the  bottom of the
+                          screen.  If your terminal does not have a
+                          scrolling  capability,   omit   the  "fs"
+                          specification from the tfil.
+rs                REVERSE SCROLL- Scrolls screen downward when you
+                          move  the  cursor  off  the  top  of  the
+                          screen.
+dc                DIRECT CURSOR- Moves the cursor directly to a
+                          particular location on  the  screen.  The
+                          sequence must tell  what  line and column
+                          to which to move.
+gr                GRAPHICS PROTOCOL- Defines the type of advanced
+                          graphics  that  the  terminal  can  draw.
+                          Legal values  include  REGIS  for Digital
+                          Equipment     terminals     with    Regis
+                          capability,  and  TEK4100  for Tektronics
+                          4100 series  terminals.    The default is
+                          NONE (no advanced graphics capabilities).
+
+
+
+
+
+
+
+
+
+
+                                   17
+
+RELEASE.TXT
+
+
+
+
+h1,h2,h3,h4,h5    SCREEN DISPLAY settings- Defines screen
+                          highlights   by   using   the  terminal's
+                          reverse   video   and   special   display
+                          facilities:
+                         h1-  sets reverse video for 20/20 
+                              error messages
+                         h2-  sets reverse video for the 
+                              current cell
+                         h3-  sets reverse video for 
+                              row/column numbers
+                         h4-  sets reverse video for 
+                              the current command 
+                         h5-  sets bolding for titles
+is                INITIALIZATION SEQUENCE- Defines the options
+                          for  a   particular   terminal.  You  can
+                          include as many "is" lines as needed.
+ts                TERMINATION SEQUENCE- Reverses the initialization
+                          sequence.    Can  be  used  to  reset the
+                          terminal.
+(nulls)           Filler characters- Characters entered in the
+                          code to ensure  that  a terminal has time
+                          to complete  an  operation before another
+                          operation is attempted.
+ 
+ 
+d. The Closing Line
+ 
+                    A terminal definition  must  always  end with a
+                    line  that  consists  of  a  single exclamation
+                    point (!) in the first column.
+ 
+ 
+Summary             Make  sure  that  your  tfil  incorporates  the
+                    following:
+ 
+                    1) Always  use   comments   after   the  OUTPUT
+                       definition statements.
+ 
+                    2) Follow the  syntax  and spacing requirements
+                       exactly.
+ 
+                    3) Use the semicolon (;)  at the beginning of a
+                       line to denote a comment.
+ 
+                    4) Some terminals  can  support  a  wide screen
+                       display (132 characters).   If your terminal
+                       supports a  wide  screen  display,  create a
+                       separate tfil and specify this terminal type
+                       when you use the wider column display.
+ 
+
+
+
+
+                                   18
+
+                                                       RELEASE.TXT
+
+
+
+
+                       With 132 character display terminals:
+ 
+                       o  You must supply a  new  name on the first
+                          tfil entry line.
+ 
+                       o  List "132" for the column display instead
+                          of "80"
+ 
+                       o  List "is=132" instead of "is=80"
+ 
+                    5) Do not define  one  terminal code to execute
+                       two different tasks.
+ 
+Adjusting Screen Display
+ 
+                    Modifying  your  tfil  may  affect  your screen
+                    display.   The  following  chart shows possible
+                    problems and adjustments:
+ 
+|----------------------------------------------------------------|
+|   Problem                |   Adjustment                        |
+|--------------------------|-------------------------------------|
+|  Screen displays double- |   Try using the semicolon (;) to    |
+|  spacing between rows    |   comment out the "fs" definition   |
+|                          |   statement.                        |
+|--------------------------|-------------------------------------|
+|  Row numbers drift down- |   Decrease screen width by 1.       |
+|  ward and to the right   |                                     |
+|--------------------------|-------------------------------------|
+|  You get a "startup      |   Check your tfil for syntactical   |
+|  error" when you try to  |   errors.  These must be corrected  |
+|  run 20/20.              |   before 20/20 can execute properly.|
+|--------------------------|-------------------------------------|
+|  The screen is distorted.|   Check the "dc" and "ho" output    |
+|                          |   statements.                       |
+|--------------------------|-------------------------------------|
+|  A formula from one cell |   Check the "el" definition.        |
+|  is still displayed on   |                                     |
+|  the edit line after     |                                     |
+|  you move to a new cell. |                                     |
+------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                   19
+

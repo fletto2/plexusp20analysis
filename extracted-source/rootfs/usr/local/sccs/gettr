@@ -1,0 +1,8 @@
+: 'gettr sccs_tree target_tree'
+if test $1;
+then echo -n $0 $* starting >>times ; date >>times;
+CRDIR=/usr/local/sccs/crsrcdir;
+find $1 -type d -print|sed -e "s,$1,," -e "s,.*,$CRDIR $1& $2&,"|sh -x  2>>gettr.out;
+echo -n $0 $* complete >>times ; date >>times;
+else echo usage: gettr sccs_tree target_tree;
+fi;

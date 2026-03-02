@@ -1,0 +1,72 @@
+#	@(#)bcheckrc.sh	5.5
+
+# ***** This file has those commands necessary to check the file
+# system, date, and anything else that should be done before mounting
+# the file systems.
+
+#
+# If autoboot is set, assume date is correct and just check file systems.
+# The '-b' option to fsck will cause fsck to re-boot system if root device
+# gets updated
+#
+
+
+. /etc/TIMEZONE
+trap "" 2
+
+# **** Check date
+
+while :
+do
+	echo "Is the date `date` correct? (y or n) \c"
+	read reply
+	if
+		[ "$reply" = y ]
+	then
+		break
+	else
+		echo "\nDate format is MODYHRMN[YR], i.e. 1231235986"
+		echo "Enter the correct date in format MODYHRMN[YR]:  \c";
+		read reply;
+		date "$reply"
+	fi
+done
+
+# ***** Auto check, if necessary
+
+while :
+do
+	echo "Do you want to check the file systems? (y or n) \c"
+	read reply
+	case "$reply" in
+		 y )
+			;;
+
+		n* )
+			break
+			;;
+
+		* )
+			echo "Invalid input. Try again."
+			continue
+			;;
+	esac
+	trap "echo Interrupt" 2
+	if /etc/fsck
+	then
+	trap "" 2
+	break
+	else
+		echo "YOUR FILE SYSTEM IS SERIOUSLY CORRUPT."
+		echo "DO YOU WANT TO CONTINUE TO MULTI-USER? (y or n) \c"
+		read reply
+		if 
+		      [ "$reply" = y ]
+		then
+			trap "" 2
+			break
+		else
+			echo "REBOOT YOUR SYSTEM NOW!"
+		fi
+	fi
+done

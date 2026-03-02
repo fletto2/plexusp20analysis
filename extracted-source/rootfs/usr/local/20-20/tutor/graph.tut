@@ -1,0 +1,73 @@
+#q/mcy/sr/usr/2020/tutor/grin.tmf#/>0,10#//wh;#TA#n#TD
+       20/20 graphics are dedicated to the proposition that a picture
+       can be worth a 1000 by 1000 spreadsheet.  Data is often easier
+       to understand when accompanied by graphic aids.  That makes
+       graphs ideal for projecting quantitative concepts in meetings,
+       newsletters, and executive summaries.
+
+          PRESS <CR> TO CONTINUE
+#TF
+#TR#/#TT#TB#TE[11,5]        *** PLEASE WAIT ***
+#TF
+#PR#TE[0,1]    The ranges of data that can be graphed are unlimited; any
+       number of columns and rows can be included.  For example, the graph
+          shown above represents a range of eight columns by seven rows.
+#TF>15,0#//WV;/GR28.35,1.7#/FCOCGNLNVQ
+#TE[11,5]        PRESS <CR> TO CONTINUE
+#TF#TR#/#TT
+#TB
+#TE[0,1]    20/20 lets you choose from five different graph forms.
+       Your choice will depend on certain factors:
+
+        PRESS <CR> TO CONTINUE
+#TF#TR#/#TT#TB#TE[10,7]   *** PLEASE WAIT ***
+#TF
+#TE[2,0]FOR EXAMPLE:
+#TF
+#TE[4,1]How many variables do you need to represent?
+#TF/GR18.22,0.2#/FBGNLRMApple\Banana\Cranberry#/LCM1st\2nd\3rd\4th\5th#/
+VQ
+#TE[10,7]PRESS <CR> TO CONTINUE
+#TF#TR#/#TT#TE[10,7]   *** PLEASE WAIT ***
+#TF
+#TE[6,2]Is your data a time series?
+#TF/GFSVQ
+#TE[10,7]PRESS <CR> TO CONTINUE
+#TF#TR#/#TT#TE[10,7]   *** PLEASE WAIT ***
+#TF
+#TE[35,2]Or a single period?
+#TF/GFPORVQ
+#TE[10,7]PRESS <CR> TO CONTINUE
+#TF#TR#/#TT#TE[10,7]   *** PLEASE WAIT ***
+#TF
+#TE[8,3]Should you emphasize the relative shares?
+#TF/GOCGNFCVQ
+#TE[10,7]PRESS <CR> TO CONTINUE
+#TF#TR#/#TT#TE[10,7]   *** PLEASE WAIT ***
+#TF
+#TE[51,3]Or the scaled values?
+#TF/GGLVQ
+#TE[10,7]PRESS <CR> TO CONTINUE
+#TF#TR#/#TT#TE[10,7]   *** PLEASE WAIT ***
+#TF
+#TE[10,4]Are trends important?
+#TF/GGNFLVQ
+#TE[10,7]PRESS <CR> TO CONTINUE
+#TF#TR#/#TT#TE[10,7]   *** PLEASE WAIT ***
+#TF
+#TE[33,4]What do the numbers represent?
+#TF/GLAVQ
+#TE[10,7]PRESS <CR> TO CONTINUE
+#TF#TR#/#TT#TE[10,7]   *** PLEASE WAIT ***
+#TF
+#Q/WD#R#TB
+#TE[1,0]      So far 20/20 has been drawing graphs saved with the tutorial
+      worksheet files and retrieved by name.  Now it's your turn
+      to draw some graphs.  Later in the tutorial, you will learn how
+      to save a graph by name.
+
+      First you need a model with some data to graph.
+
+          PRESS <CR> TO CONTINUE
+#TF#TR#/#TT#TB#TE[10,7]   *** PLEASE WAIT ***
+#TF#Q/sic/usr/2020/tutor/pie.tut#/n

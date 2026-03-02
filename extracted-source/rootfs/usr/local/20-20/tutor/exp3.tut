@@ -1,0 +1,123 @@
+#N
+#TD
+  Before we continue with the expense report model, let's look
+    at some of 20/20's commands.  You can use these
+       commands to make 20/20 do things for you.
+#TF
+#TE[63,5]Press <CR>#TF
+#TR#/#TT/mb0.8,0.13#/
+#Q/MCY/SWEASY.20#/#/
+/SWWAIT.TTF#/#/>0,1#//WH;#TA>0,0#/'#//CE0,100#/0,101#/#V#TD
+
+
+
+    When you type a slash (/), the 20/20 command options appear
+    in the header above the worksheet.  20/20 commands use
+    common English words.  See the list of commands shown above.
+    In the third line at the top of your screen, you'll see the
+    Mini-Help line, which contains a brief description of each
+    command.  Watch this line as we "walk" through the menu.
+#TF/#TE[60,17]   Press <CR>#TF#Q#TR#/#TT#B#N
+#TE[60,17]  Please wait#TF
+#R#QMB0,100#//SLCWAIT.TTF#/R0,1#/0,100#/
+/MB0,100#//#N#R#QE#//SLCWAIT.TTF#/R0,1#/0,100#/
+/E#//#N#R#QFW#//SLCWAIT.TTF#/R0,1#/0,100#//FW#//#N
+#R#QDW#//SLCWAIT.TTF#/R0,1#/0,100#//DW#//#N#R#QSLCWAIT.TTF#/R0,1#/0,100#/
+/SLCWAIT.TTF#/R0,1#/0,100#/
+/#N#R#QPQ/SLCWAIT.TTF#/R0,1#/0,100#//PQ/#N#R#QWV
+/SLCWAIT.TTF#/R0,1#/0,100#//WD/#N#R#QOON
+/SLCWAIT.TTF#/R0,1#/0,100#//OON/#N#R#QSLCWAIT.TTF#/R0,1#/0,100#/
+/OON/#R#N#R#QGQ/SLCWAIT.TTF#/R0,1#/0,100#//GQ/#N
+#R#Q#B/SLCWAIT.TTF#/R0,1#/0,100#//GQ/#R#N#R#QSLCWAIT.TTF#/R0,1#/0,100#/
+/GQ/#R#R#N#B
+#TE[60,17]   Press <CR>#TF#TR#/#TT
+#TE[60,17]             #TF
+/SLCWAIT.TTF#/R0,1#/0,100#/
+#TE[0,10]
+    You never have to "read 20/20's mind" to know what to do next.
+    20/20 prompts you for all filenames, ranges, and other entries.
+    Notice the prompt shown in the header above.
+#TF#V/SLCEASY.20#TE[60,17]   Press <CR>#TF#TR#/#TT#Q#B#B#B#B#N
+#TB
+#TE[6,4]To enter a command, type:  /
+#TF
+/CE#/0,100#/
+#V#TR/#TT
+#TE[5,15]                                         #TF
+#TE[4,4]20/20 responds by listing a menu of the 20/20 commands.
+#TF
+#TE[4,5]The command cursor highlights the /COPY command.  Notice the
+#TF
+#TE[4,6]description of that command on the Mini-Help line just
+#TF
+#TE[4,7]below the menu.
+#TF
+#TE[4,9]You can select a command by using the arrow keys
+#TF
+#TE[4,10]to position the command cursor...
+#TF
+#TE[4,15]Press <RIGHT> once to select the /MODIFY command.
+#TF
+#TR#R#TT
+#TE[4,15]                                                      #TF
+#TE[34,10] or by typing the
+#TF
+#TE[4,11]initial letter of the desired command.
+#TF
+#TE[4,15]To enter the /EDIT command, type:  E
+#TF
+#TRE#TT
+#TB
+#TD
+    In addition to /EDIT, we will be using /FORMAT and /DEFAULT for
+    the expense model.  You'll have a chance to try additional
+    commands in other tutorials.
+#TF
+#TE[60,17]Press <CR>
+#TF
+#TR#/#TT
+#Q/MCY>0,13#//WH;#TA>4,6#/'HOORAY!#/>0,0#/#N
+#TD
+  Commands allow you do more than just arithmetic with 20/20.
+#TF
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TB
+#TD
+  For example, you can make 20/20 copy data
+    into many locations for you.
+#TF
+/ce4,6#/(2,6),(3,8)#//ce4,6#/(1,7),(2,9)#//ce4,6#/(0,4,8),(1,10)#/
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TB
+#TD
+  You can tell 20/20 to make the columns narrower...
+#TF
+/DW3#/#/
+#TE[63,5]Press <CR>
+#TF
+#TR#/#TT
+#TE[63,5]
+#TF
+#TE[49,1] or wider.
+#TF
+/DW12#/#/
+#TE[63,5]Press <CR>
+#TF
+#TR#/#TT
+#TE[63,5]
+#TF
+#TB
+/MB[0..8,0..13]#//DW8#/>4,5#/'AXPENSES#/
+#TD
+  You can edit your worksheet labels.
+#TF
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TE[63,5]          #TF
+/e#R#EE#/
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TB
+#N/SIC/usr/2020/tutor/exp4.tut#/N

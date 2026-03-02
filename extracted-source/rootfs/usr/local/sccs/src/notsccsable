@@ -1,0 +1,8 @@
+\.[obaix]$
+\.out[0-9]*$
+\.tmk$
+\.sym$
+\.list$
+\.save$
+\.old$
+^core$

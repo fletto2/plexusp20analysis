@@ -1,0 +1,61 @@
+#Q/mcy/wh;#TA#n#TD
+  The following special keys are represented by angle-bracketed
+  abbreviations:
+
+  Name      Abbrev.  Location           Effect
+  ----      -------  --------           ------
+
+  Backout   <BKO>    See key card or    Permits operator to leave
+                     on-line HELP       tutorial system at any time
+
+  Calculate <CALC>   Space bar          Recalculates the worksheet
+
+  Carriage  <CR>     Return             Multi-purpose
+  Return                                
+
+  Continue  <CONT>   See key card or    Allows operator to bypass
+                     on-line HELP       requested typing sequences
+
+	** PRESS <CR> FOR NEXT PAGE **
+#TF#TR#/#TT
+#TB#TD
+  Name      Abbrev.  Location           Effect
+  ----      -------  --------           ------
+
+  Down      <DN>     Down arrow         Moves 20/20 cell cursor
+
+  Go to     <GOTO>   >, the greater     Directs the 20/20 cell cursor
+                     than symbol        to a specified location
+
+  Left      <LF>     Left arrow         Moves 20/20 cell cursor or
+                                        command cursor
+
+  Page      <PAGE>   See key card or    When followed by an arrow key, 
+                     on-line HELP       causes entire window to scroll
+
+  Point-to  <PTO>    Down arrow         Indicates cells to be
+                                        used in 20/20 ranges, 
+                                        formulas, and commands
+	** PRESS <CR> FOR NEXT PAGE **
+#TF#TR#/#TT
+#TB#TD
+  Name      Abbrev.  Location           Effect
+  ----      -------  --------           ------
+
+  Right     <RT>     Right arrow        Moves 20/20 cell cursor or
+                                        command cursor
+
+  Up        <UP>     Up arrow           Moves 20/20 cell cursor
+
+
+
+
+
+
+
+
+
+
+	** PRESS <CR> FOR TUTORIAL MENU **
+#TF#TR#/#TT
+#Q/sic/usr/2020/tutor/renew.tut#/n

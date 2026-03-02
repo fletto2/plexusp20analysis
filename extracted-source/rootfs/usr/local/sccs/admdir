@@ -1,0 +1,8 @@
+cd $1
+pwd
+for i in * 
+	do
+	echo $i
+	adm $i $2 
+	done
+echo finish

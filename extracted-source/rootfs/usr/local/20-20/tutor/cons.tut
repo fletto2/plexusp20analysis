@@ -1,0 +1,138 @@
+#Q/sr/usr/2020/tutor/nails.tmf#//swNAILS.TMF#/#/
+/sr/usr/2020/tutor/pins.tmf#//swPINS.TMF#/#/
+/sr/usr/2020/tutor/tacks.tmf#//swTACKS.TMF#/#/
+/swTOTAL.TMF#/#//sr/usr/2020/tutor/consin.tmf#/#N
+#TR#/#TT
+#Q/mcy/fw20#//wh;#TA#N
+#TD
+                    USING THE CONSOLIDATION COMMANDS
+
+    The consolidation commands load data from a stored worksheet into
+    the current worksheet. This is useful for a wide variety of
+    applications including:
+
+       o Combining several models into a summary model
+       o Initializing a model with the results from another model
+       o Three dimensional modeling
+
+    In this tutorial you'll use the financial models of a company
+    called CONSOLIDATED INDUSTRIES. It has three divisions:
+
+       1: NAILS      2: TACKS      3: PINS
+
+
+
+                                                 PRESS <CR>
+#TF#TR#/#TT#TB
+#Q/SR/usr/2020/tutor/onails.tmf#/>6,9#//WV/WH;#TA>0,10#/#N#TD
+  You can use 20/20's
+  /STORAGE LINK commands to
+  consolidate data from one
+  worksheet...#TF
+#TE[5,18]PRESS <CR>#TF
+#TR#/#TT
+#TE[5,18]          #TF
+#Q/SP/usr/2020/tutor/oprofit.tmf#/#/#/;>0,0#/#N
+#TE[11,4] to another.#TF
+#TE[0,6]  Below is a consolidation
+  template.  This one totals
+  the gross profit from each
+  of three other worksheets.#TF
+#TE[5,18]PRESS <CR>#TF
+#TR#/#TT
+#TE[5,18]          #TF
+/SLC/usr/2020/tutor/onails.tmf#/R1.6,7#/1.6,13#/#C#TB
+#TD
+
+  First the NAILS division.#TF
+#TE[5,18]PRESS <CR>#TF
+#TR#/#TT
+#TE[5,18]          #TF
+/SP/usr/2020/tutor/otacks.tmf#/#/0,0#/
+/SLC/usr/2020/tutor/otacks.tmf#/R1.6,7#/1.6,14#/#C
+#TE[0,4]  Then the TACKS division.#TF
+#TE[5,18]PRESS <CR>#TF
+#TR#/#TT
+#TE[5,18]          #TF
+/SP/usr/2020/tutor/opins.tmf#/#/0,0#/
+/SLC/usr/2020/tutor/opins.tmf#/R1.6,7#/1.6,15#/#C
+#TE[0,6]  Finally, the PINS division.#TF
+#TE[5,18]PRESS <CR>#TF
+#TR#/#TT
+#Q/MCY/SR/usr/2020/tutor/ojani.tmf#/>0,10#//WH;#TA>0,0#/#N
+/SLC/usr/2020/tutor/ojan.tmf#/R0.10,0.10#/0,0#/#TD
+
+   20/20 even lets you store links so that data can be consolidated
+     each time you read in your worksheet file.  This model contains
+       defined links to the January figures for each division.
+
+
+                                   PRESS <CR>#TF
+#TR#/#TT#TB
+#Q/mcy/fw20#/>0,6#//wh;#TA>0,0#//sp/usr/2020/tutor/all.tmf#/#/#/#N
+#TD
+  Now it's your turn.  First let's see how to consolidate our
+  three divisions using the /STORAGE LINK CONSOLIDATE command.
+
+
+  Type:  /SLC           This enters  /STORAGE LINK CONSOLIDATE
+
+  Type: NAILS.TMF<CR>   This is the first division
+
+  Type: R               The OPERATOR specifies how cells in the target
+                        range should be combined with the cells from
+                        the input range. "R" means REPLACE the target
+                        cells with the input cells.
+#TF
+#TR/SLCNAILS.TMF#/R#TT
+#TB#TD
+    Now for the ranges:
+
+    Type: 1..6,2..5<CR>  The input range is Jan-Jun and Sales-Profit
+
+    Type: 1,2<CR>        The upper left corner of the target range
+#TF
+#TR1..6,2..5#/1,2#/#TT
+#TE[0,6]
+    This has brought the 1st divisions values into the
+    template. Now for the 2nd one:
+
+                                               PRESS <CR>
+#TF
+#TR#/#TT
+#TB#TD
+ Type:  /SLC
+
+ Type:  TACKS.TMF<CR>
+
+ Type:  +               The "+" operator tells 20/20 to add the cells
+                        in the stored file to the values in the current
+                        worksheet
+ Type:  1..6,2..5<CR>   The Input Range
+
+ Type:  1,2<CR>         The Target Range
+#TF
+#TR/SLCTACKS.TMF#/+1..6,2..5#/1,2#/#TT
+#TB#TE[0,7]
+That's two down and one to go.  To consolidate the 3rd division:
+
+                                                         PRESS <CR>
+#TF
+#TR#/#TT#TB
+#TD
+
+ Type: /SLC
+
+ Type: PINS.TMF<CR>
+
+ Type: +
+
+ Type: 1..6,2..5<CR>
+
+ Type: 1,2<CR>
+#TF
+#TR/SLCPINS.TMF#/+1..6,2..5#/1,2#/#TT
+#TE[2,10]
+ Your consolidation is complete.                    PRESS <CR>
+#TF#TR#/#TT
+/SWLINK.TTF#/#//sic/usr/2020/tutor/cons2.tut#/#/

@@ -1,0 +1,220 @@
+#q/sr/usr/2020/tutor/meantemp.tmf#/>13,0#//wv>0,7#//wh;#N#TA#TD
+ The mean high
+ temperatures
+ for the whiskey
+ producing coun-
+ tries!  That
+ will make a
+ much better
+ line graph!
+
+  PRESS <CR>
+#TF;#TR#/#TT
+#TE[1,12]Let's graph the
+annual mean high
+temperatures for
+the U.K., the
+U.S., and Canada.
+
+   PRESS <CR>
+#TF#TR#/#TT#TB
+#TE[1,7]Select the range
+#TF
+#TE[1,8]from column 1 to
+#TF
+#TE[1,9]column 12 and
+#TF
+#TE[1,10]from row 3 to
+#TF
+#TE[1,11]row 5.  Type:
+#TF
+#TE[3,13]/GR 1..12,3..5
+#TF
+#TE[3,14]<CR>
+#TF
+#V#TR/GR1..12,3..5#/#TT
+Q#TB#TD
+
+
+ Now select the
+ form.  Type:
+
+   /GFL
+#TF#TR/GFL#TT
+Q#TE[1,3]20/20 defaults
+#TF
+#TE[1,4]to /GRAPH ORDER
+#TF
+#TE[1,5]COLUMN.
+#TF
+#TE[1,6]
+#TF
+#TE[1,7]Since the months
+#TF
+#TE[1,8](i.e. the columns)
+#TF
+#TE[1,9]will be plotted
+#TF
+#TE[1,10]against the
+#TF
+#TE[1,11]horizontal axis,
+#TF
+#TE[1,12]you do not need
+#TF
+#TE[1,13]to set /GRAPH
+#TF
+#TE[1,14]ORDER.  Let's
+#TF
+#TE[1,15]display the
+#TF
+#TE[1,16]graph.  Type:
+#TF
+#TE[1,18]/GV
+#TF#TR/GV#TT
+Q#TB#TD
+
+
+ Good!
+
+   PRESS <CR>
+#TF#TR#/#TT
+#TE[1,5]But 20/20 can do
+#TF
+#TE[1,6]better.  There
+#TF
+#TE[1,7]are a few tricks
+#TF
+#TE[1,8]you can do to
+#TF
+#TE[1,9]make your graph
+#TF
+#TE[1,10]even more useful.
+#TF
+#TE[1,12]Let's give it
+#TF
+#TE[1,13]a whirl.
+#TF
+#TE[3,15]PRESS <CR>
+#TF#TR#/#TT
+#TB#TD
+
+ This particular
+ graph is nicer
+ if you eliminate
+ the base line at
+ 0.  You can change
+ the scale of the
+ vertical axis so
+ that it starts
+ at 15 and goes
+ to 90 using the
+ /GRAPH AXIS
+ command.
+
+ Type:
+
+  /GAM 15 <CR>
+  90 <CR>
+#TF#TR/GAM15#/90#/#TT
+Q#TB#TD
+
+ OK.
+
+ Now let's take
+ a look at it.
+
+ Type:
+
+  /GV
+#TF#TR/GV#TT
+Q#TB#TD
+
+ Next, let's put
+ dotted lines
+ horizontally
+ across the
+ graph to mark
+ every 20
+ degrees.
+
+ Use the /GRAPH
+ GRID command.
+ Then use VIEW
+ to display the
+ graph.
+
+ Type:
+
+  /GGLV
+#TF#TR/GGLV#TT
+Q#TB#TD
+ Bravo!
+
+ Now you can tell
+ without looking
+ at the data that
+ the temperature
+ DOES get above
+ 60 in the U.K.
+ in the summer!
+
+ By the way, some
+ people may think
+ of the U.K. as a
+ LEGEND, but most
+ would call it a
+ COUNTRY.
+
+   PRESS <CR>
+#TF#TR#/#TT
+#TB#TD
+ We can enter a
+ heading in place
+ of the word
+
+ * LEGEND *
+
+ by using the
+ /GRAPH HEADING
+ command.  You
+ can use the same
+ heading on the
+ graph that we
+ used on the
+ worksheet in
+ cell [0,1].
+ Type:
+
+  /GHRR 0,1
+  <CR> V
+#TF#TR/GHRR0,1#/V#TT
+Q#TB#TD
+
+
+
+ Notice the word
+ COUNTRY.
+
+  PRESS <CR>
+#TF#TR#/#TT
+#Q/WD#PR#TB#TD
+
+ There are other
+ ways to enhance
+ your graph with
+ headings, titles
+ and so on.  But
+ before we look
+ at other enhance-
+ ments, let's try
+ some bar graphs,
+ stacked graphs,
+ and comparison
+ graphs.  We will
+ use yet another
+ data worksheet.
+
+   PRESS <CR>
+#TF#TR#/#TT
+#TB#Q/mb0..20,0..20#/>4,7#/' **PLEASE WAIT**#/>0,0#/
+#Q/sic/usr/2020/tutor/bars.tut#/n

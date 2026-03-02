@@ -1,0 +1,23 @@
+
+# Copyright 1985
+# Access Technology, Inc.
+# South Natick, Massachusetts 01760
+#
+# This software is furnished under a license and my be used or copied
+# only in accordance with the terms of such license.
+#
+
+BASE=/usr/local/20-20
+TARGET=2020V13
+
+SuTERM=vt100			# default terminal type
+SuTFIL=${BASE}/tfil		# terminal database
+SuHFIL=${BASE}/hfil		# help file (table of contents)
+SuMEMR=100000			# maximum model size
+SuPRLN=60			# printer page length
+SuPRWD=80			# printer page width
+SuPRDF='|lp'			# printer spooler
+export SuTERM SuTFIL SuHFIL SuPRLN SuPRWD SuPRDF SuMEMR
+stty -echo raw ixon
+${BASE}/${TARGET} $@
+stty echo -raw 

@@ -1,0 +1,18 @@
+: 'Usage: lsdir dirname_relative_to_/sccs_and_/usr/src'
+: 'This shellfile is useful for creating the SCCS_list files used' 
+: ' by the initdir shell file.'
+: 'Note that if the subdirectory names are not the same this shellfile'
+: ' will have to be copied and modified to suit'
+DIR=$1
+C=/usr/src
+S=/sccs
+cd $S/$DIR
+/bin/ls -lgas $C/$DIR >_ls.usr.src
+chmod 444 _ls.usr.src
+grep -v '^t' <_ls.usr.src|grep -v ' drwx'|grep -v '\.[ob]$' >_SCCS_list
+cd $C/$DIR ; vi $S/$DIR/_SCCS_list ; cd $S/$DIR
+sed -e '1,$s/.* /s./' <_SCCS_list >SCCS_list
+chmod 444 SCCS_list
+chmod 444 _SCCS_list
+cat SCCS_list
+rm _SCCS_list

@@ -1,0 +1,55 @@
+#Q/SR/usr/2020/tutor/tut7.tmf#/>0,13#//WH#/;#TA>1,2#/#N
+#TE[5,0]
+20/20 will do the arithmetic for you.  All you need to do
+  is tell 20/20 where the numbers are that you want to add
+    (or multiply, or whatever), and it does the rest.
+#TF
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TB
+#TE[5,0]
+For example, you want the total of "MEALS" and "LODGING"
+  to be in cell [3,11], so first move to that cell.
+
+Type:  >3,11 <CR>
+#TF
+#TR>3,11#/#TT
+#TB
+#TE[5,0]
+Use the formula [2,9] + [2,10] to tell 20/20 to add
+  the contents of cell [2,9] to the contents of cell
+    [2,10], and to put the result in cell [3,11].
+
+Type:  [2,9]+[2,10] <CR>
+#TF
+#TR[2,9]+[2,10]#/#TT
+#TB
+#TE[5,0]
+Notice the value "$188.00", which is displayed in cell [3,11].
+    This is the result of 20/20 calculating
+       the formula:   [2,9] + [2,10]
+#TF
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TB
+#TE[5,0]
+We'll enter the formulas to calculate the TRAVEL expenses
+   and the AUTO expenses for you.
+#TF
+>3,17#/
+[2,15]+[2,16]#/
+>2,23#/
+[1,22]*[1,23]#/
+>3,25#/
+[2,23]+[2,24]#/
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TB
+>2,23#/#TE[5,0]
+The worksheet displays the calculated result of the formula, while the
+    top line of the screen, the Status line, displays the formula.
+        Notice that the formula shown uses multiplication.
+#TF
+#TE[63,5]Press <CR>#TF
+#TR#/#TT#TB
+#q/SIC/usr/2020/tutor/exp8.tut#/N

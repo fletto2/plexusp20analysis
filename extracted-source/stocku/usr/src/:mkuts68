@@ -1,0 +1,161 @@
+#  
+# SID @(#):mkuts68	1.1
+
+# make UNIX/TS libraries and initial systems
+#
+# Dispite all the options specified below, if it is invoked without
+# any parameters it trys to build a kernal of the same type as exists
+# on the machine this is being built on.  That is, when a site wishes
+# to relink the kernal, just saying ":mkuts68" will build a kernal
+# the same as that is on that site.
+#
+# invocation is:
+InVoke=":mkuts68 -u users -m machine -n -c -r release -v version -t rootfs -i includefs"
+# where
+#	-u gives the number of users (default is 32)
+#	-m specifies the machine (default is "lundell")
+#		(there may be multiple -m's each becoming a -DMACHINE)
+#	-n says to make nos system
+#	-r gives release number
+#	-v gives version number
+#	-t specifies the root filesystem to build from
+#	-i specifies the include directory to get .h files
+#	-c says to build communication (icp,...) stuff also (see m68.mk)
+
+export ROOT SYS VER REL NODE MACH
+export INSDIR INCRT PFX LIBPFX
+export USERS BUILDICP MACHTYPE NOSFLAG DEFS
+
+# USERS is the number of users to build the kernal for
+USERS=${USERS-unknown}
+# DEFS is the -D options for cc which specify the machine and configuration
+DEFS=${DEFS-}
+# ROOT is the root system to reference to
+ROOT=${ROOT-/}
+# INCRT is the filesystem to get .h files from
+INCRT=${INCRT-/usr/include}
+# LIBPFX is prefix to built lib names (lib1, lib2, ...)
+LIBPFX=${LIBPFX-}
+# NOSFLAG is of non-zero length if the kernal is including nos
+NOSFLAG=${NOSFLAG-}
+# BUILDICP is of non-zero length if also building the icp and vpm code
+BUILDICP=${BUILDICP-}
+# PFX is prepended to the names of cc, cpp, as, make, and ld
+PFX=${PFX-}
+# MakeParam is parameters passed to this upper level make (usually "-n")
+MakeParam=${MakeParam-}
+# MACHTYPE is the machine type building for
+MACHTYPE=unknown
+
+# build up the system name components
+SYS=${SYS-Sys5.2}
+VER=${VER-unknown}
+REL=${REL:=1.2}
+NODE=${NODE-`uname -n`}
+MACH=${MACH-m68}
+INSDIR=${INSDIR-/test}
+
+set -- `getopt u:ncm:r:v:t:i: $*`
+if [ $? != 0 ] ; then
+	echo "usage: $InVoke"
+	exit 2
+fi
+
+for i in $* ; do
+	case $i in
+		-u)	USERS=$2
+			shift 2
+			;;
+		-n)	NOSFLAG="nos"
+			shift
+			;;
+		-c)	BUILDICP="icp"
+			shift
+			;;
+		-m)	MACHTYPE=$2
+			if [ "$2" = "robin" -o "$2" = "ROBIN" ] ; then
+				# ROBINs unfortunatly use both upper and lower case
+				DEFS="$DEFS -DROBIN -Drobin" ;
+			else
+				# convert the passed name to upper case
+				DEFS="$DEFS -D`echo ${2} | tr [a-z] [A-Z]`" ;
+			fi
+			shift 2
+			;;
+		-t)	ROOT=$2
+			shift 2
+			;;
+		-i) INCRT=$2
+			shift 2
+			;;
+		-r)	REL=$2
+			shift 2
+			;;
+		-v)	VER=$2
+			shift 2
+			;;
+		--)	shift
+			break
+			;;
+	esac
+done
+
+# if the machine type is unknown, try to guess the current machine type
+if [ "$MACHTYPE" = "unknown" ] ; then
+	case `uname -v` in
+		m*) MACHTYPE=lundell ; break ;;
+		r*) MACHTYPE=robin ; DEFS="-DROBIN -Drobin" ; break ;;
+		p*) MACHTYPE=pirate ; DEFS="-DPIRATE" ; break ;;
+		s*) MACHTYPE=schroeder ; DEFS="-DSCHROEDER" ; break ;;
+		*)  MACHTYPE=lundell ; break ;;
+	esac
+fi
+
+# if not specified, USERS comes from the system
+if [ "$USERS" = "unknown" ] ; then
+	case `uname -v` in
+		*8)  USERS=8  ; break ;;
+		*16) USERS=16 ; break ;;
+		*24) USERS=24 ; break ;;
+		*32) USERS=32 ; break ;;
+		*64) USERS=64 ; break ;;
+		*)   USERS=32 ; break ;;
+	esac
+fi
+
+# if not specified, VER is built from machine type and user number
+if [ "$VER" = "unknown" ] ; then
+	case $MACHTYPE in
+		lundell)   VER="m$USERS" ; break ;;
+		robin)     VER="r$USERS" ; break ;;
+		pirate)    VER="p$USERS" ; break ;;
+		schroeder) VER="s$USERS" ; break ;;
+		*)         VER="x$USERS" ; break ;;
+	esac
+fi
+
+if [ -z "$DEFS" ] ; then
+	DEFS=-DLUNDELL
+fi
+# build up the DEFS string with nos flag
+if [ ! -z "$NOSFLAG" ] ; then
+	DEFS="${DEFS} -DNOS"
+fi
+
+# this seems to force the building of some nos stuff
+if [ ! -z "$NOSFLAG" ] ; then
+	touch uts/m68/cf/conf.c uts/m68/cf/low.s ;
+fi
+
+# comfort the invoker by telling him what we're doing
+echo "Building a ${USERS} user\c"
+if [ -z "$NOSFLAG" ] ; then
+	echo " non-nos\c" ;
+else
+	echo " nos\c" ;
+fi
+echo " system for a $MACHTYPE machine"
+echo "Sysname=$SYS, node=$NODE, release=$REL, version=$VER, machine=$MACH"
+
+cd uts/m68/cf
+${PFX}make -fe cf.mk ${MakeParam} install

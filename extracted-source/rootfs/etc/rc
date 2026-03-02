@@ -1,0 +1,69 @@
+
+#	@(#)Rrc.sh	5.5
+
+. /etc/TIMEZONE
+if [ ! -f /etc/mnttab ] ; then
+	/etc/devnm / | grep -v swap | grep -v root | /etc/setmnt
+fi
+set `who -r`
+CurrentState=$7
+TimesInCurrentState=$8
+PreviousState=$9
+
+case $CurrentState in
+S|1)
+	if [ $TimesInCurrentState -ne 0 ] ; then
+		# put umounts here
+		umount /dev/dsk/0s2
+		sync
+	fi
+	;;
+2)
+	# put mounts here (/usr, etc.)
+		mount /dev/dsk/0s2 /user
+	if [ $TimesInCurrentState -eq 0 ] ; then
+		/usr/lib/ex3.9preserve -
+		rm -rf /tmp/* /usr/lib/cron/log
+	fi
+	# put chowns for uucp L-devices DIR devices here, i.e.
+	# chown uucp /dev/tty0  
+	rm -f /usr/spool/uucp/LCK*
+	rm -f /usr/adm/acct/nite/lock*
+#	mv /usr/adm/sulog /usr/adm/OLDsulog
+	mv /usr/lib/cron/log /usr/lib/cron/OLDlog
+	> /usr/lib/cron/log
+	/etc/cron
+	echo cron started
+	# /bin/su - adm -c /usr/lib/acct/startup
+	# echo process accounting started
+	#/usr/lib/errdemon
+	#echo errdemon started
+	# /bin/su - sys -c "/usr/lib/sa/sadc /usr/adm/sa/sa`date +%d`"
+	if [ $TimesInCurrentState -eq 0 ] ; then
+#
+#	Either an ICP or an ACP may be placed here.  Choose the appropriate
+#	one for your configuration.
+#		
+#		/etc/dnld -d -f /usr/lib/dnld/icp -o /dev/ic1 -a 4000
+#		/etc/dnld -L -da 1 1 -f /usr/lib/dnld/acp -a 2000
+#
+		/etc/dnld -dr -L -f /usr/lib/dnld/rker -o /dev/rk -a c00400
+#
+#	This section of commands are for specifying modem ports on ACP's.
+#	Remember, on ICP's, hardware jumpers need to be changed to
+#	select a port to be either local or modem.  For ACP's, a command
+#	line must be placed here to inform the ACP that a port is
+#	connected to a modem or it will default to local mode.
+#	(ex.	stty -clocal </dev/tty##	)
+		sleep 10
+#		echo Configure Modem Ports
+#		stty -clocal </dev/tty##
+	fi
+	sleep 5
+	rm -f /usr/spool/lp/SCHEDLOCK
+	/usr/lib/lpshut >>/dev/null 2>>/dev/null
+	sleep 5
+	/usr/lib/lpsched
+	echo "LP scheduler started"
+	;;
+esac

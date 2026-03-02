@@ -1,0 +1,18 @@
+: 'add.id $1=.filetype $2=sccs_dir'
+
+echo TRACE add.id $1 $2
+set -e
+SCCS=/sccs
+PREFIX=$SCCS/bin/src/IDKWDS$1
+cd $SCCS/tmp$1
+rm -f *
+cat /dev/null >$2/ID.done$1
+get -e $2/s.*$1
+for i in *$1
+  do
+    cat $PREFIX $i|sed -e '1,$s/@(#)/@( )/' >ID.tmp
+    mv ID.tmp $i
+    delta -y'adding id keywords' $2/s.$i
+    echo $i >>$2/ID.done$1
+  done
+echo $2 >>$SCCS/bin/addall.done

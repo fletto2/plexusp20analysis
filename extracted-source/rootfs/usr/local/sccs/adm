@@ -1,0 +1,3 @@
+: 'cd src_dir; adm src_file sccs_dir'
+/usr/local/sccs/admins -fn -asccs -acraig -ajk -amonte -advc -ajse -apaf -astu -asue -amadan -i$1 $2/s.$1
+/usr/local/sccs/admins -aburt -awoody -atodd -amarko -acathy $2/s.$1

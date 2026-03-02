@@ -1,0 +1,24 @@
+#  
+# @(#)dumber	1.1 12/11/85 
+
+# lp interface for dumber line printer
+#
+#	SCCS @(#)dumb	1.1
+
+x="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+rm -f /tmp/wbs
+user=`grep "^$2:" /etc/passwd | line | cut -d: -f5`
+copies=$4
+shift; shift; shift; shift; shift
+files="$*"
+i=1
+while [ $i -le $copies ]
+do
+	for file in $files
+	do
+		cat "$file" > /dev/lp
+		echo "" > /dev/lp
+	done
+	i=`expr $i + 1`
+done
+exit 0

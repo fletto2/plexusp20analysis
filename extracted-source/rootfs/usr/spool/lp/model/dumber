@@ -1,0 +1,48 @@
+#  
+# @(#)dumber	1.1 12/11/85 
+
+# lp interface for dumber line printer
+#
+#	SCCS @(#)dumb	1.1
+
+x="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+rm -f /tmp/wbs
+echo "$x" >> /tmp/wbs
+echo "$x" >> /tmp/wbs
+echo "$x" >> /tmp/wbs
+banner "$2" >> /tmp/wbs
+echo "" >> /tmp/wbs
+echo "" >> /tmp/wbs
+user=`grep "^$2:" /etc/passwd | line | cut -d: -f5`
+if [ -n "$user" ]
+then
+	echo "User: $user" >> /tmp/wbs
+	echo "" >> /tmp/wbs
+else
+	echo "" >> /tmp/wbs
+	echo "" >> /tmp/wbs
+fi
+echo "Request id: $1    Printer: Our Very SLOW Printer" >> /tmp/wbs
+echo "" >> /tmp/wbs
+date >> /tmp/wbs
+echo "" >> /tmp/wbs
+echo "" >> /tmp/wbs
+if [ -n "$3" ]
+then
+	banner $3 >> /tmp/wbs
+fi
+/etc/wbs < /tmp/wbs
+rm -f /tmp/wbs
+copies=$4
+shift; shift; shift; shift; shift
+files="$*"
+i=1
+while [ $i -le $copies ]
+do
+	for file in $files
+	do
+		/etc/wbs < "$file"
+	done
+	i=`expr $i + 1`
+done
+exit 0

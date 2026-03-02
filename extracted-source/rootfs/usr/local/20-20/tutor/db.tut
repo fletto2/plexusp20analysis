@@ -1,0 +1,386 @@
+#q/mcy/sr/usr/2020/tutor/dbin.tmf#/>0,7#//WH;#TA#N#TD
+   20/20's /TOOLS DATABASE commands recognize that sometimes you need to
+   manipulate a class of information without necessarily turning it into
+   a single numerical answer.
+
+
+
+
+
+
+
+                              Press <CR> to continue.
+#TF#TR#/#TT
+#TE[30,11] ****  PLEASE WAIT  ****
+#TF/mb0.6,0.6#/
+#TE[3,5]For example, you can:
+#TF/sp/usr/2020/tutor/db1.tmf#/#/0,0#/
+#TE[5,6]- sort and extract market survey results.
+#TF
+#TE[30,11] Press <CR> to continue.
+#TF#TR#/#TT
+#TF#TE[30,11] ****  PLEASE WAIT  ****
+#TF/sp/usr/2020/tutor/db2.tmf#/#/0,0#/
+#TE[5,7]- sort names, addresses, and telephone numbers selectively.
+#TF#TE[30,11] Press <CR> to continue.
+#TF#TR#/#TT
+#TE[30,11] ****  PLEASE WAIT  ****
+#TF/sp/usr/2020/tutor/db3.tmf#/#/0,0#/
+#TE[5,8]- compile an honor roll sorted by year of graduation.
+#TF#TE[30,11] Press <CR> to continue.
+#TF#TR#/#TT
+#TE[30,11] ****  PLEASE WAIT  ****
+#TF#Q/d$2#//sp/usr/2020/tutor/db4.tmf#/#/0,0#/#n
+#TE[5,9]- keep complete records of accounts receivable.
+#TF#TE[30,11] Press <CR> to continue.
+#TF#TR#/#TT
+#PR#TE[30,11] ****  PLEASE WAIT  ****
+#TF#Q/mcy/sr/usr/2020/tutor/itdb.tmf#/
+#Q>0,9#//WH;
+#TA#n
+#TE[0,1]
+    The TOOLS DATABASE commands allow you to SORT, EXTRACT, and perform
+      many other OPERATIONS on information stored in your worksheet.
+
+    You can maintain a list of salespeople on the 20/20 worksheet and
+      use the /TOOLS DATABASE command for product sales reports.  Or you
+        can, with a single command, compute Total Sales for the Northeast.
+
+                                              Press <CR> to continue.
+#TF
+#TR#/#TT
+#TB
+#TE[0,1]
+   In the example above, the row of information associated with each
+     salesperson is called a RECORD.  Each record is divided into categories,
+       or FIELDS:  NAME, PRODUCT, SALES and REGION.  Each field occupies
+         a columns.  Use this format when you develop your own spreadsheet
+           databases in 20/20.
+
+                                              Press <CR> to continue.
+#TF
+#TR#/#TT
+#tb
+#te[0,0]
+  To analyze the information contained in the Salesperson Database, you
+    may want to ask 20/20 some questions. The /TOOLS DATABASE
+      command can provide answers to the following types of questions:
+
+        o  Who sold CORN in the Northeast region?
+        o  Which salesperson sold the most CORN in the Northeast?
+        o  What was the total sales of OATS in the Southwest?
+        o  How many salespeople sell WHEAT?
+                                                 Press <CR> to continue.
+#tf
+#tr#/#tt
+#q/mcy/sr/usr/2020/tutor/tdb.tmf#/
+>5,0#//wv;
+#TA#n
+#td
+  Let's use /TOOLS DATABASE to
+  fill in this sales report.
+
+  First identify or FIND the
+  records that contain the
+  desired information by
+  writing a conditional
+  formula to serve as the
+  search or FIND criterion.
+
+   Press <CR> to continue.
+
+#TF#TR#/#TT
+#TB
+#Q>5,12#/'  <----#/
+>4,2#/#N
+#TD
+
+
+  To compare the contents
+  of the PRODUCT field
+  with the contents of
+  cell [4,12],
+
+  TYPE:   [1,2]=[4,$12]<CR>
+
+
+
+
+<----  Cell [4,12]
+       is located here.
+#tf
+#tr [1,2]=[4,$12]#/#tt
+#q/mb5,12#/
+#R#N#TB#TD
+
+  Next enter a second
+  criteria formula
+  in another column.
+
+
+  TYPE:   [3,2]="NE"<CR>
+#tf
+#tr[3,2]="NE"#/#tt
+#te[0,10]
+  If you want, you can combine
+  formulas using <and> or <or>.
+  For example:
+
+  [1,2]=[4,$12]<and>[3,2]="NE"
+
+    Press <CR> to continue.
+#tf
+#tr#/#tt
+#tb
+#td
+
+    Now use TOOLS
+    DATABASE to FIND the
+    the records that satisfy
+    the criteria.
+
+    TYPE:   /TDF
+
+    TYPE:  4..5,2..9<CR>
+
+    The Criteria Range
+    specifies the columns
+    that contain criteria
+    (conditional formulas),
+    and the beginning and
+    ending rows in the
+    database.
+#tf
+#tr/TDF4..5,2..9#/#tt
+#tb
+#td
+
+   TRUE indicates that
+   a specified condition
+   has been satisfied.
+
+   Notice that records
+   are marked as TRUE
+   if they satisfy either
+   condition.
+
+   You can now perform
+   other DATABASE
+   operations on the
+   identified data.
+
+    Press <CR> for more.
+#tf
+#tr#/#tt#q
+/we
+#l#l
+/wv;#ta#n
+#td
+       Notes on Conditional Formulas
+       =============================
+
+     The conditional formula may take
+     3 forms. The formula may:
+
+     1) compare a cell with a value
+
+          [4,2] > 125
+
+     2) compare a cell with a cell
+
+          [4,2] = [$8,$12]
+                   ^  ^
+     (the dollar signs indicate
+      a fixed reference.)
+
+          Press <CR> for more #tf
+#tr#/#tt
+#tb#te[1,2]
+     A conditional formula can
+     also:
+
+     3) compare a cell with a label.
+
+          [4,2] = "NE"
+
+     (The label must be inside
+      double quotes.)
+
+   You can use the full set of logical
+   operators:
+
+     >  >=  <  <=  =  <ne> <and> <or>
+
+   to define your search criteria.
+
+         Press <CR> to continue.
+#tf#tr#/#tt#q#tb
+/we>5,0#//wv;
+#ta#n
+#td
+
+  Let's use /TOOLS DATABASE
+  OPERATE to determine the
+  sales total for CORN in
+  the Northeast region and
+  to write it into the
+  sales report.
+
+   Press <CR> to continue.
+#tf
+#TR#/#TT
+#tb#te[4,0]
+TYPE:   /TDO
+TYPE:   S
+        To sum CORN
+        sales in the
+        Northeast.
+
+TYPE:   2,2..9 <CR>
+        To sum on the SALES
+        field.
+
+TYPE:   1,15 <CR>
+        To specify where to
+        write the results.
+
+TYPE:   4<AND>5 <CR>
+        To base the operation
+        on both criteria.
+        (Actually type the
+        angle brackets here.)#tf
+#tr/TDOS2,2..9#/1,15#/4<AND>5#/#tt
+#tb
+#td
+   Notice that the sum of
+   CORN sales for the
+   Northeast was written
+   to [1,15].
+
+   Now watch how simply you
+   can determine WHEAT sales
+   for the Northeast.
+
+   TYPE:  > 4,12 <CR>
+
+   TYPE:  "WHEAT <CR>
+         (Be sure to use
+          capital letters.)
+
+   PRESS:  <CALC>#tf
+#tr>4,12#/"WHEAT#/~#tt
+#tb#td   Notice that the "TRUE"
+   in column 4 indicates
+   only records with WHEAT
+   in the PRODUCT field.
+
+   Write the WHEAT sales
+   total to the sales report.
+
+   TYPE:  /<CR><CR><CR>
+
+   20/20 remembers your last
+   command.  In fact, you can
+   press <CR> throughout the
+   entire sequence, except when
+   entering the target cell.
+
+   TYPE:  <CR><CR>
+
+   TYPE:  2,15 <CR><CR>
+#tf
+#tr/#/#/#/#/#/2,15#/#/#tt
+#tb
+#te[3,1]
+
+That's all there is
+to using /TOOLS DATABASE.
+
+We'll complete the report
+for you.
+
+
+       Press <CR> to continue.
+#tf
+#tr#/#tt
+/sp/usr/2020/tutor/pndb.tmf#/#/1,15#/
+#tb
+#te[3,5]
+
+Next let's use /TOOLS DATABASE
+EXTRACT to extract names of
+people who sell WHEAT and
+their sales region.
+
+
+
+   Press <CR> to continue.
+#tf
+#tr#/#tt
+#tb
+#te[2,1]
+ TOOLS DATA EXTRACT
+ ==================
+
+ TYPE:  /TDE
+
+ TYPE:  (0,3),2..9 <CR>
+        To extract from just the
+        NAME and REGION fields.
+
+ TYPE:  3,17 <CR>
+        To write your selection
+        to another worksheet
+        location.
+
+ TYPE:  4 <CR>
+        To base the selection
+        on the PRODUCT criterion
+#tf
+/mb0.4,12.18#/
+>3,16#/'WHEAT~ SALESPEOPLE#/
+#tr/TDE(0,3),2..9#/3,17#/4#/#tt#q
+/we>4,0#//wv;#ta#n
+#te[1,2]
+
+   Notes on TOOLS DATA EXTRACT
+   ===========================
+
+   TOOLS DATA EXTRACT, like other
+   20/20 commands, accepts non-
+   contiguous ranges.  When
+   you want to specify a non-
+   adjacent group of columns
+   and or rows, list them inside
+   parentheses and separate them
+   with commas.  You can use
+   non-contiguous ranges in /COPY,
+   /MODIFY BLANK, /GRAPH and
+   /TOOLS. (See Cell Ranges in
+   the 20/20 Reference Manual.)
+
+   Press <CR> for more.
+#tf#tr#/#tt
+#tb#td
+             Summary
+             =======
+
+  As you have seen, 20/20's /TOOLS
+  DATABASE commands can be very useful.
+  You may want to refer to the 20/20
+  Reference Manual for more information
+  about the following DATABASE features
+  not covered in this tutorial:
+
+     SORTS
+       AVERAGES
+         MAXIMUMS
+           MINIMUMS
+             DISTRIBUTION COUNTS
+
+   Press <CR> to continue.
+#tf
+#TR#/#TT
+#q/mcy/sr/usr/2020/tutor/dbend.tmf#/#n
+#TR#/#TT
+/sic/usr/2020/tutor/renew.tut#/n

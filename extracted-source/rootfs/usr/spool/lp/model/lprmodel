@@ -1,0 +1,96 @@
+# SID 
+# @(#)lprmodel	5.1 4/22/86
+
+# define LPMODNAME to be the name of this model.
+LPMODNAME=lprmodel
+# define LPFILNAME to be the name of this filter.
+LPFILNAME=lpdfilter
+# define LPMODLOCK to be the lock file assigned to this
+#  model.  Printers supporting Qone may be locked by
+#  specifying identical lock files as LPMODLOCK.
+LPMODLOCK=/usr/spool/lpd/locklp
+# define LOGFILE to be the logfile for this script - can be
+#  /dev/null
+LOGFILE=/usr/spool/lp/stat.$LPMODNAME
+
+# lp interface which is functionally identical to the Sys3 lpd filter.
+#
+#	All output is passed through the /usr/lib/$LPFILNAME filter
+#  If this filter is not executable, then this interface will disable
+#  the lp printer which	it was called to service.
+x="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+if [ ! -x /usr/lib/$LPFILNAME	]
+then
+	disable	-r"can't execute /usr/lib/$LPFILNAME filter" `basename $0`
+	exit 1
+fi
+# Check the lpd lock file and create the lock file when this model runs.
+# This approach allows the Sys3 spooler to function concurrently with 
+# this Sys5 spooler model $LPMODNAME and filter $LPFILNAME.
+while :
+do
+if (test -f $LPMODLOCK) then
+  echo checking $LPMODLOCK > $LOGFILE
+  sleep 5
+else
+  echo $$\\c > $LPMODLOCK
+  echo setting $LPMODLOCK for PID $$ > $LOGFILE
+  sleep 3
+  if (test Q`cat $LPMODLOCK` = Q$$) then
+    break 1 
+  else
+    echo External lock recognized: checking lock > $LOGFILE
+  fi
+fi
+done
+echo $* > $LOGFILE
+(
+echo "\014\c"
+echo "$x\n$x\n$x\n$x\n"
+banner "$2"
+echo "\n"
+user=`grep "^$2:" /etc/passwd |	line | cut -d: -f5`
+if [ -n	"$user"	]
+then
+	echo "User: $user\n"
+else
+	echo "\n"
+fi
+echo "Request id: $1	Printer: `basename $0`\n"
+date
+echo "\n"
+if [ -n	"$3" ]
+then
+	banner $3
+fi
+copies=$4
+echo "\014\c"
+shift; shift; shift; shift; shift
+files="$*"
+i=1
+while [	$i -le $copies ]
+do
+	for file in $files
+	do
+		cat "$file" 2>&1
+		echo "\014\c"
+	done
+	i=`expr	$i + 1`
+done
+) | /usr/lib/$LPFILNAME
+if [ $? != 0 ]
+then
+	disable -r"write error" `basename $0`
+	exit 1
+fi
+
+if (test Q`cat $LPMODLOCK` = Q$$) then
+  echo lock removed for PID $$ > $LOGFILE
+  rm $LPMODLOCK
+else
+  echo Error: lock for PID $$ incorrect
+  echo Error: lock for PID $$ incorrect > $LOGFILE
+  rm $LPMODLOCK
+fi
+exit 0
+

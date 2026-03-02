@@ -1,0 +1,527 @@
+#q
+/mcy
+>0,7#//DW10#//FW16#/
+/wh;#TA#n
+#TD
+                     CALCULATING THE VALUE OF AN IRA
+                     -------------------------------
+
+In this tutorial, you will build a worksheet to calculate the value of
+an IRA (Individual Retirement Account).
+
+Press <CR> to continue.
+#TF
+#TR#/#TT#TB
+#TD
+Along the way, you will use a lot of 20/20 facilities and,
+hopefully, gain more confidence. In this tutorial, you'll use:
+
+                    o More formulas
+                    o The COPY command
+                    o GOALSEEK
+                    o Windows
+
+        To get started, press <CR>.
+#TF#TR#/#TT#TB
+>0,0#/
+/SP/usr/2020/tutor/ira1.tmf#/#/#/>1,5#/
+#TD
+To save you time, we have started things off by filling in the labels.
+
+Examine the worksheet.  Notice that the top section is labeled ASSUMPTIONS.
+When you build a model, it's a good idea to put all of your assumptions
+in one place.  Then you don't need to remember which numbers you put in
+and which ones 20/20 calculated.
+
+First, enter a starting value for each assumption.    Press <CR>.
+#TF
+#TR#/#TT#TB
+#TD
+Type: 4000 <CR>   Your maximum Investment is $4000 (if you're married).
+#TF
+#TR4000#/#TT
+#TE[0,2]Press: <DN>        Move down a cell
+#TF
+#TR#D#TT
+#TE[0,4]Type: /F % 1 <CR>  Set the cell to % format with 1 decimal place,
+                           since interest is displayed as a percent.
+#TF
+#TR/F%1#/#TT
+#TE[0,6]Type: .12 <CR>     Enter 12% as our interest rate assumption
+#TF
+#TR.12#/#TT
+#TE[0,8]Press: <RT> <RT>   Move to [3,6]
+#TF
+#TR#R#R#TT
+#TB
+#TD
+
+Type: /F % 1 <CR>          Set the cell to % format.
+
+Type: .45 <CR>             Enter 45% as the tax rate
+
+Press: <UP> 1984 <CR>      Enter 1984 as the starting year
+#TF
+#TR/F%1#/.45#/#U1984#/#TT
+>0,12#/#U
+#TB#TD
+Now that you have entered the assumptions, you can start on the
+formulas.  A formula is rule that you can use for determining a
+cell's value.  When you store the formula in cell, 20/20 does all
+the calculation for you.
+
+The formula for the year is straightforward.  In the first year,
+it's the year entered as an assumption.  So the formula is simply "[3,5]".
+
+Until now, you have been typing in cell references.  There's a much
+easier way to input cells called POINT-TO.  When you use POINT-TO,
+20/20 does the typing.                PRESS <CR>.
+#TF
+#TR#/#TT
+#TB#TD
+You can enter POINT-TO only if "ENTRY:" is displayed on the edit line.
+One way to get "READY" to switch to "ENTRY" is by typing a '+'. Try it:
+
+Type:  +                    Notice that "ENTRY:" is now displayed.
+
+Press: <DN> <RT> <RT> <RT><UP> <UP> <UP> <UP> <UP> <UP><CR>
+                            To POINT-TO to [3,5]
+
+Press: <CR>                 To finish the formula
+#TF
+#TR+#D#R#R#R#U#U#U#U#U#u#/#/#TT
+#D
+#TB
+#TE[0,1]To calculate the next year (1985), you need to type 1984+1 or 1+[0,11].
+
+Type: 1 + <DN>                        Start the formula and enter POINT-TO
+
+Press:  <UP><CR>                      POINT-TO [0,11]
+
+Press:  <CR>                          Finish the formula
+
+#TF
+#TR1+#D#U#/#/#TT
+
+#TE[0,9] It would have been easier to type in 1984 and 1985.
+But now, you'll see why these formulas save typing time.
+                                           PRESS <CR>
+#TF
+#tr#/#tt#tb
+#Q>0,12#//fw14#/#R/fw8#/#l
+/WE#R#R/WV;#TA#L#L
+/ORA#N
+#TD
+     You can use the formula you
+     just entered to calculate all
+     future years.
+
+     /COPY can be used for this
+     purpose.  TYPE:
+
+     /C   Enter COPY
+
+     E    Copy EVERYTHING in the cell
+
+     <CR> The source range is the cell(s)
+          to be copied. Pressing <CR>
+          enters the range displayed.
+
+     <DN> The target range is the cell(s)
+          to be copied to. We will copy
+          for 9 years so the range is
+          [0,13]..[0,21]. Use POINT-TO.
+#TF
+#TR/CE#/#D#TT
+#TB#TD
+ TYPE:
+
+ <DN>      Moves to cell [0,13] - the
+           beginning of the range
+
+  .        The "." tells 20/20 that this
+           will be a range. The range now
+           reads [0,13]... and 20/20 is
+           waiting for the end of the range
+
+ <DN>      Move to cell [0,21] the end
+ (8 times)  of the range
+
+ <CR>      Ends POINT-TO
+
+ <CR>      Accepts the range. Does the COPY
+#TF
+#TR#D.#D#D#D#D#D#D#D#D#/#/#TT
+#TB
+#Te[0,4]
+  Wasn't that easier than typing in the
+  years?  Now if you want to change the
+  years, all you need to do is change
+  the original assumption.
+
+
+
+          PRESS <CR>
+#TF
+#TR#/#TT
+#R#U
+#TB#Te[0,2]
+       The INVESTMENT formula is a simple
+       one; it's the value in cell [1,5].
+
+   TYPE:
+
+   + <DN>       Start the formula
+
+    <UP>        Move to [1,5]
+  (six times)
+
+    $           Exit POINT-TO
+
+    <CR>        Finish the formula
+
+#TF
+#TR+#D#U#U#U#U#U#U$#/#TT
+#TB
+#TD
+    To /COPY this formula:
+
+    TYPE:
+
+    /C E      COPY EVERYTHING
+
+    <CR>      Source range is [1,11]
+
+    <DN>      Start POINT TO
+
+    <DN> .    Set the beginning of the range
+
+    <DN>      Go to cell [1,21]
+  (9 times)
+
+    <CR> <CR>   Finish range and COPY
+#TF
+#TR/CE#/#D#D.#D#D#D#D#D#D#D#D#D#/#/#TT
+#TB
+#Q/WE#D/WH;#TA#U#U
+/ORM#N
+#R#d0#/#R
+#TE[0,0] We have filled in the interest for the first year (0). This
+model assumes that interest is calculated and paid only at the end
+of a year.  (We don't advise that as an investment strategy --
+we are just trying to keep this model simple!)
+
+The IRA's BALANCE equals the INVESTMENT + the INTEREST:
+
+       4000 + 0            or       [1,11] + [2,11]
+
+PRESS <CR>
+#TF
+#TR#/#TT
+#TB
+#TE[0,0] TYPE:
+
++ <DN>             Starts the formula and enters POINT-TO
+<LF> <LF>          Moves to [1,11]
+
+   +               Notice that the edit line reads "+ [1,11] +"
+                   If you had pressed "-" it would read: "+ [1,11] -"
+
+  <DN>             Reenter POINT-TO
+<LF> <CR>          POINT-TO [2,11]
+  <CR>             Finish formula
+#TF
+#TR+#D#L#L+#D#L#/#/#TT
+#tb#Q/we>0,0#//fw5#/>3,0#//wv;#TA
+>2,12#/
+#N#te[2,1]
+ Next write the interest formula.
+ Interest is computed against the
+ previous years balance.
+
+ The formula is:
+
+   the INTEREST RATE times
+     the PREVIOUS YEAR'S BALANCE
+
+ TYPE:
+        [$1,$6] * [3,11] <CR>
+#TF
+#tr[$1,$6]*[3,11]#/#tt
+#r#te[2,13]Finally, the BALANCE is:
+
+ INVESTMENT + INTEREST +
+    PREVIOUS YEAR'S BALANCE
+
+ Press <CR> to continue
+#TF
+#tr#/#tt
+#tb#td
+  The BALANCE formula is:
+
+   [1,12]+[2,12]+[3,11]
+
+  Use Point-to to enter the formula.
+  ENTRY: must be displayed on the
+  edit line to enter formula POINT-
+  TO.  TYPE:
+      +      Start the formula
+    <DN>     Enter POINT-TO
+  <LF><LF>   Move left 2 cells
+      +      Enter a "+"
+    <DN>     Reenter POINT-TO
+    <LF>     Move left 1 cell
+      +      Enter a "+"
+    <DN>     Reenter POINT-TO
+    <UP>     Move up one cell
+  <CR><CR>   Enter the formula#tf
+#tr+#D#L#L+#D#L+#D#U#/#/#tt#l
+#tb#td
+
+  Use /COPY to copy your
+  formulas down through
+  the final year.
+
+  TYPE:
+
+   /CE      COPY EVERYTHING
+
+   <DN>     Enter POINT-TO
+
+    .       Start the range
+
+   <RT>     Move right a cell
+
+   <CR>     End the range
+
+   <CR>     Enter source range#tf
+#tr/CE#d.#r#/#/#tt#tb
+#td
+
+  To enter the target range,
+
+  TYPE:
+
+   <DN>     Enter POINT-TO
+
+   <DN>     Move down a cell
+
+    .       Start the range
+
+   <DN>     Move to row 21
+   (8 times)
+
+  <CR><CR>  Enter range and copy#tf
+#tr#D#D.#D#D#D#D#D#D#D#D#/#/#tt~
+#tb#td
+
+  Notice that we entered only
+  the first column of cells in
+  the target range. 20/20 knew
+  the shape of the target from
+  the shape of the source.
+
+  Let's use the IRA model
+  to see "what-if" interest
+  rates increase or decrease.
+
+   Press <CR> to continue#tf
+#tr#/#tt/ora
+#tb#td
+
+  GOTO [1,6] and enter another
+  interest rate. For example, 15%.
+
+  TYPE:
+
+     >1,6 <CR>
+
+     .15  <CR>
+
+    What happens at 8%?
+
+     .08  <CR>#tf
+#TR>1,6#/.15#/.08#/#TT
+#tb
+#Td
+
+
+  You can't see all of the
+  future years of your IRA.
+  You can use WINDOWS to
+  view both the top and
+  the bottom of our model
+  simultaneously.
+
+
+
+    Press <CR> to continue
+#TF#tr#/#tt
+#TB#TD
+
+   To draw a window, move the
+   cell cursor to the row where
+   you want the worksheet
+   divided.
+
+   TYPE:
+       >0,14 <CR>    Move to row 14
+
+       /WH           Split the window
+                     horizontally.
+#TF#TR>0,14#//WH#TT
+#TD
+
+   Now you can move about in
+   either window.
+
+
+
+
+    PRESS <CR> to continue.
+#TF#tr#/#tt#tb
+#TD
+
+ To move to the bottom window,
+
+   TYPE:
+     ;    Move the cell cursor
+          from window to window.
+
+    <DN>
+  (6 times) Bring bottom of
+            model into view.
+
+#TF#TR;#D#D#D#D#D#D#TT
+#TB#TD
+  Now you can change the model
+  assumptions and see the effect
+  on your 1994 Fund Balance.
+
+  To change an assumption, you
+  want to jump into the top window
+  and move to the investment
+  assumption cell [1,5].
+
+
+       Press <CR> to continue.#tf
+#tr#/#tt
+#tb#td
+
+  Imagine that cell [1,5] is not
+  visible on your worksheet. How
+  would you know that [1,5] was
+  the cell you want?
+
+  GOTO can also find a worksheet
+  label.  In this case, you can
+  use GOTO to find the 'AMT
+  label. Then the value you want
+  is in the cell to the right
+  of the label.
+
+
+
+      Press <CR> to continue.#TF
+#tr#/#tt#tb#td
+
+  To change the investment assumption,
+  type:
+
+    ;          Move the cell
+               cursor to the
+               top window.
+
+    >'AMT<CR>  (Type only as
+               much of the label
+               as necessary to
+               identify it
+               uniquely.)
+
+    <RT>       Cell right.
+
+    2000<CR>   Divide the investment
+               in half.#tf
+#tr;>'AMT#/#r2000#/#TT
+#tb#td
+  Is the balance in 1994 not
+  as large as you had hoped?
+
+  Up to now you have changed
+  assumptions and seen how
+  the bottom lines were affected.
+  However, you may have a bottom
+  line that you must achieve.
+
+  In this case, you'll need to
+  know what the assumption must
+  be in order to achieve your goal.
+  20/20's /TOOLS GOALSEEK command
+  will do the work for you.
+
+  Press <CR> to continue.#tf
+#tr#/#tt
+#tb#td
+ CAUTION:  Type the input
+ exactly as requested for the
+ next two screens.  Do NOT
+ press <CONT>.  TYPE:
+
+ /TG          TOOLS GOALSEEK
+
+ <CR>         The required precision
+              of the GOALSEEK. How
+              close must the target be
+              to your goal?
+
+ [1,5]<CR>
+              The variable cell is the
+              value that will change.
+
+ [3,21]<CR>
+              The target cell is the cell
+              that contains the bottom line.
+
+ 50000<CR>    The goal.
+#tf
+#TR/TG#/[1,5]#/[3,21]#/50000#/#TT
+#tb
+#TD
+  To perform the goalseek,
+  press:  <CR>
+
+  When convergence is reached,
+  press:
+
+  <CR>
+
+  to accept GOALSEEK values.
+  Do NOT press the <CONT> key.
+
+#TF
+#TR#/#/#TT
+#TB#TD
+               Summary
+
+  In this tutorial, you learned how
+  to use:
+
+    o POINT-TO to enter cell
+      formulas and in ranges
+    o The COPY command to copy
+      formulas
+    o The WINDOW command to view
+      different parts of the model
+    o The TOOLS GOALSEEK command
+      to solve a model to a
+      specified value
+
+  With these skills, you are probably
+  ready to build your own models.
+
+                     Press <CR>.
+#TF
+#TR#/#TT
+#N/sr/usr/2020/tutor/irend.tmf#/
+#TR#/#TT
+/sic/usr/2020/tutor/renew.tut#/n

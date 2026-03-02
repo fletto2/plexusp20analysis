@@ -1,0 +1,6 @@
+: 'qdel src_file sccs_dir'
+set -e
+/usr/local/sccs/gets -e $2/s.$1
+vi $1
+/usr/local/sccs/deltas $2/s.$1
+

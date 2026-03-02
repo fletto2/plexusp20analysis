@@ -1,0 +1,3 @@
+: 'admall flags ...'
+set -x
+find /sccs -type d -exec /sccs/local/admins $* {} \; -print >admall.out 2>admall.err

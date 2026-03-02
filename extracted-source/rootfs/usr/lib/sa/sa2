@@ -1,0 +1,12 @@
+
+#  
+# @(#)sa2.sh	5.1 4/22/86 
+
+#	sa2.sh 1.1 of 7/15/83
+#	@(#)sa2.sh	1.1
+DATE=`date +%d`
+RPT=/usr/adm/sa/sar$DATE
+DFILE=/usr/adm/sa/sa$DATE
+ENDIR=/usr/bin
+cd $ENDIR
+$ENDIR/sar $* -f $DFILE > $RPT

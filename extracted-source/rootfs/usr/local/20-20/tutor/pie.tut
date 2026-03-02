@@ -1,0 +1,121 @@
+#q/mcy/sr/usr/2020/tutor/whiskey.tmf#/>6,0#//WV;#TA#n#TD
+
+
+
+ Here is your data --
+ whiskey production
+ by country for 1984.
+
+   PRESS <CR>
+#TF#TR#/#TT
+#TE[1,10]Let's draw a pie
+#TF
+#TE[1,11]chart.
+#TF
+#TE[3,13]PRESS <CR>
+#TF
+#TR#/#TT
+#TB#TD
+
+
+
+
+
+
+
+ First, you need a
+ window for your
+ graph.
+
+ Move the cell cursor
+ to cell [0,7]. Type:
+
+   <GOTO> 0,7 <CR>
+#TF#V
+#TR>0,7#/#TT#TB
+#TE[1,12]To insert a horizontal
+#TF
+#TE[1,13]window border, type:
+#TF
+#TE[3,15]/WH
+#TF
+#TR/WH#TT
+#TB#TD
+
+
+ Select the /GRAPH
+ RANGE command and
+ specify the range
+ in column 2 from
+ row 1 to row 6.
+ Type:
+
+   /G <RT><RT><RT>
+   <CR> 2,1..6 <CR>
+
+ (The dots between 1
+ and 6 signal 20/20
+ to include rows 2,
+ 3, 4, and 5.)
+#TF
+#TR/G#R#R#R#/2,1..6#/#TT
+Q#TB#TD
+
+
+
+
+
+
+
+ Now select the /GRAPH FORM
+ and specify a PIE chart.
+ This time use the initial
+ letters, G, F, and P, to
+ select the command.
+ Type:
+
+   /GFP
+#TF#TR/GFP#TT
+Q
+#TB#TD
+
+
+ Use /GRAPH ORDER ROWS
+ to indicate that the pie
+ slices correspond to
+ the rows in your range.
+
+ Type:
+
+   /GOR
+#TF#TR/GOR#TT
+Q#TB#TD
+
+
+
+
+
+
+ Let's take a look.
+ Use /GRAPH VIEW to
+ display the graph.
+
+ Type:
+
+   /GV
+#TF#TR/GV#TT
+Q#TB#TD
+
+
+
+ Well Done!
+
+ Now let's try a line
+ graph.  This data is
+ not suited for line
+ graph format, so we'll
+ use another worksheet.
+
+   PRESS <CR>
+#TF#TR#/#TT#TB#TE[1,7]*** PLEASE WAIT ***
+#TF#Q/MCY/sic/usr/2020/tutor/line.tut#/n

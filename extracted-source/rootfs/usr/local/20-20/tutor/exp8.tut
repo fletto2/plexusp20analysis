@@ -1,0 +1,79 @@
+#TE[5,0]
+20/20 makes it even easier to do calculations by setting up
+      many common formulas for you.  These predefined
+           formulas are called "functions".
+#TF
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TB
+#TE[5,0]
+To use a function, you enter the name of the function, followed
+   by parentheses that contain the appropriate numbers, ranges,
+        or other "arguments".
+
+               Type:  >3,32 <CR>#TF
+#TR>3,32#/#TT
+#TB
+#TE[5,0]
+"TOTAL EXPENSES" equals the sum of all the expenses in column 3:
+  "LIVING EXPENSES", "TRAVEL", and "AUTO".  You can use a formula that
+    contains simple arithmetic.  However, it's easier to use 20/20's
+      SUM function.
+             Type:  SUM([3,11.25])<CR>#TF
+#TF
+#TRSUM([3,11.25])#/#TT#TB
+#TE[5,0]
+Notice the display on the Status line.  SUM is the name of the function.
+  The range of cells that you want added is [3,11..25].  (The periods
+    tell 20/20 to include all rows between 11 and 25.)
+#TF
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TB
+#TE[5,0]
+You can use several functions in a single formula.  Functions can be
+  "nested", or used in conjunction with arithmetic or logical operators.
+    Again, the worksheet displays the calculated result while the
+      Status line displays the formula.
+#TF
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TB#Q>0,0#/>1,2#/#N
+#TE[5,0]
+There it is!  The finished expense report!
+#TF
+#TE[63,5]Press <CR>#TF
+#TR#/#TT#TB
+#TE[5,0]You can view the lower half the expense report by
+using the <PAGE> key followed by an <DOWN> arrow key.
+
+Press:  <PAGE> <DOWN>
+#TF#TR#PD#TT#TB
+#TE[5,0]Return to the top of the report by using
+the <PAGE> key followed by the <UP> arrow key.
+
+Press:  <PAGE> <UP>
+#TF#TR#PU#TT#TB
+#TE[63,5]Press <CR>
+#TF#TR#/#TT#TB
+#Q/SR/usr/2020/tutor/tut8.tmf#/>0,13#//wh;#TA>1,2#/#N
+#TE[5,0]  You can create a reusable expense form by "erasing"
+  the labels for DATE, NAME, and DESTINATION and
+  resetting the values to 0.  Use the /MODIFY BLANK
+  command to erase the unnecessary labels.  Then move
+  to the cells in column 2 and reenter the values as 0.
+#TF
+#TE[63,5]Press <CR>#TF
+#TR#/#TT#TB
+#TE[5,0]  In this tutorial, you have learned how to:
+       o move around the worksheet
+       o enter labels (left-justified and right-justified)
+       o enter numbers
+       o enter formulas and functions
+       o use the commands: /EDIT, /DEFAULT, and /FORMAT
+#TF
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#N/sr/usr/2020/tutor/expend.tmf#/
+#TR#/#TT
+/sic/usr/2020/tutor/renew.tut#/n

@@ -1,0 +1,7 @@
+cd /sccs/testsrc/$1
+echo $1 >>/sccs/wd/src.vs.testsrc
+ls /usr/src/$1       >FILES.src
+ls /sccs/testsrc/$1  >FILES.testsrc 
+sdiff -w50 -s FILES.src FILES.testsrc |grep -v '^[0-9].*[0-9]$' >>/sccs/wd/src.vs.testsrc
+rm FILES*
+

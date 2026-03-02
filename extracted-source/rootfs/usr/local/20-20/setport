@@ -1,0 +1,13 @@
+PORT=/dev/plot
+BAUD=1200
+MODE=666
+if [ -c $PORT ]
+then
+	chmod $MODE $PORT
+	while true
+	do
+	    sleep 360000 < $PORT >/dev/null &
+	    stty $BAUD raw -echo ixon < $PORT 
+	    wait
+	done
+fi

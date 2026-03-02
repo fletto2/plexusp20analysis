@@ -1,0 +1,150 @@
+#TB
+#TD
+ NOTES ABOUT CONSOLIDATION:
+
+  o  CONSOLIDATE only reads values or labels from the input file. If a
+     cell from the input file contains a formula, the last calculated
+     value is read.
+
+  o  All operators but REPLACE omit any TARGET cells containing formulas.
+
+  o  The REPLACE operator will erase anything in the target range.
+
+     If the consolidation doesn't seem to be working
+     correctly, check your target cells for formulas.     PRESS <CR>
+#TF
+#TR#/#TT#TB
+#TD
+             AUTOMATIC CONSOLIDATIONS -- LINKED WORKSHEETS
+
+     Frequently, consolidations must be performed repeatedly.
+     For example, the consolidated budget in our example may be
+     needed every month. Instead of typing the consolidation commands
+     everytime, you can define worksheet LINKS.
+
+     LINKS are consolidation procedures that are saved with the
+     worksheet.  The links are executed everytime the worksheet
+     is read using /STORAGE READ.
+
+                                         PRESS <CR>
+#TF
+#TR#/#TT#TB
+>0,0#//mb0.7,0.6#//sp/usr/2020/tutor/all.tmf#/#/#/
+#TD
+ To create a link, start again with the blank template.
+
+ Type: /SLD             /STORAGE LINK DEFINE is used to create a link
+
+ Type: NAILS.TMF<CR>    You'll notice that the following dialogue
+                        is identical to a LINK CONSOLIDATE
+
+ Type: R                REPLACE operator
+
+ Type: 1..6,2..5<CR>    The Input Range
+
+ Type: 1,2<CR>          The Target Range
+#TF
+#TR/SLDNAILS.TMF#/R1..6,2..5#/1,2#/#TT
+Q
+#TB#TD
+
+   Nothing happened!
+
+   DEFINE saves the steps when you /STORAGE WRITE the worksheet.
+   The links are executed the next time you /STORAGE READ the
+   worksheet file.  If you want an immediate consolidation,
+   use CONSOLIDATE.
+
+                                      PRESS <CR>
+#TF
+#TR#/#TT#TB#TD
+
+     THE SECOND LINK
+
+ Type: /SLD            Reenter DEFINE
+
+ Type: TACKS.TMF<CR>   The second division
+
+ Type: +               The "+" operator
+
+ Type: 1..6,2..5<CR>   The Input Range
+
+ Type: 1,2<CR>         The Target Range
+#TF
+#TR/SLDTACKS.TMF#/+1..6,2..5#/1,2#/#TT
+Q
+#TB#TD
+
+      THE THIRD LINK
+
+ Type: /SLD             Reenter DEFINE
+
+ Type: PINS.TMF<CR>     The third division
+
+ Type: +                The "+" operator
+
+ Type: 1..6,2..5<CR>    The Input Range
+
+ Type: 1,2<CR>          The Target Range
+#TF
+#TR/SLDPINS.TMF#/+1..6,2..5#/1,2#/#TT
+Q
+#TB#TD
+  To see how the links work, first save the current worksheet.
+
+
+  Type: /SW         STORAGE WRITE
+
+  TOTAL.TMF<CR>Y    Save the worksheet as TOTAL.TMF
+                    (supersede old file of same name)
+
+#TF
+#TR/SWTOTAL.TMF#/Y#TT
+#TB#TD
+
+  Now, watch what happens as we /STORAGE READ TOTAL.TMF!
+
+
+
+
+
+                                             PRESS <CR>
+
+#TF
+#TR#/#TT
+#N/SLC/usr/2020/tutor/all.tmf#/R0.10,0.10#/0,0#/
+/SLCLINK.TTF#/R0.10,0.10#/0,0#/#/
+#TB#TD
+  There are the consolidated results!  As you would expect, the
+  results are the same as in the previous consolidation example.
+
+  An important advantage of LINKS is that they are repeated each time
+  that a worksheet is read.  This means that any updates to the input
+  worksheet files will always be reflected in the consolidating
+  worksheet.
+
+                                             PRESS <CR>
+#TF
+#TR#/#TT
+#TB#TD
+ You can examine LINKS by using the /STORAGE LINK REVIEW commands.
+
+       NEXT - lets you review each stored link in sequence
+       EDIT - lets you change input file, operator, or ranges
+       DELETE - removes a link
+       INSERT - creates a new link within the limk sequence
+
+                                                 PRESS <CR>
+#TF
+#TR#/#TT
+#TB#TD
+ You have now seen how to store and retrieve consolidations
+ for future execution.  At this point, you're ready to see
+ some advanced consolidation techniques.
+
+
+
+                                                 PRESS <CR>
+#TF
+#TR#/#TT
+/SIC/usr/2020/tutor/cons3.tut#/#/

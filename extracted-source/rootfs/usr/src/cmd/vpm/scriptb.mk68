@@ -1,0 +1,82 @@
+
+# SID @(#)scriptb.mk68	5.1
+#
+# This make file for use only on the m68
+
+VPMC = vpmc
+
+ARGS = -m -x
+
+install:	vpmscript
+
+vpmscript:	vpmscript.r
+	$(VPMC) $(ARGS) -o vpmscript vpmscript.r
+	cat /usr/include/icp/opdef.h sas_tempc | /lib/zcpp >tf
+	/usr/lib/vpm/vratfor <tf >tg
+	cp tg /usr/src/uts/m68/icp/vpmicp/proto0code.s
+	cat sas_define proto0.s >th
+	cp th /usr/src/uts/m68/icp/vpmicp/proto0.s
+	touch /usr/src/uts/m68/icp/vpmicp/proto1.s
+	touch /usr/src/uts/m68/icp/vpmicp/proto2.s
+	touch /usr/src/uts/m68/icp/vpmicp/proto3.s
+	cd /usr/src/uts/m68/icp/vpmicp;\
+	make -f vpmicpos.mk6
+#	make -f vpmicpos.mk6 proto0.o
+#	cd /usr/src/uts/m68/icp/vpmicp;\
+#	make -f vpmicpos.mk6 proto1.o
+#	cd /usr/src/uts/m68/icp/vpmicp;\
+#	make -f vpmicpos.mk6 proto2.o
+#	cd /usr/src/uts/m68/icp/vpmicp;\
+#	make -f vpmicpos.mk6 proto3.o
+	cd /usr/src/cmd/vpm;\
+	mkdir temp
+	cd /usr/src/cmd/vpm/temp;\
+	zar x /usr/src/uts/m68/icp/libvpm.a
+	-zld -o /usr/src/cmd/vpm/vpm0 -r -d -X \
+		/usr/src/cmd/vpm/temp/l.o \
+		/usr/src/cmd/vpm/temp/mch.o \
+		/usr/src/cmd/vpm/temp/c.o \
+		/usr/src/cmd/vpm/temp/vpmclist.o \
+		/usr/src/cmd/vpm/temp/bcopy.o \
+		/usr/src/cmd/vpm/temp/blist.o \
+		/usr/src/cmd/vpm/temp/clock.o \
+		/usr/src/cmd/vpm/temp/daemon.o \
+		/usr/src/cmd/vpm/temp/main.o \
+		/usr/src/cmd/vpm/temp/mb.o \
+		/usr/src/cmd/vpm/temp/pbif.o \
+		/usr/src/cmd/vpm/temp/pbs.o \
+		/usr/src/cmd/vpm/temp/prf.o \
+		/usr/src/cmd/vpm/temp/sched.o \
+		/usr/src/cmd/vpm/temp/slp.o \
+		/usr/src/cmd/vpm/temp/subr.o \
+		/usr/src/cmd/vpm/temp/trap.o \
+		/usr/src/cmd/vpm/temp/ctc.o \
+		/usr/src/cmd/vpm/temp/dh.o \
+		/usr/src/cmd/vpm/temp/dma.o \
+		/usr/src/cmd/vpm/temp/partab.o \
+		/usr/src/cmd/vpm/temp/tt0.o \
+		/usr/src/cmd/vpm/temp/tty.o \
+		/usr/src/cmd/vpm/temp/fetch.o \
+		/usr/src/cmd/vpm/temp/get.o \
+		/usr/src/cmd/vpm/temp/getrbuf.o \
+		/usr/src/cmd/vpm/temp/getxbuf.o \
+		/usr/src/cmd/vpm/temp/interp.o \
+		/usr/src/cmd/vpm/temp/proto0.o \
+		/usr/src/cmd/vpm/temp/proto1.o \
+		/usr/src/cmd/vpm/temp/proto2.o \
+		/usr/src/cmd/vpm/temp/proto3.o \
+		/usr/src/cmd/vpm/temp/put.o \
+		/usr/src/cmd/vpm/temp/rcv.o \
+		/usr/src/cmd/vpm/temp/rtnrbuf.o \
+		/usr/src/cmd/vpm/temp/rtnxbuf.o \
+		/usr/src/cmd/vpm/temp/xeom.o \
+		/usr/src/cmd/vpm/temp/xmt.o
+	cd /usr/src/cmd/vpm/temp;\
+	rm -f *.o
+	cd /usr/src/cmd/vpm;\
+	rmdir temp
+
+clobber: clean
+	rm -f vpm0
+clean:
+	rm -f tf tg th sas*

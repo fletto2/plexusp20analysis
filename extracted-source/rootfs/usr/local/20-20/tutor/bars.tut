@@ -1,0 +1,332 @@
+#Q/mcy/sr/usr/2020/tutor/metals.tmf#/>6,0#//wv>0,7#//wh;#TA#n#TD
+
+ This is a five-year
+ performance summary
+ for a fictional company
+ named Global Resources,
+ Inc.
+
+ So far we have been
+ using one or two of the
+ /GRAPH subcommands at a
+ time.  When you become
+ more practiced, you'll
+ want to specify several
+ settings at a time and
+ then display the graph.
+
+   PRESS <CR>
+#TF#TR#/#TT
+#V#TB#TD
+
+ You can specify the
+ RANGE, HEADING, FORM,
+ and VIEW the graph all
+ in one step.  In this
+ example, specify the RANGE
+ as columns 1 through 5,
+ and rows 3 through 5.
+ For the HEADING, use
+ PRODUCT, located in cell
+ [0,1] on the worksheet.
+ And for the FORM, specify
+ BAR graph.
+
+ Type:
+
+   /GR 1..5,3..5 <CR>
+   HRR 0,1 <CR> FBV
+#TF#TR/GR1..5,3..5#/HRR0,1#/FBV#TT
+Q#TB#TD
+
+ Good job!
+
+ This graph shows a
+ single bar for each
+ year's revenue.  You
+ may want to select the
+ STACKED graph form to
+ show the yearly
+ performance for each
+ of the three products.
+
+ Type:
+
+   /GFSV
+#TF#TR/GFSV#TT
+Q#TB#TD
+ The STACKED graph
+ provides a more accurate
+ description of your data
+ than the  simple bar
+ graph did.
+
+   PRESS <CR>
+#TF#TR#/#TT
+#TE[1,7]But it doesn't tell you
+everything.  You may
+want to be able to
+measure each product's
+bar segment against the
+vertical axis.  Let's
+try the COMPARISON bar
+graph form.
+
+Type:
+
+  /GFCV
+#TF#TR/GFCV#TT
+Q#TB#TD
+
+ You have now created
+ each of the five 20/20
+ graph forms: PIE, LINE,
+ BAR, STACKED and
+ COMPARISON.
+
+   PRESS <CR>
+#TF#TR#/#TT
+#TE[1,8]Now you're ready
+#TF
+#TE[1,9]to try using some
+#TF
+#TE[1,10]more of 20/20's graph
+#TF
+#TE[1,11]enhancement features.
+#TF
+#TE[3,13]PRESS <CR>
+#TF#TR#/#TT
+#TB#TD
+
+ First, set the scale
+ of the vertical axis
+ to start at 0 and to
+ go to 250.
+
+ Type:
+
+   /GAM 0 <CR> 250 <CR>
+#TF#TR/GAM0#/250#/#TT
+Q#TE[1,7]Next, set the grid to
+#TF
+#TE[1,8]display dotted lines
+#TF
+#TE[1,9]as you did for the mean
+#TF
+#TE[1,10]temperature graph.
+#TF
+#TE[1,11]Then you can display
+#TF
+#TE[1,12]the graph.
+#TF
+#TE[1,14]Type:
+#TF
+#TE[3,16]/GGLV
+#TF#TR/GGLV#TT
+Q#TB#TD
+
+ Now, let's give the
+ graph a title.  Use
+ /GRAPH TITLE and the
+ label from cell [2,0]
+ of the worksheet.
+ Place the title at
+ the TOP of the graph.
+
+ Type:
+
+   /GTTR 2,0 <CR> V
+#TF#TR/GTTR2,0#/V#TT
+Q#TB#TD
+
+ You can use titles,
+ subtitles, and headings
+ in any combination.
+
+ They can be entered by
+ referring to a single
+ cell range in the work-
+ sheet, as you have seen
+ already.
+
+   PRESS <CR>
+#TF#TR#/#TT
+#TE[1,12]Or you can enter
+#TF
+#TE[1,13]them manually.
+#TF
+#TE[3,15]PRESS <CR>
+#TF#TR#/#TT
+#TB#TD
+
+ Enter a heading for
+ the horizontal axis
+ by using /GRAPH
+ HEADING COLUMN MANUAL.
+ The heading will be
+ "FISCAL YEAR".
+ Type:
+
+   /GHCM FISCAL YEAR
+   <CR> V
+#TF#TR/GHCMFISCAL~YEAR#/V#TT
+Q#TB#TD
+ The labels you have
+ seen in the legend and
+ below the horizontal
+ axis have been read
+ from labels in the
+ worksheet adjacent to
+ the data range.  20/20
+ does this automatically.
+
+ However, the can also
+ be entered using the
+ range or manual
+ methods.  See the
+ Commands section in
+ the 20/20 Reference
+ Manual for details.
+
+   PRESS <CR>
+#TF#TR#/#TT
+#TB#TD
+
+ Before you see how to
+ name and save graphs,
+ the tutorial is going
+ to show you how 20/20's
+ "what if" modeling
+ capabilities apply
+ to graphics.
+
+   PRESS <CR>
+#TF#TR#/#TT
+#TB#TD
+
+ 20/20 redisplays all
+ graphs that are on
+ the screen when the
+ model is recalculated
+ either manually, by
+ pressing the <CALC>
+ key, or automatically,
+ by using /OPTION RECALC
+ AUTOMATIC.
+
+ What's more, the new
+ displays reflect any
+ changes in worksheet
+ data caused by the
+ recalculation.
+
+   PRESS <CR>
+#TF#TR#/#TT
+#TB#TD
+
+ Let's try it.
+
+   PRESS <CR>
+#TF#TR#/#TT
+#TE[1,4]Suppose the estimate
+#TF
+#TE[1,5]for nickel in 1984
+#TF
+#TE[1,6]is too low?  What if
+#TF
+#TE[1,7]the revised estimate
+#TF
+#TE[1,8]is $260?#TF
+#TE[3,10]PRESS <CR>
+#TF#TR#/#TT#TB
+#TE[1,4]To test the new value,
+#TF
+#TE[1,5]move the cursor to cell
+#TF
+#TE[1,6][5,5] by typing:
+#TF
+#TE[3,8]<GOTO> 5,5 <CR>
+#TF
+#TE[3,10]260 <CR>
+#TF#TR>5,5#/260#/#TT
+#TE[1,12]Now recalculate the
+#TF
+#TE[1,13]worksheet by pressing
+#TF
+#TE[1,14]<CALC> (the space bar).
+#TF#TR~#TT
+#TB#TD
+
+ You should notice two
+ things:
+
+   PRESS <CR>
+#TF#TR#/#TT
+#TE[1,5]1. The 1984 total in
+   cell [5,7] rose from
+   $570 to $600.
+
+   PRESS <CR>
+#TF#TR#/#TT
+#TE[1,9]2. The bar on the far
+   right of the graph,
+   representing nickel
+   in 1984, now extends
+   above the top dotted
+   line.
+
+   PRESS <CR>
+#TF#TR#/#TT
+#TB#TD
+
+ You can name and save
+ your graph using the
+ /GRAPH NAME SAVE
+ command.  Call the
+ graph PROFIT.  Type:
+
+   /GNS PROFIT <CR>
+#TF#TR/GNSPROFIT#/#TT
+Q#TB#TD
+
+ To see the list of
+ saved graphs, use the
+ /GRAPH NAMES LIST
+ command.
+
+ Type:  /GNL
+
+
+
+#TF#TR/GNL#TT
+#TE[1,7]Do you see the
+name PROFIT?
+
+When you are ready to
+continue, type:
+
+  Q
+#TF#TRQ#TT
+Q#N#TB#TD
+
+ A saved graph can be
+ retrieved by using
+ /GRAPH NAME REDRAW or
+ /GRAPH NAME GET.
+
+ Even better, 20/20
+ saves all graphs that
+ are displayed when you
+ /STORAGE WRITE a work-
+ sheet.  The displays
+ are brought in with the
+ worksheet when you use
+ /STORAGE READ.
+
+ PRESS <CR>
+ 
+#TF#TR#/#TT
+#TB
+#q/sr/usr/2020/tutor/grend.tmf#/#n
+#TR#/#TT
+/sic/usr/2020/tutor/renew.tut#/n

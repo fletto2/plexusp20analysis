@@ -1,0 +1,99 @@
+#N#TB#TD
+  Now it's your turn.  You'll start by moving the cell cursor
+    (the highlighted rectangle) around the worksheet.  As you go
+       through the tutorial, you'll create an expense report
+          similar the one shown above.
+#TF#TE[63,5]Press <CR>
+#TF#TR#/#TT
+#TB#Q/MB[0..30,0..40]#/
+>0,0#/
+/FW8#/#N
+#TD
+  Look again at the numbers in the upper left corner of the screen.
+    These numbers (called cell coordinates) are displayed on the
+      "status line" of the screen "header".  They show the current
+         position of the cursor: in this case, column 0, row 0.
+#TF
+#TE[63,5]Press <CR>
+#TF
+#TR#/#TT
+#TB
+#TD
+  Press the <RIGHT> arrow once to move the cursor to column 1, row 0.
+#TF
+#TR#R#TT
+#TB
+#TD
+  Notice that the cell coordinates in the top left corner
+    are now  [Col: 1 Row: 0].
+#TF
+#TE[63,5]Press <CR>
+#TF
+#TR#/#TT
+#TB
+#TD
+  Enter the label EXPENSES in this cell.  To left-justify a
+    label, precede the label with an apostrophe (').
+
+  Type:    'EXPENSES <CR>
+#TF
+#TR'EXPENSES#/#TT
+#TB
+#TD
+  Press the <DOWN> arrow to move to cell [1,1].
+#TF
+#V#TR#D#TT#N
+#TB#TD
+  Again, notice that the cell coordinates in the upper left corner
+    have changed to identify the new cursor location:  cell [1,1].
+#TF
+#TE[63,4]
+Press <CR>
+#TF
+#TR#/#TT
+#TB
+#TD
+  Now, use another label to underline the word EXPENSES.
+
+  Type:  '--------<CR> (Eight hyphens)
+#TF
+#TR'--------#/#TT
+#TB
+#TD
+  The <GOTO> key allows you to move directly to a cell.
+     You can return to cell [0,0] by pressing <GOTO> (the
+        greater-than key) and then typing 0,0<CR>.
+
+  Type:   >0,0 <CR>
+#TF
+#V#TR>0,0#/#TT#N
+#TB
+#TD
+  You have now entered two left-justified labels.  Remember,
+     to enter a left-justified label, you precede the label with
+        an apostrophe (').  To save time, we'll enter the remaining
+           left-justified labels for you.
+#TF
+#TE[63,5]Press <CR>
+#TF
+#TR#/#TT
+#D#D'DATE#/
+#D'NAME#/
+#D'DESTINATION#/
+#D#D#D'LIVING~EXPENSES#/
+#D#D#D#D#D#D'TRAVEL#/
+#D#D#D#D#D#D#D'AUTO#/
+#D#D#D#D#D#D#D#D#D#D'TOTAL EXPENSES#/
+#TB
+#TD
+  Now go back again to cell [0,0].
+
+  Type:   >0,0 <CR>
+#TF
+#TR>0,0#/#TT
+#TB
+#TE[63,5]Press <CR>
+#TF
+#TR#/#TT
+#TB
+/SIC/usr/2020/tutor/exp3.tut#/#/#/

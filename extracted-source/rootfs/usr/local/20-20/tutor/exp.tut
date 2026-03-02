@@ -1,0 +1,244 @@
+#Q/sr/usr/2020/tutor/expin.tmf#/>0,13#//wh;#TA>0,0#/#N
+#TD
+  This Basic Skills tutorial shows you what 20/20 does, what its
+  parts are, and how to move around the worksheet and enter
+  information.
+#TF
+#TE[63,5]Press <CR>
+#TF
+#N#TR#/#TT
+#TE[63,5]
+#TF
+#TE[15,3]As each new concept is introduced, you will#TF
+#TE[2,4]use it to create your first "model".
+#TF
+#TE[63,5]Press <CR>
+#TF
+#TR#/#TT
+/MB[0..8,0..10]#/
+#TB
+#TD
+  The 20/20 worksheet is like a large ruled piece of paper with
+     1000 columns and 1000 rows.  Your computer screen acts as
+       a window onto the worksheet.  That window is framed on two
+         sides (at the top and left) by the highlighted border.
+#TF
+#TE[63,5]Press <CR>
+#TF#TR#/#TT
+#Q
+/SR/usr/2020/tutor/tut1.tmf#/>0,13#//wh;#TA>4,12#/#N#TD
+  Data, not only numbers but also words, can be written in cells
+  on the worksheet.  A cell is defined by the intersection of:
+#TF
+#TE[63,5]Press <CR>
+#TF
+#N#TR#/#TT
+#TE[63,5]
+#TF
+/ce12,0.11#/4,0#/
+#TE[9,3]a COLUMN...
+#TF
+#TE[63,5]Press <CR>
+#TF#TR#/#TT
+#TE[63,5]          #TF
+#C#C#C#C#C#C#C
+#TE[17,3] and a ROW.
+#TF
+#TE[2,4](The column and row numbers are displayed in the upper left corner.)
+#TF
+#TE[63,5]Press <CR>
+#TF
+#TR#/#TT
+/mb4,0.11#//mb0,12#/>1,2#/
+#TB
+#TD
+  Worksheets that contain information, such as
+  the one above, are referred to as "models".
+#TF#TE[63,5]Press <CR>
+#TF#TR#/#TT
+#TB
+#TD
+  Creating a model with 20/20 is just like filling in a form...
+#TF
+#TE[63,5]Press <CR>
+#TF
+#TR#/#TT
+#TE[63,5]
+#TF
+#TE[10,3]...except that 20/20 does arithmetic for you!
+#TF
+#TE[63,5]Press <CR>
+#TF
+#TR#/#TT
+#TB
+#TD
+     When you fill in the worksheet, you put information - data -
+       into 20/20's cells.  There are two types of data:
+#TF
+#TE[63,5]Press <CR>
+#TF
+#TR#/#TT
+#TE[63,5]
+#TF
+#TE[10,4]TEXT...
+#TF
+#Q>0,0#/
+/MB[0..30,0..40]#/
+/FW6#/
+>3,2#/#N
+'TEXT#/
+>4,4#/
+'You have won the lottery.#/
+>4,6#/
+'HOORAY!#/
+>0,0#/
+#TE[63,5]Press <CR>
+#TF
+#TR#/#TT
+#TE[63,5]
+#TF
+#TE[14,4] and VALUES.
+#TF
+>3,8#/
+'VALUES#/
+>4,10#/
+"2020#/
+>4,12#/
+"$20.20#/
+>0,0#/
+#TE[63,5]Press <CR>
+#TF
+#TR#/#TT
+#TB
+/MB[0..5,0..13]#/
+#TD
+     Text can be left justified...
+#TF
+>3,0#//fw9#/
+'MONDALE#/#R
+#TE[63,5]Press <CR>
+#TF
+#TR#/#TT
+#TE[63,5]
+#TF
+#TE[31,1] or right justified.
+#TF
+#R/fw9#/
+"REAGAN#/#L
+#TE[7,3]( to the left or right side of a cell )
+#TF
+#TE[63,5]Press <CR>
+#TF
+#TR#/#TT
+#TB
+#Q#R/fw8#/>3,0#//fw8#/#R/MB[0..5,0..13]#/#N
+#TD
+     Text can be used as column labels...
+#TF
+#TE[63,5]
+#TF
+>1,0#/
+"JAN#/
+>2,0#/
+"FEB#/
+>3,0#/
+"MAR#/
+>4,0#/
+"APR#/
+>5,0#/
+"MAY#/
+>6,0#/
+"JUN#/
+>7,0#/
+"JUL#/
+>8,0#/
+"AUG#/
+>0,0#/
+#TE[63,5]Press <CR>
+#TF
+#TR#/#TT
+#TE[63,5]
+#TF
+#TE[38,1] and as row labels.
+#TF
+>0,2#/
+'SALES#/
+>0,4#/
+'COST#/
+>0,6#/
+'PROFIT#/
+>0,0#/
+#TE[63,5]Press <CR>
+#TF
+#TR#/#TT
+#TB
+#TD
+     You can use text to comment on your model.
+#TF
+>1,10#/
+'These~categories~are~selected~from~a~year-end#/
+>1,11#/
+'profit~and~loss~statement.#/
+>0,0#/
+#TE[63,5]Press <CR>
+#TF
+#TR#/#TT
+#TE[7,2] Or to describe your data.
+#TF
+/MB[0..8,10..11]#/
+>6,6#/
+/f$2#/
+20.20#/
+>1,10#/
+'The~cell~identified~by~JUN,PROFIT#/
+>1,11#/
+'contains~the~numeric~value~$20.20#/
+>0,0#/
+#TE[63,5]Press <CR>
+#TF
+#TR#/#TT
+#TB
+#TD
+     VALUES can be displayed and used in many different ways -
+       for example, as dollars -  $20.20
+#TF
+/MB[0..8,0..13]#/
+>3,2#/
+'DOLLARS#/
+>5,2#/
+"$20.20#/
+>0,0#/
+#TE[63,5]Press <CR>
+#TF
+#TR#/#TT
+#TE[63,5]
+#TF
+#TE[9,3]as percentages - 20%
+#TF
+>3,4#/
+'GROWTH#/
+>5,4#/
+"20%#/
+>0,0#/
+#TE[63,5]Press <CR>
+#TF
+#TR#/#TT
+#TE[63,5]
+#TF
+#TE[11,4]or in various notations.
+#TF
+>2,8#/"-(2,020)#/#R"20.20#/#R"-2020#/
+#R"2,020#/#R"2.0e+20#/
+>0,0#/#TE[63,5]Press <CR>
+#TF
+#TR#/#TT
+#TB
+#Q/MCY>0,13#//WH;#TA>0,0#/#N
+#TD
+  Values can also be calculated from formulas entered in cells.
+    We'll come back to formulas later.
+#TF
+#TE[63,5]Press <CR>
+#TF
+#TR#/#TT
+/SIC/usr/2020/tutor/exp2.tut#/#/#/

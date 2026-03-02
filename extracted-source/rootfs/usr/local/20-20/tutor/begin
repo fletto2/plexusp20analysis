@@ -1,0 +1,61 @@
+#Q/mcy/wh;#TA#N
+#TD                   INTRODUCTORY NOTES
+
+   The on-line tutorials assist you in learning the skills and
+   concepts needed to use 20/20.  The advanced techniques tutorials
+   introduce some of 20/20's more powerful features.
+
+   If you have never used a spreadsheet before, you will probably
+   want to start with the Basic Skills tutorials.  If you are an
+   experienced spreadsheet user, you may want to start with the
+   Advanced Techniques tutorials.
+
+   Before you begin, there are five things you should know:
+
+    1. The tutorials are selected from a screen menu.  The menu also
+       has an option which explains some of the specially defined
+       20/20 keys.  You might find it helpful to compare this section
+       with your 20/20 keyboard template.
+
+           PRESS <CR> FOR NEXT PAGE.
+#TF#TR#/#TT
+#TB#TD    2. While using the tutorial you will be asked to type
+       certain phrases or press certain keys.  You must type
+       the requested characters exactly as indicated, including 
+       slashes (/) and parentheses.  The only exceptions are 
+       phrases in angle brackets (< >), which indicate special keys,
+       such as <CR> for the return key or <UP> for the up arrow key.
+
+    3. If, at any point, you want 20/20 to type the requested input
+       for you, press the continue key, called <CONT>.  The <CONT>
+       key is defined on the key card for your terminal, in on-line
+       HELP, or in the 20/20 Reference Manual.
+
+    4. If you want to stop any tutorial before it ends, press the
+       backout key, called <BKO>.  20/20 will ask you if you really
+       want to abort the tutorial.  If you answer YES, you will
+       leave the tutorial system but will not exit 20/20.  If you 
+       answer NO, your current tutorial will continue.
+
+           PRESS <CR> FOR NEXT PAGE.
+#TF#TR#/#TT
+#TB#TD
+    5. To run the tutorial called Advanced Techniques Tutorial:
+       Graphics, your terminal or monitor must be a graphics output
+       device.  If you are not sure, check your machine manual or ask
+       your system manager.
+
+
+
+   If you have questions about what you see, the 20/20 manual has a
+   full reference section, and a complete glossary and index.
+   If you need help with a problem, call the 20/20 Hotline at
+   617-655-7824.
+
+
+
+ 
+           PRESS <CR> for TUTORIALS MENU
+#TF#TR#/#TT
+#TE[10,16]         ***  PLEASE WAIT  ***
+#tf#Q/sic/usr/2020/tutor/renew.tut#/n

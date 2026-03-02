@@ -1,0 +1,30 @@
+plexus1 Any plexus1.3 9600 plexus1.3 login:-EOT-login: uucp ssword: quazors
+jobe Any jobe.0 9600 jobe.0 login:-EOT-login: uucp ssword: quazors
+plx Any plx.1 9600 plx.1 login:-EOT-login: uucp ssword: quazors
+p68 Any p68.2 9600 p68.2 login:-EOT-login: uucp ssword: quazors
+nemesis Any nemesis.1 9600 nemesis.1 login:-EOT-login: uucp ssword: quazors
+fred Any fred.0 9600 fred.0 login:-EOT-login: uucp ssword: quazors
+jk68 Any ACU 1200 249-6695 login:-EOT-login: uucp
+uniforum Any ACU 1200 202-332-9020 login:-EOT-login:-EOT-login: uucp
+ccf Any,10 ACU 1200 415-941-7459 login:-EOT-login: uucp ssword: ccfplx
+err Any,10 ACU 1200 379-0325 login:-EOT-login: uucp ssword: Uucp-psswd
+ccfonyx Any,10 ACU 1200 253-9517 login:-EOT-login: uucp ssword: ccfonyx
+mts1 Any,10 ACU 1200 496-0907 login:-EOT-login: uucp
+wsales1 Any,10 ACU 1200 980-9964 login:-EOT-login: uucp
+pms1 Any,1 pms1.1 9600 pms1.1 login:-EOT-login: uucp ssword: quazors
+craig Any,1 craig.1 9600 craig.1 login:-EOT-login:-EOT-login:-EOT-login: nuucp 
+bobslow Any,1 tty3 9600 tty3 login:-EOT-login:-EOT-login:-EOT-login: nuucp 
+wanda Any,1 tty8 9600 tty8 login:-EOT-login:-EOT-login:-EOT-login: nuucp 
+genix Any,10 ACU 1200 505-898-8898 login:-EOT-login: uucp
+ntsup Any,10 ACU 1200 817-565-4160 login:-EOT-login: nuucp
+turtlev Any,10 ACU 1200 415-328-3212 login:-EOT-login: uucp ssword: noprob
+testplx Any,10 ACU 1200 980-8660 login:-EOT-login: uucp ssword: quazors
+dgdal Any,10 ACU 1200 214-637-4293 login:-EOT-login: uucp ssword: plexus
+era01 Any,10 ACU 1200 617-890-4058 login:-EOT-login: uucp
+luke Any,1 ACU 1200 415-940-6305 luke:-EOT-luke: uucp
+benetics Any,1 ACU 1200 415-940-6314 bene:-EOT-bene: uucp
+cdp Any,1 ACU 1200 415-322-0284 login:-EOT-login: plxscs ssword: PLeXus
+microlabs Any,10 ACU 1200 713-266-9196 ogin:-EOT-login: uucp
+mn Any,10 ACU 1200 301-424-4873 ogin:-EOT-login: uucp
+robin Any tty6 9600 tty6 login:-EOT-login: uucp 
+eaton Any,1 ACU 1200 818-889-6874 gin:-EOT-gin:-BREAK-gin:-BREAK-gin: uplx ssword: Citsiugn

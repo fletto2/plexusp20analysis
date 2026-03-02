@@ -1,0 +1,1327 @@
+;                    20/20    Terminal Definition File
+;                    =================================
+;
+;                    ---------------------------------
+;                    |   Version 1.11 for PLEXUS     |
+;                    |           12-17-85            |
+;                    |                               |
+;                    ---------------------------------
+;
+;
+;      Terminal    Display    Display    Terminal Model
+;        Name      Length      Width        
+;      ------       ------     ------    ----------------------------
+;      TVI925        24          78      Televideo 925
+;      TVI950        24          80      Televideo 950
+;      TVI970        24          80      Televideo 970
+;      TEK4105       30          80      Tektronics 4105
+;      TEK4115       34          80      Tektronics 4115
+;      VIS550        33          80      Visual 550
+;      VT100         24          80      Digital Equipment Corp VT100
+;      VT100W        24         132      Digital Equipment Corp VT100
+;                                        (screen width=132)
+;      VT125         24          80      Digital Equipment Corp VT125
+;      VT125W        24         132      Digital Equipment Corp VT125
+;                                        (screen width=132)
+;      VT220         24          80      Digital Equipment Corp VT220
+;      VT220W        24         132      Digital Equipment Corp VT220
+;                                        (screen width=132) 
+;      VT240         24          80      Digital Equipment Corp VT240    
+;      VT240W        24         132      Digital Equipment Corp VT240
+;      WYSE50        24          80      Wyse 50
+;      WYSE50W       24          80      Wyse 50 Wide Mode
+;                                        (screen width=132)
+;      WYSE75        24          80      Wyse 75
+;      WYSE100       24          80      Wyse 100
+;=====================================================================
+!DEVICES
+;=====================================================================
+;
+;          See directions for defining plotters following the final 
+;          terminal entry, below.
+;
+;=====================================================================
+; * HP7475A with XON/XOFF, offline plots.
+;
+ DEVICE HP7475A IS 6PEN_OFF ON PORT /dev/null
+        ph = 8.5
+        pw = 11.0
+        is = \033.Y\033.R\033.@1024;0:\033.I80;;17:\033.N;19:
+        ts = \033.Z
+        of = offline
+;=====================================================================
+; * HP7475A with allocated plotter port, online plots, and 
+;   XON/XOFF line control.
+;
+ DEVICE HP7475A IS 6PEN_ON ON PORT /dev/plot
+        is = \033.Y\033.J\033.K\033.R\033.@1024;0:\033.I80;;17:\033.N;19:
+        ts = \033.Z
+        ph = 8.5
+        pw = 11.0
+;=====================================================================
+; * LA-100 via VT-125.  Maximum chart width is 5.82 inches.
+;   Offline plot file is created.
+;
+ DEVICE VT1LA100 IS LA100_OFF ON PORT /dev/tty
+        ph = 3.33
+        pw = 5.82
+        of = offline
+;=====================================================================
+; * LA-50 plugged into a VT-125.  Maximum chart width is 5.33 inches.
+ DEVICE VT1LA50 IS LA50_ON ON PORT /dev/tty
+        ph = 3.33
+        pw = 5.33
+!
+;=====================================================================
+;
+;                     *** Terminal   Definitions ***
+;
+;=====================================================================
+!VT100    24      80              Normal-Video  VT100
+;
+;                                  Source : R&D
+;                                  Written By : DDS
+;                                  Checked: 9-14-84
+;                                  Comments:
+;
+;  BACKOUT   = BACKSPACE key       RUBOUT = CONTROL-X
+;  DELETE    = DELETE              HOME   = CONTROL-A
+;  PAGE      = PF1 key             END    = CONTROL-Z
+;  DO        = PF2 key             TAB    = TAB key
+;  CONTINUE  = PF3 key             GOTO   = > key
+;  HELP      = PF4 key
+;
+ INPUT = \12\200\200\15\200\200                         LF  CR
+ INPUT = \33[A\200\1\33[B\200\2\33[C\200\3\33[D\200\4   UP  DOWN  -->  <--
+ INPUT = \33OP\33[A\200\11\33OP\33[B\200\12             Page UP   Page DOWN
+ INPUT = \33OP\33[C\200\13\33OP\33[D\200\14             Page -->   Page <---
+ INPUT = \33OP\33OP\200\377                             Page-Page (0377=ignore)
+ INPUT = \33OQ\200\25\33OS\200\15\11\200\16             Do, Help, Tab
+ INPUT = \1\200\21\32\200\22                            Home, End
+ INPUT = \30\200\037                                    Rubout
+ INPUT = \33OR\200\100                                  continue command file
+        ho = \33[H              home
+        el = \33[K\207\3        erase to end of line
+        es = \33[J\207\12       erase to end of screen
+        ri = \33[C      right-arrow
+        nl = \15\12        newline char
+        fs = \12        sequence that causes forward-scrolling (normal)
+        rs = \33M       sequence that causes reverse-scrolling
+        dc = \33[\204\1;\205\1H\207\2          direct cursor with 8 fillers
+        sc = \33[\204\1;\205\1r\207\5           set scrolling region
+        g1 = \16\200a
+        g2 = \16\200n
+        g3 = \16\200`
+        g4 = \16\200O
+        g5 = \16\200X
+        g6 = \16\200*
+        gf = \17        exit with Shift-In
+      h1 = \33[5m\200\33[0m             set reverse for error msgs
+      h2 = \33[7m\200\33[0m             set reverse video for current cell
+      h3 = \33[7m\200\33[0m             set reverse video for row/col nums
+      h4 = \33[7m\200\33[0m             set reverse video current command
+      h5 = \33[1m\200\33[0m             set bolding for titles
+;initialization sequence for 80-col VT100:
+        is = \33<       if in VT52 mode, put back in VT100 mode
+        is = \33[?3l    set to 80 cols
+        is = \33[?4l    set jump-scrolling (instead of smooth-scrolling)
+        is = \33[?5l    normal video
+        is = \33[?6l    absolute instead of relative origins
+        is = \33[?7l    no wraparound
+        is = \33[?1l    set arrow keys to give cursor movement codes,
+        is = \33>         numeric keypad to give numeric codes
+        is = \33)0\17   set G1 char set to be special graphic chars
+!
+!VT220        24        80      VT220
+;                                             Source:  Don Snoke
+;                                             Written By: Mehdi/DDS
+;                                             Checked:  5/29/84
+;                                             Comments:
+;
+;  CR        = Return key             Continue = F9 key
+;  F8        = DO (run command file)  Rubout   = CONTROL-X
+;  F12       = BACKSPACE key          HOME     = CONTROL A
+;  DELETE    = DELETE key             END      = CONTROL Z
+;  HELP      = Help key
+;  PAGE      = Next Screen
+;  GOTO      = > or Find key
+;
+ INPUT = \12\200\200\15\200\200\33[29~\200\200          LF  CR
+ INPUT = \33[24~\200\10\33[28~\200\15\11\200\16         Backspace,Help,Tab
+ INPUT = \33[A\200\1\33[B\200\2\33[C\200\3\33[D\200\4   UP  DOWN  -->  <--
+ INPUT = \33[6~\33[A\200\11\33[6~\33[B\200\12           Page Up   Page Down
+ INPUT = \33[6~\33[C\200\13\33[6~\33[D\200\14           Page ->    Page <--
+ INPUT = \33[1~\200\076\33[6~\33[6~\200\377             GOTO
+ INPUT = \33[19~\200\25\1\200\21\32\200\22              Do,Home,End
+ INPUT = \30\200\037                                    Rubout
+ INPUT = \33[2~\200\377\33[3~\200\377\33[4~\200\377     INS,REM,SEL ignored
+ INPUT = \33[5~\200\377                                 PREV Page Ignored
+ INPUT = \33[20~\200\100                                Continue Command File
+        ho = \33[H      home
+        el = \33[K\207\3        erase to end of line
+        es = \33[J\207\12       erase to end of screen
+        ri = \33[C      right-arrow
+        nl = \12        newline char
+        fs = \12        sequence that causes forward-scrolling (normal)
+        rs = \33M       sequence that causes reverse-scrolling
+        dc = \33[\204\1;\205\1H\207\2         	direct cursor with 2 fillers
+        sc = \33[\204\1;\205\1r\207\5           set scrolling region
+        g1 = \16\200a
+        g2 = \16\200n
+        g3 = \16\200`
+        g4 = \16\200O
+        g5 = \16\200X
+        g6 = \16\200*
+        gf = \17	exit with Shift-In
+        h1 = \33[5m\200\33[0m
+        h2 = \33[7m\200\33[0m
+        h3 = \33[7m\200\33[0m
+        h4 = \33[7m\200\33[0m
+        h5 = \33[1m\200\33[0m
+;initialization sequence for 80-col VT220:
+        is = \33[62;1"p	set level 2 compatibility, 7 bit codes
+        is = \33<       if in VT52 mode, put back in VT100 mode
+        is = \33[?3l    set to 80 cols
+        is = \33[?4l    set jump-scrolling (instead of smooth-scrolling)
+        is = \33[?5l    normal instead of reverse video
+        is = \33[?6l    absolute instead of relative origins
+        is = \33[?7l    no wraparound
+        is = \33[?1l    set arrow keys to give cursor movement codes,
+        is = \33>       numeric keypad to give numeric codes
+        is = \33)0\17   set G1 char set to be special graphic chars
+!
+!VT125     24      80              VT125 - VT100 with graphics
+;
+;                                  Source : R&D
+;                                  Written By : DDS
+;                                  Checked: 9-14-84
+;                                  Comments: VT125;
+;  BACKOUT   = BACKSPACE key       RUBOUT = CONTROL-X
+;  DELETE    = DELETE              HOME   = CONTROL-A
+;  PAGE      = PF1 key             END    = CONTROL-Z
+;  DO        = PF2 key             TAB    = TAB key
+;  CONTINUE  = PF3 key             GOTO   = > key
+;  HELP      = PF4 key
+;
+ INPUT = \30\200\037                                    Rubout
+ INPUT = \12\200\200\15\200\200                         LF  CR
+ INPUT = \33[A\200\1\33[B\200\2\33[C\200\3\33[D\200\4   UP  DOWN  -->  <--
+ INPUT = \33OP\33[A\200\11\33OP\33[B\200\12             Page UP   Page DOWN
+ INPUT = \33OP\33[C\200\13\33OP\33[D\200\14             Page -->   Page <---
+ INPUT = \33OQ\200\25\33OS\200\15\11\200\16             Do, Help, Tab
+ INPUT = \1\200\21\32\200\22                            Home, End
+ INPUT = \30\200\037                                    Rubout
+ INPUT = \33OR\200\100                                  Continue 
+ INPUT = \33OP\33OP\200\377\33OR\200\100                Page-Page (0377=ignore)
+ INPUT = \33Ow\200\301                                  function key
+ INPUT = \33Ox\200\302                                  function key
+ INPUT = \33Oy\200\303                                  function key
+ INPUT = \33Om\200\304                                  function key
+ INPUT = \33Ot\200\305                                  function key
+ INPUT = \33Ou\200\306                                  function key
+ INPUT = \33Ov\200\307                                  function key
+ INPUT = \33Ol\200\310                                  function key
+ INPUT = \33Oq\200\311                                  function key
+ INPUT = \33Or\200\312                                  function key
+ INPUT = \33Os\200\313                                  function key
+ INPUT = \33OM\200\314                                  function key
+ INPUT = \33Op\200\315                                  function key
+ INPUT = \33On\200\316                                  function key
+        ho = \33[H              home
+        el = \33[K\207\3        erase to end of line
+        es = \33[J\207\12       erase to end of screen
+        ri = \33[C              right-arrow
+        nl = \15\12             newline char
+        fs = \12                sequence that causes forward-scrolling (normal)
+        rs = \33M               sequence that causes reverse-scrolling
+        dc = \33[\204\1;\205\1H\207\10          direct cursor with 8 fillers
+        sc = \33[\204\1;\205\1r\207\5           set scrolling region
+        gr = vt125              terminal can do Regis graphics
+        g1 = \16\200a
+        g2 = \16\200n
+        g3 = \16\200`
+        g4 = \16\200O
+        g5 = \16\200X
+        g6 = \16\200*
+        gf = \17                        exit with Shift-In
+      h1 = \33[5m\200\33[0m             set reverse for error msgs
+      h2 = \33[7m\200\33[0m             set reverse video for current cell
+      h3 = \33[7m\200\33[0m             set reverse video for row/col nums
+      h4 = \33[7m\200\33[0m             set reverse video current command
+      h5 = \33[1m\200\33[0m             set bolding for titles
+;initialization sequence for 80-col VT125:
+        is = \33<       if in VT52 mode, put back in VT100 mode
+        is = \33[?3l    set to 80 cols
+        is = \33[?4l    set jump-scrolling (instead of smooth-scrolling)
+        is = \33[?5l    normal video
+        is = \33[?6l    absolute instead of relative origins
+        is = \33[?7l    no wraparound
+        is = \33[?1l    set arrow keys to give cursor movement codes,
+        is = \33>         numeric keypad to give numeric codes
+;       is = \33=         keypad application mode set
+        is = \33)0\17   set G1 char set to be special graphic chars
+!
+!VT240        24        80      VT240
+;                                             Source:  R&D
+;                                             Written By: DDS
+;                                             Checked:  9/14/84
+;                                             Comments: REGIS Graphics
+;
+;  CR        = Return key             Continue = F9 key
+;  F8        = DO (run command file)  Rubout   = CONTROL-X
+;  F12       = BACKSPACE key          HOME     = CONTROL A
+;  DELETE    = DELETE key             END      = CONTROL Z
+;  HELP      = Help key
+;  PAGE      = Next Screen
+;  GOTO      = > or Find key
+;
+ INPUT = \12\200\200\15\200\200\33[29~\200\200          LF  CR
+ INPUT = \33[24~\200\10\33[28~\200\15\11\200\16         Backspace,Help,Tab
+ INPUT = \33[A\200\1\33[B\200\2\33[C\200\3\33[D\200\4   UP  DOWN  -->  <--
+ INPUT = \33[6~\33[A\200\11\33[6~\33[B\200\12           Page Up   Page Down
+ INPUT = \33[6~\33[C\200\13\33[6~\33[D\200\14           Page ->    Page <--
+ INPUT = \33[1~\200\076\33[6~\33[6~\200\377             GOTO
+ INPUT = \33[19~\200\25\1\200\21\32\200\22              Do,Home,End
+ INPUT = \30\200\037                                    Rubout
+ INPUT = \33[2~\200\377\33[3~\200\377\33[4~\200\377     INS,REM,SEL ignored
+ INPUT = \33[5~\200\377                                 PREV Page Ignored
+ INPUT = \33[20~\200\100                                Continue Command File
+        ho = \33[H      home
+        el = \33[K\207\3        erase to end of line
+        es = \33[J\207\12       erase to end of screen
+        ri = \33[C      right-arrow
+        nl = \15\12     newline char
+        fs = \12        sequence that causes forward-scrolling (normal)
+        rs = \33M       sequence that causes reverse-scrolling
+        dc = \33[\204\1;\205\1H\207\2         	direct cursor with 2 fillers
+        sc = \33[\204\1;\205\1r\207\5           set scrolling region
+        gr = VT240
+        g1 = \16\200a
+        g2 = \16\200n
+        g3 = \16\200`
+        g4 = \16\200O
+        g5 = \16\200X
+        g6 = \16\200*
+        gf = \17	exit with Shift-In
+        h1 = \33[5m\200\33[0m
+        h2 = \33[7m\200\33[0m
+        h3 = \33[7m\200\33[0m
+        h4 = \33[7m\200\33[0m
+        h5 = \33[1m\200\33[0m
+;initialization sequence for 80-col VT240:
+        is = \33[62;1"p	set level 2 compatibility, 7 bit codes
+        is = \33<       if in VT52 mode, put back in VT100 mode
+        is = \33[?3l    set to 80 cols
+        is = \33[?4l    set jump-scrolling (instead of smooth-scrolling)
+        is = \33[?5l    normal instead of reverse video
+        is = \33[?6l    absolute instead of relative origins
+        is = \33[?7l    no wraparound
+        is = \33[?1l    set arrow keys to give cursor movement codes,
+        is = \33>       numeric keypad to give numeric codes
+        is = \33)0\17   set G1 char set to be special graphic chars
+!
+!VT100W 24      132             132-column  VT-100
+;
+;                                  Source : R&D
+;                                  Written By : DDS
+;                                  Checked: 9-14-84
+;                                  Comments:
+;
+;  BACKOUT   = BACKSPACE key       RUBOUT = CONTROL-X
+;  DELETE    = DELETE              HOME   = CONTROL-A
+;  PAGE      = PF1 key             END    = CONTROL-Z
+;  DO        = PF2 key             TAB    = TAB key
+;  CONTINUE  = PF3 key             GOTO   = > key
+;  HELP      = PF4 key
+;
+ INPUT = \12\200\200\15\200\200                         LF  CR
+ INPUT = \33[A\200\1\33[B\200\2\33[C\200\3\33[D\200\4   UP  DOWN  -->  <--
+ INPUT = \33OP\33[A\200\11\33OP\33[B\200\12             Page UP   Page DOWN
+ INPUT = \33OP\33[C\200\13\33OP\33[D\200\14             Page -->   Page <---
+ INPUT = \33OP\33OP\200\377                             Page-Page (0377=ignore)
+ INPUT = \33OQ\200\25\33OS\200\15\11\200\16             Do, Help, Tab
+ INPUT = \1\200\21\32\200\22                            Home, End
+ INPUT = \30\200\037                                    RUBOUT
+ INPUT = \330R\200\100                                  Continue Command File
+        ho = \33[H      home
+        el = \33[K\207\3        erase to end of line
+        es = \33[J\207\12    erase to end of screen
+        ri = \33[C         right-arrow
+        nl = \15\12        newline char
+        fs = \12           sequence that causes forward-scrolling (normal)
+        rs = \33M          sequence that causees reverse scrolling
+        dc = \33[\204\1;\205\1H\207\2      direct cursor with 2 fillers
+        sc = \33[\204\1;\205\1r\1\1\1\1\1       set scrolling region
+        g1 = \16\200a
+        g2 = \16\200n
+        g3 = \16\200`
+        g4 = \16\200O
+        g5 = \16\200X
+        g6 = \16\200*
+        gf = \17        exit with Shift-In
+	h1 = \33[7m\200\33[0m             set reverse /bell for error msgs
+	h2 = \33[7m\200\33[0m             set reverse video for current cell
+	h3 = \33[7m\200\33[0m             set reverse video for row/col nums
+	h4 = \33[1m\200\33[0m             set high intensity for locked cells
+;initialization sequence for 132-col VT100:
+        is = \33<       if in VT52 mode, put back in VT100 mode
+        is = \33[?3h    set to 132 cols
+        is = \33[?4l    set jump-scrolling (instead of smooth-scrolling)
+        is = \33[?5l    normal instead of reverse video
+        is = \33[?6l    absolute instead of relative origins
+        is = \33[?7l    no wraparound
+        is = \33[?1l    set arrow keys to give cursor movement codes,
+        is = \33>       numeric keypad to give numeric codes
+        is = \33)0\17   set G1 char set to be special graphic chars
+!
+!VT125W     24      132            132 Column  VT125 - VT100 with graphics
+;
+;                                  Source : R&D
+;                                  Written By : DDS
+;                                  Checked: 9-14-84
+;                                  Comments: REGIS Graphics
+;
+;  BACKOUT   = BACKSPACE key       RUBOUT = CONTROL-X
+;  DELETE    = DELETE              HOME   = CONTROL-A
+;  PAGE      = PF1 key             END    = CONTROL-Z
+;  DO        = PF2 key             TAB    = TAB key
+;  CONTINUE  = @ key               GOTO   = > key
+;  HELP      = PF4 key
+;
+ INPUT = \30\200\037                                    Rubout
+ INPUT = \12\200\200\15\200\200                         LF  CR
+ INPUT = \33[A\200\1\33[B\200\2\33[C\200\3\33[D\200\4   UP  DOWN  -->  <--
+ INPUT = \33OP\33[A\200\11\33OP\33[B\200\12             Page UP   Page DOWN
+ INPUT = \33OP\33[C\200\13\33OP\33[D\200\14             Page -->   Page <---
+ INPUT = \33OQ\200\25\33OS\200\15\11\200\16             Do, Help, Tab
+ INPUT = \1\200\21\32\200\22                            HOME , END
+ INPUT = \33OP\33OP\200\377                Page-Page (0377=ignore)
+;  INPUT = \33Ow\200\301                                  function key
+;  INPUT = \33Ox\200\302                                  function key
+;  INPUT = \33Oy\200\303                                  function key
+;  INPUT = \33Om\200\304                                  function key
+;  INPUT = \33Ot\200\305                                  function key
+;  INPUT = \33Ou\200\306                                  function key
+;  INPUT = \33Ov\200\307                                  function key
+;  INPUT = \33Ol\200\310                                  function key
+;  INPUT = \33Oq\200\311                                  function key
+;  INPUT = \33Or\200\312                                  function key
+;  INPUT = \33Os\200\313                                  function key
+;  INPUT = \33OM\200\314                                  function key
+;  INPUT = \33Op\200\315                                  function key
+;  INPUT = \33On\200\316                                  function key
+        ho = \33[H              home
+        el = \33[K\207\3        erase to end of line
+        es = \33[J\207\12       erase to end of screen
+        ri = \33[C              right-arrow
+        nl = \15\12             newline char
+        fs = \12                sequence that causes forward-scrolling (normal)
+        rs = \33M               sequence that causes reverse-scrolling
+        dc = \33[\204\1;\205\1H\207\10          direct cursor with 8 fillers
+        sc = \33[\204\1;\205\1r\207\5           set scrolling region
+        gr = VT125              terminal can do Regis graphics
+        g1 = \16\200a
+        g2 = \16\200n
+        g3 = \16\200`
+        g4 = \16\200O
+        g5 = \16\200X
+        g6 = \16\200*
+        gf = \17                        exit with Shift-In
+      h1 = \33[5m\200\33[0m             set reverse for error msgs
+      h2 = \33[7m\200\33[0m             set reverse video for current cell
+      h3 = \33[7m\200\33[0m             set reverse video for row/col nums
+      h4 = \33[7m\200\33[0m             set reverse video current command
+      h5 = \33[1m\200\33[0m             set bolding for titles
+;initialization sequence for 132-col VT125:
+        is = \33<       if in VT52 mode, put back in VT100 mode
+        is = \33[?3h    set to 132 cols
+        is = \33[?4l    set jump-scrolling (instead of smooth-scrolling)
+        is = \33[?5l    normal video
+        is = \33[?6l    absolute instead of relative origins
+        is = \33[?7l    no wraparound
+        is = \33[?1l    set arrow keys to give cursor movement codes,
+        is = \33>         numeric keypad to give numeric codes
+;       is = \33=         keypad application mode set
+        is = \33)0\17   set G1 char set to be special graphic chars
+!
+!VT220W        24       132      132 Column VT220
+;                                             Source:  R&D
+;                                             Written By: DDS
+;                                             Checked:  9/14/84
+;                                             Comments:
+;
+;  CR        = Return key             Continue = F9 key
+;  F8        = DO (run command file)  Rubout   = CONTROL-X
+;  F12       = BACKSPACE key          HOME     = CONTROL A
+;  DELETE    = DELETE key             END      = CONTROL Z
+;  HELP      = Help key
+;  PAGE      = Next Screen
+;  GOTO      = > or Find key
+;
+ INPUT = \12\200\200\15\200\200\33[29~\200\200          LF  CR
+ INPUT = \33[24~\200\10\33[28~\200\15\11\200\16         Backspace,Help,Tab
+ INPUT = \33[A\200\1\33[B\200\2\33[C\200\3\33[D\200\4   UP  DOWN  -->  <--
+ INPUT = \33[6~\33[A\200\11\33[6~\33[B\200\12           Page Up   Page Down
+ INPUT = \33[6~\33[C\200\13\33[6~\33[D\200\14           Page ->    Page <--
+ INPUT = \33[1~\200\076\33[6~\33[6~\200\377             GOTO
+ INPUT = \33[19~\200\25\1\200\21\32\200\22              Do,Home,End
+ INPUT = \30\200\037                                    Rubout
+ INPUT = \33[2~\200\377\33[3~\200\377\33[4~\200\377     INS,REM,SEL ignored
+ INPUT = \33[5~\200\377                                 PREV Page Ignored
+ INPUT = \33[20~\200\100                                Continue Command File
+        ho = \33[H      home
+        el = \33[K\207\3        erase to end of line
+        es = \33[J\207\12       erase to end of screen
+        ri = \33[C      right-arrow
+        nl = \12        newline char
+        fs = \12        sequence that causes forward-scrolling (normal)
+        rs = \33M       sequence that causes reverse-scrolling
+        dc = \33[\204\1;\205\1H\207\2         	direct cursor with 2 fillers
+        sc = \33[\204\1;\205\1r\207\5           set scrolling region
+        g1 = \16\200a
+        g2 = \16\200n
+        g3 = \16\200`
+        g4 = \16\200O
+        g5 = \16\200X
+        g6 = \16\200*
+        gf = \17	exit with Shift-In
+        h1 = \33[5m\200\33[0m
+        h2 = \33[7m\200\33[0m
+        h3 = \33[7m\200\33[0m
+        h4 = \33[7m\200\33[0m
+        h5 = \33[1m\200\33[0m
+;initialization sequence for 132-col VT220:
+        is = \33[62;1"p	set level 2 compatibility, 7 bit codes
+        is = \33<       if in VT52 mode, put back in VT100 mode
+        is = \33[?3h    set to 132 cols
+        is = \33[?4l    set jump-scrolling (instead of smooth-scrolling)
+        is = \33[?5l    normal instead of reverse video
+        is = \33[?6l    absolute instead of relative origins
+        is = \33[?7l    no wraparound
+        is = \33[?1l    set arrow keys to give cursor movement codes,
+        is = \33>       numeric keypad to give numeric codes
+        is = \33)0\17   set G1 char set to be special graphic chars
+!
+!VT240W        24        132      132 Column VT240
+;                                             Source:  R&D
+;                                             Written By: DDS
+;                                             Checked:  9/14/84
+;                                             Comments: REGIS Graphics
+;
+;  CR        = Return key             Continue = F9 key
+;  F8        = DO (run command file)  Rubout   = CONTROL-X
+;  F12       = BACKSPACE key          HOME     = CONTROL A
+;  DELETE    = DELETE key             END      = CONTROL Z
+;  HELP      = Help key
+;  PAGE      = Next Screen
+;  GOTO      = > or Find key
+;
+ INPUT = \12\200\200\15\200\200\33[29~\200\200          LF  CR
+ INPUT = \33[24~\200\10\33[28~\200\15\11\200\16         Backspace,Help,Tab
+ INPUT = \33[A\200\1\33[B\200\2\33[C\200\3\33[D\200\4   UP  DOWN  -->  <--
+ INPUT = \33[6~\33[A\200\11\33[6~\33[B\200\12           Page Up   Page Down
+ INPUT = \33[6~\33[C\200\13\33[6~\33[D\200\14           Page ->    Page <--
+ INPUT = \33[1~\200\076\33[6~\33[6~\200\377             GOTO
+ INPUT = \33[19~\200\25\1\200\21\32\200\22              Do,Home,End
+ INPUT = \30\200\037                                    Rubout
+ INPUT = \33[2~\200\377\33[3~\200\377\33[4~\200\377     INS,REM,SEL ignored
+ INPUT = \33[5~\200\377                                 PREV Page Ignored
+ INPUT = \33[20~\200\100                                Continue Command File
+        ho = \33[H      home
+        el = \33[K\207\3        erase to end of line
+        es = \33[J\207\12       erase to end of screen
+        ri = \33[C      right-arrow
+        nl = \15\12     newline char
+        fs = \12        sequence that causes forward-scrolling (normal)
+        rs = \33M       sequence that causes reverse-scrolling
+        dc = \33[\204\1;\205\1H\207\2         	direct cursor with 2 fillers
+        sc = \33[\204\1;\205\1r\207\5           set scrolling region
+        gr = VT240
+        g1 = \16\200a
+        g2 = \16\200n
+        g3 = \16\200`
+        g4 = \16\200O
+        g5 = \16\200X
+        g6 = \16\200*
+        gf = \17	exit with Shift-In
+        h1 = \33[5m\200\33[0m
+        h2 = \33[7m\200\33[0m
+        h3 = \33[7m\200\33[0m
+        h4 = \33[7m\200\33[0m
+        h5 = \33[1m\200\33[0m
+;initialization sequence for 132-col VT240:
+        is = \33[62;1"p	set level 2 compatibility, 7 bit codes
+        is = \33<       if in VT52 mode, put back in VT100 mode
+        is = \33[?3h    set to 132 cols
+        is = \33[?4l    set jump-scrolling (instead of smooth-scrolling)
+        is = \33[?5l    normal instead of reverse video
+        is = \33[?6l    absolute instead of relative origins
+        is = \33[?7l    no wraparound
+        is = \33[?1l    set arrow keys to give cursor movement codes,
+        is = \33>       numeric keypad to give numeric codes
+        is = \33)0\17   set G1 char set to be special graphic chars
+!
+!TEK4105    30      80              TEK4105 Terminal
+;
+;                                  Source : R&D
+;                                  Written By : FPI
+;                                  Checked: 12-14-84
+;                                  Comments:
+;
+;  BACKUP    = BACKSPACE key       PAGE = F5 key
+;  DELETE    = RUBOUT              DO = F6 key
+;  UP ARROW = F1 key               RESUME = F7 key
+;  DOWN ARROW = F2 key             HELP = F8 key 
+;  LEFT ARROW = F3 key
+;  RIGHT ARROW = F4 key
+;
+ INPUT = \12\200\200\15\200\200                         LF  CR
+ INPUT = \33E\200\1\33F\200\2\33H\200\3\33G\200\4       UP  DOWN  -->  <--
+ INPUT = \33[A\200\1\33[B\200\2\33[C\200\3\33[D\200\4   UP  DOWN  -->  <--
+ INPUT = \33OP\33E\200\11\33OP\33F\200\12               Page UP   Page DOWN
+ INPUT = \33OP\33[A\200\11\33OP\33[B\200\12             Page UP   Page DOWN
+ INPUT = \33OP\33H\200\13\33OP\33G\200\14               Page -->   Page <---
+ INPUT = \33OP\33[C\200\13\33OP\33[D\200\14             Page -->   Page <---
+ INPUT = \33OP\33OP\200\377                             Page-Page (0377=ignore)
+ INPUT = \33OQ\200\25					Do
+ INPUT = \33OR\200@					Resume
+ INPUT = \33OS\200\15\11\200\16             		Help, Tab
+ INPUT = \1\200\21\32\200\22                            Home, End
+ INPUT = \20\200\177                                    Rubout
+;        ho = \33[H              home
+        el = \33[K\207\3        erase to end of line
+        es = \33[J\207\12       erase to end of screen
+        ri = \33[C              right-arrow
+        nl = \15\12             newline char
+        fs = \33D        sequence that causes forward-scrolling (normal)
+        rs = \33[?6h\33M           sequence that causes reverse-scrolling
+        dc = \33[\204\1;\205\1H\207\10          direct cursor with 8 fillers
+        sc = \33[\204\1;\205\1r\207\5\33[?6h       set scrolling region
+        gr = TEK4105        terminal can do Tektronix 4105 graphics
+;        g1 = \16\200a
+;        g2 = \16\200n
+;        g3 = \16\200`
+;        g4 = \16\200O
+;        g5 = \16\200X
+;        g6 = \16\200*
+;        gf = \17                        exit with Shift-In
+      h1 = \33[<6m\33[5m\200\33[0m\33[<1m    error msgs highlighting
+      h2 = \33[32m\33[47m\33[7m\200\33[0m\33[40m\33[37m  current cell
+      h3 = \33[31m\33[7m\200\33[0m\33[37m   row/col nums highlighting
+      h4 = \33[<4m\33[7m\200\33[0m\33[<1m   current command highlighting
+      h5 = \33[31m\33[7m\200\33[0m\33[37m   title highlighting
+;initialization sequence for TEK 4105 :
+	is = \33%!0	 Goto TEK mode
+        is = \33LI100    Set black and white colors.
+        is = \33KA0	Disenable dialog area
+	is = \33KDH'2A;D8\33KDH)2A;D7\33KDH(2A;D5\33KDH*2A;D6
+        is = \33%!1	Goto ANSI mode for spreadsheet
+!
+!TEK4115    34      79              TEK4115 Terminal
+;
+;                                  Source : R&D
+;                                  Written By : LAB
+;                                  Checked: 5-21-85
+;                                  Comments: thru TEK manufacturer
+;
+;  BACKOUT = RUBOUT key                  DELETE     =  Backspace Key
+;  CURSOR  = F1 - F4                     HOME       =  Shift F1
+;  END     = Shift F2                    PAGE       =  F5 Key
+;  GOTO    = F6                          NEXT WINDOW=  Shift F6
+;  DO      = F7                          CONTINUE   =  Shift F7
+;  HELP    = F8
+;
+ INPUT = \12\200\200\15\200\200                         LF  CR
+ INPUT = \33Om\200\1\33On\200\2\33Op\200\3\33Oo\200\4   UP DOWN RIGHT LEFT
+ INPUT = \33Oe\200\1\33Of\200\2\33Oh\200\3\33Og\200\4   UP DOWN RIGHT LEFT
+ INPUT = \33Oi\33Om\200\11\33Oi\33On\200\12             PAGE UP PAGE DOWN
+ INPUT = \33Oi\33Oe\200\11\33Oi\33Of\200\12             PAGE UP PAGE DOWN
+ INPUT = \33Oi\33Op\200\13\33Oi\33Oo\200\14             PAGE RT PAGE LEFT
+ INPUT = \33Oi\33Oh\200\13\33Oi\33Og\200\14             PAGE RT PAGE LEFT
+ INPUT = \33Oi\33Oi\200\377                             PAGE PAGE IGNORE
+ INPUT = \33Ok\200\25                                   DO = F7
+ INPUT = \33Oj\200>                                     GOTO = F6 
+ INPUT = \33OJ\200;                                     NEXT WINDOW=Shift F6
+ INPUT = \33OK\200@                                     CONTINUE = Shift F7
+ INPUT = \33Ol\200\15                                   HELP = F8
+ INPUT = \11\200\16                                     TAB = TAB
+ INPUT = \33OE\200\21                                   HOME = Shift F1 
+ INPUT = \33OF\200\22                                   END = Shift F2
+ INPUT = \177\200\10                                    BACKOUT = RUBOUT
+ INPUT = \10\200\177                                    RUBOUT  = Backspace
+        ho = \33[;H                home 
+        el = \33[0K\207\3          erase to end of line
+        es = \33[0J\207\12         erase to end of screen
+        ri = \33[C                 right-arrow
+        nl = \15\12                newline char
+        fs = \33[B                 sequence that causes forward-scrolling (normal)
+        rs = \33[?6h\33M           sequence that causes reverse-scrolling
+        dc = \33[\204\1;\205\1H\207\10          direct cursor with 8 fillers
+        gr = TEK4110            terminal can do Tektronix graphics
+;HIGHLIGHTING:
+        h1 = \33[1;7m\200\33[0m       set rendition of error messages        
+        h2 = \33[1;7m\200\33[0m       set rendition of current cell        
+        h3 = \33[1;7m\200\33[0m       set rendition of row/col numbers        
+        h4 = \33[1;7m\200\33[0m       set rendition of current command       
+        h5 = \33[1;4;7m\200\33[0m     set rendition of titles       
+;initialization sequence for TEK 4115 :
+        is = \33%!0                   Go to TEK mode
+        is = \33KW1                   Enable keyboard expansions
+        is = \33NQ~8                  Set queuesize to 1000
+        is = \33LBF6                    Set Dialog Area Buffer to 102 lines
+        is = \33LLB2                    Set Dialog Area to 34 lines
+        is = \33LV1                   Toggle Dialog Area visibility
+        is = \33MQ2                   Set STROKE graphtext precision
+        is = \33RC1                   Select viewport 1
+        is = \33RA100                 Set viewport attributes to 1 0 0
+        is = \33RV\40``\40@7p?_       Set viewport corners to 0,0 and 4095,3071
+        is = \33RE0                   Set the border visibility to "invisible"
+        is = \33LV1                   Reset dialog area visibility
+        is = \33\14                   Clear screen to make viewport take affect
+        is = \33LJ4                   Set dialog area alternate index
+        is = \33KDH03A;D?F5           Function Key 1
+        is = \33KDH13A;D?F6           Function Key 2
+        is = \33KDH23A;D?F7           Function Key 3
+        is = \33KDH33A;D?F8           Function Key 4
+        is = \33KDH43A;D?F9           Function Key 5
+        is = \33KDH53A;D?F:           Function Key 6
+        is = \33KDH63A;D?F;           Function Key 7
+        is = \33KDH73A;D?F<           Function Key 8
+        is = \33KDH83A;D?D5           Function Key Shift 1
+        is = \33KDH93A;D?D6           Function Key Shift 2
+        is = \33KDH:3A;D?D7           Function Key Shift 3
+        is = \33KDH;3A;D?D8           Function Key Shift 4
+        is = \33KDH<3A;D?D9           Function Key Shift 5
+        is = \33KDH=3A;D?D:           Function Key Shift 6
+        is = \33KDH>3A;D?D;           Function Key Shift 7
+        is = \33KDH?3A;D?D<           Function Key Shift 8
+        is = \33%!1                   Go to ANSI mode
+        is = \33[?3l                  set to 80 cols
+        is = \33[?5l                  normal video
+        is = \33[?6l                  absolute instead of relative origins
+        is = \33[?7l                  no wraparound    
+        is = \33(B\17                 select US ASCII character set
+!
+!VIS550       33      80              Visual 550
+;
+;                                  Source : R&D
+;                                  Written By : FPI
+;                                  Checked: 9-14-84
+;                                  Comments: 4014-like graphics
+;
+;  BACKOUT    = BACKSPACE key       TAB        = TAB key
+;  DELETE     = DELETE              PAGE UP    = F7 key
+;  HELP       = F1 key              PAGE DOWN  = F8 key
+;  DO         = F2 key              RUBOUT     = F9 key
+;  RESUME     = F3 key              HOME       = F10 key
+;  GOTO       = F4 key              END        = F11 key
+;  PAGE LEFT  = F5 key
+;  PAGE RIGHT = F6 key
+;
+ INPUT = \33_I\33\134\200\037                           Rubout
+ INPUT = \12\200\200\15\200\200                         LF  CR
+ INPUT = \33[A\200\1\33[B\200\2\33[C\200\3\33[D\200\4   UP  DOWN  -->  <--
+ INPUT = \33_G\33\134\200\11\33_H\33\134\200\12         Page UP   Page DOWN
+ INPUT = \33_E\33\134\200\13\33_F\33\134\200\14         Page <--- Page -->
+ INPUT = \33_B\33\134\200\25\33_A\33\134\200\15         Do, Help
+ INPUT = \11\200\16                                     Tab
+ INPUT = \33_J\33\134\200\21\33_K\33\134\200\22         HOME , END
+ INPUT = \33_C\33\134\200@\33_D\33\134\200\76           Resume, GOTO
+        ho = \33[H              home
+        el = \33[K\207\3        erase to end of line
+        es = \33[J\207\12       erase to end of screen
+        ri = \33[C              right-arrow
+        nl = \15\12             newline char
+        fs = \12                sequence that causes forward-scrolling (normal)
+        rs = \33M               sequence that causes reverse-scrolling
+        dc = \33[\204\1;\205\1H\207\10          direct cursor with 8 fillers
+        sc = \33[\204\1;\205\1r\207\5           set scrolling region
+        gr = V550               terminal can do pseudo 4014 graphics
+        g1 = \16\200j
+        g2 = \16\200k
+        g3 = \16\200o
+        g4 = \16\200O
+        g5 = \16\200X
+        g6 = \16\200*
+        gf = \17                        exit with Shift-In
+      h1 = \33[5m\200\33[0m             set blink for error msgs
+      h2 = \33[7m\200\33[0m             set reverse video for current cell
+      h3 = \33[7m\200\33[0m             set reverse video for row/col nums
+      h4 = \33[7m\200\33[0m             set reverse video current command
+      h5 = \33[1m\200\33[0m             set bolding for titles
+;initialization sequence for V550:
+;   force Visual 300 (ANSI ) mode.
+        is = \33<\33[?2h
+;   character mode with local scrolling.
+        is = \33[12;?6h
+;   do controls. no magic insert. no newline
+        is = \33[3;4;20l
+;   normal video. absolute origin. no autowrap. 33-line screen
+        is = \33[?5;?6;?7;166l
+;   set arrow keys to give cursor movement codes,
+        is = \33[?1l
+;   set numeric keypad to give numeric codes
+        is = \33>
+;   set G0 char set to English, G1 to line graphics.
+        is = \33[0;8(D
+;   reset function keys, just in case
+        is = \33[1;27;95;65;27;92p
+        is = \33[2;27;95;66;27;92p   
+        is = \33[3;27;95;67;27;92p   
+        is = \33[4;27;95;68;27;92p   
+        is = \33[5;27;95;69;27;92p   
+        is = \33[6;27;95;70;27;92p   
+        is = \33[7;27;95;71;27;92p   
+        is = \33[8;27;95;72;27;92p   
+        is = \33[9;27;95;73;27;92p   
+        is = \33[10;27;95;74;27;92p   
+        is = \33[11;27;95;75;27;92p   
+        is = \33[12;27;95;76;27;92p   
+!
+!WYSE50     24       79                   WYSE 50
+;                                         Written By: Laurie Bartley
+;                                         Date      : 7-19-85
+;                                         Checked   :11-14-85
+;                                         Comments  :
+;
+;
+;   UP        = UP ARROW                  DOWN   = CONTROL D
+;   RIGHT     = RIGHT ARROW               LEFT   = LEFT ARROW
+;   BACKOUT   = ESCAPE                    RUBOUT = CONTROL X
+;   DELETE    = DELETE                    HOME   = HOME KEY
+;   PAGE      = F1                        END    = CONTROL Z
+;   DO        = F2                        TAB    = TAB
+;   CONTINUE  = F3                        GOTO   = > key
+;   HELP      = F4          
+;
+  INPUT = \13\200\1\04\200\2\14\200\3\10\200\4  UP,DOWN,RIGHT,LEFT
+  INPUT = \1@\12\13\200\11\1@\12\04\200\12      PAGE UP, PAGE DOWN
+  INPUT = \1@\12\14\200\13\1@\12\10\200\14      PAGE RIGHT,PAGE LEFT
+  INPUT = \33\200\10                            BACKUP is ESCAPE
+  INPUT = \30\200\177                           RUBOUT is CONTROL X
+  INPUT = \27\200\37                            DELETE is DELETE
+  INPUT = \36\200\21                            HOME is HOME KEY
+  INPUT = \32\200\22                            END is CONTROL Z
+  INPUT = \1A\12\200\25                         DO is PF2
+  INPUT = \1B\12\200\100                        CONTINUE is F3
+  INPUT = \11\200\16                            TAB is TAB
+  INPUT = \1C\12\200\15                         HELP is PF4
+  INPUT = \15\200\200\12\200\200                CR LF
+                 ho = \36       home
+                 el = \33T      erase to end of line
+                 es = \33Y      erase to end of screen
+                 ri = \14       right arrow
+                 nl = \15\12    newline
+                 fs = \33K      forward scroll
+                 rs = \33J      reverse scroll
+                 dc = \33=\201\40\202\40\207\10 <ESC> = <row+20><col+20>
+;HIGHLIGHTING:
+          h1 = \33G2\200\33G0   Blinking error message
+;initialization sequence:
+                is = \33C\33"\33u  conversation mode, unlock keybrd, moni off
+                is = \33O\33r\33`\33) off:edit,insert,protect,write prot mode
+                is = \33>\330\33*  off:validation,column tabs,clear screen
+                is = \33A00        screen attributes normal
+                is = \33`:         80 col mode
+!
+!WYSE50W     24       131                 WYSE 50
+;                                         Written By: Laurie Bartley
+;                                         Date      : 7-19-85
+;                                         Checked   :11-14-85
+;                                         Comments  : 
+;
+;
+;   UP        = UP ARROW                  DOWN   = CONTROL D
+;   RIGHT     = RIGHT ARROW               LEFT   = LEFT ARROW
+;   BACKOUT   = ESCAPE                    RUBOUT = CONTROL X
+;   DELETE    = DELETE                    HOME   = HOME KEY
+;   PAGE      = F1                        END    = CONTROL Z
+;   DO        = F2                        TAB    = TAB
+;   CONTINUE  = F3                        GOTO   = > key
+;   HELP      = F4          
+;
+  INPUT = \13\200\1\04\200\2\14\200\3\10\200\4  UP,DOWN,RIGHT,LEFT
+  INPUT = \1@\12\13\200\11\1@\12\04\200\12      PAGE UP, PAGE DOWN
+  INPUT = \1@\12\14\200\13\1@\12\10\200\14      PAGE RIGHT,PAGE LEFT
+  INPUT = \33\200\10                            BACKUP is ESCAPE
+  INPUT = \30\200\177                           RUBOUT is CONTROL X
+  INPUT = \27\200\37                            DELETE is DELETE
+  INPUT = \36\200\21                            HOME is HOME KEY
+  INPUT = \32\200\22                            END is CONTROL Z
+  INPUT = \1A\12\200\25                         DO is PF2
+  INPUT = \1B\12\200\100                        CONTINUE is F3
+  INPUT = \11\200\16                            TAB is TAB
+  INPUT = \1C\12\200\15                         HELP is PF4
+  INPUT = \15\200\200\12\200\200                CR LF
+                 ho = \36       home
+                 el = \33T      erase to end of line
+                 es = \33Y      erase to end of screen
+                 ri = \14       right arrow
+                 nl = \15\12    newline
+                 fs = \33K      forward scroll
+                 rs = \33J      reverse scroll
+                 dc = \33=\201\40\202\40\207\10 <ESC> = <row+20><col+20>
+;HIGHLIGHTING:
+          h1 = \33G2\200\33G0   Blinking error message
+;initialization sequence:
+                is = \33C\33"\33u  conversation mode, unlock keybrd, moni off
+                is = \33O\33r\33`\33) off:edit,insert,protect,write prot mode
+                is = \33>\330\33*  off:validation,column tabs,clear screen
+                is = \33A00        screen attributes normal
+                is = \33`;         132 col mode
+!
+!WYSE75    24      80               VT100 Compatiable
+;
+;                                  Source : R&D
+;                                  Written By : Laurie Bartley
+;                                  Checked: 11-21-85
+;                                  Comments:
+;
+;  BACKOUT   = BACKSPACE key       RUBOUT = CONTROL-X
+;  DELETE    = DELETE              HOME   = CONTROL-A
+;  PAGE      = F1 key              END    = CONTROL-Z
+;  DO        = F2 key              TAB    = TAB key
+;  CONTINUE  = F3 key              GOTO   = > key
+;  HELP      = F4 key
+;
+ INPUT = \12\200\200\15\200\200                         LF  CR
+ INPUT = \33[A\200\1\33[B\200\2\33[C\200\3\33[D\200\4   UP  DOWN  -->  <--
+ INPUT = \33OP\33[A\200\11\33OP\33[B\200\12             Page UP   Page DOWN
+ INPUT = \33OP\33[C\200\13\33OP\33[D\200\14             Page -->   Page <---
+ INPUT = \33OP\33OP\200\377                             Page-Page (0377=ignore)
+ INPUT = \33OQ\200\25\33OS\200\15\11\200\16             Do, Help, Tab
+ INPUT = \1\200\21\32\200\22                            Home, End
+ INPUT = \30\200\037\25\200\037                         Rubout
+ INPUT = \33OR\200\100                                  continue command file
+        ho = \33[H              home
+        el = \33[K\207\3        erase to end of line
+        es = \33[J\207\12       erase to end of screen
+        ri = \33[C      right-arrow
+        nl = \15\12        newline char
+        fs = \12        sequence that causes forward-scrolling (normal)
+        rs = \33M       sequence that causes reverse-scrolling
+        dc = \33[\204\1;\205\1H\207\2          direct cursor with 8 fillers
+        sc = \33[\204\1;\205\1r\207\5           set scrolling region
+        g1 = \16\200a
+        g2 = \16\200n
+        g3 = \16\200`
+        g4 = \16\200O
+        g5 = \16\200X
+        g6 = \16\200*
+        gf = \17        exit with Shift-In
+      h1 = \33[5m\200\33[0m             set reverse for error msgs
+      h2 = \33[7m\200\33[0m             set reverse video for current cell
+      h3 = \33[7m\200\33[0m             set reverse video for row/col nums
+      h4 = \33[7m\200\33[0m             set reverse video current command
+      h5 = \33[1m\200\33[0m             set bolding for titles
+;initialization sequence for 80-col VT100:
+        is = \33<       if in VT52 mode, put back in VT100 mode
+        is = \33[?3l    set to 80 cols
+        is = \33[?4l    set jump-scrolling (instead of smooth-scrolling)
+        is = \33[?5l    normal video
+        is = \33[?6l    absolute instead of relative origins
+        is = \33[?7l    no wraparound
+        is = \33[?1l    set arrow keys to give cursor movement codes,
+        is = \33>         numeric keypad to give numeric codes
+        is = \33)0\17   set G1 char set to be special graphic chars
+!
+!WYSE100  24           79
+;                                             Source:  R&D
+;                                             Written By: FPI
+;                                             Checked:
+;                                             Comments:
+;
+;  UP           = Up Arrow key                PAGE     = Page Key
+;  DOWN         = Scroll down key             HELP     = F4 Key
+;  LEFT         = Left Arrow key              DO       = F2 Key
+;  RIGHT        = Right Arrow key             CONTINUE = F3 Key
+;  BACKOUT      = Shifted TAB key             HOME     = Home Key
+;  DELETE RIGHT = DEL/INS CHAR key            END      = F1 Key
+;  DELETE LEFT  = RUBOUT key
+;
+ INPUT = \33v\200\1\13\200\1\33w\200\2         up, down
+ INPUT = \14\200\3\10\200\4                    right,left
+ INPUT = \33h\13\200\11\33h\33v\200\11         page up
+ INPUT = \33h\33w\200\12                       page down
+ INPUT = \33h\14\200\13\33h\10\200\14          page right,left
+ INPUT = \33K\13\200\11\33K\33v\200\11         page up
+ INPUT = \33K\33w\200\12                       page down
+ INPUT = \33K\14\200\13\33K\10\200\14          page right,left
+ INPUT = \33h\33h\200\377\33K\33K\200\377      Ignore page-page
+ INPUT = \33K\33h\200\377\33h\33K\200\377      Ignore page-page
+ INPUT = \33I\200\10                           backout
+ INPUT = \33Q\200\177\33W\200\177              delete right
+ INPUT = \177\200\37                           delete left
+ INPUT = \1C\12\200\15\36\200\15\11\200\16     HELP = F4, TAB = tab
+ INPUT = \1A\12\200\25\1I\12\200\25            DO is F2
+ INPUT = \1B\12\200\100                        CONTINUE = F3
+ INPUT = \33}\12\200\21\1H\12\200\21           HOME is Home
+ INPUT = \1@\12\200\22\1K\12\200\22            END is F1
+ INPUT = \15\200\200\12\200\200                CR, LF terminators
+        ho = \36                          home
+        el = \33t                         erase to eol
+        es = \33y                         erase to end of screen
+        ri = \14                          right cursor
+        nl = \15\12                       newline
+        fs = \33v                         forward scroll
+        rs = \33w                         reverse scroll
+        dc = \33=\201\40\202\40\207\20    <ESC> = <row + 20><col + 20>
+;        sc =                             no way to set scrolling region
+        g1 = #
+        g2 = \33H7
+        g3 = X
+        g4 = \33H;
+        g5 = \33H8
+        g6 = \33H?
+        gf = \0
+;HIGHLIGHTING:
+        h1 = \33G2\200\33G0      Blinking error messages
+;                                cursor is destructive; do not use
+;                                Highlighting command tramples command line
+;                                Underlining titles tramples things, too.
+;INITIALIZATION SEQUENCE:
+        is = \33C\33"\33u         conversational mode; unlock kbd; monitor off
+        is = \33O\33r\33'\33)     off: edit, insert, protect, write prot mode
+        is = \33>\330\33*         off: validation, column tabs; clear screen
+        is = \33A00               screen attributes normal
+        is = \33A14               function key labels in reverse video
+        is = \33A30               host message attributes normal
+        is = \33F2020\40by\40Access\40Technology\15      Host message
+        is = \33z@\177\33zA\177\33zB\177                 Reset Function keys
+        is = \33zC\177\33zH\177\33zI\177\33zJ\177
+        is = \33zK\177
+        is = \33z0\40HOME\15              label F1 is HOME
+        is = \33z1\40\40\40DO\15          F2 is DO
+        is = \33z3\40\40END\15            F4 is END
+!
+!TVI925     24      78                        Televideo 925
+;                                             Source:  R & D
+;                                             Written By: FPI
+;                                             Checked:
+;                                             Comments:
+;
+;  UP           = Up Arrow key                PAGE     = F1 Key 
+;  DOWN         = Down Arrow key              HELP     = F2 Key
+;  LEFT         = Left Arrow key              DO       = F3 Key
+;  RIGHT        = Right Arrow key             HOME     = Home Key
+;  BACKOUT      = Backtab key                 END      = F11 Key
+;  DELETE RIGHT = Char Delete key             CONTINUE = @ Key
+;  DELETE LEFT  = F5 key
+;
+ INPUT = \13\200\1\04\200\2\14\200\3\10\200\4           UP  DOWN  -->  <--
+ INPUT = \1@\12\13\200\11\1@\12\04\200\12               Page UP   Page DOWN
+ INPUT = \1@\12\14\200\13\1@\12\10\200\14               Page -->   Page <--
+ INPUT = \1@\12\1@\12\200\377\1@\12\1@\12\200\377       Page-Page
+ INPUT = \1`\12\13\200\11\1`\12\26\200\12               Page UP   Page DOWN
+ INPUT = \1`\12\14\200\13\1`\12\10\200\14               Page -->   Page <--
+ INPUT = \1`\12\1`\12\200\377\1`\12\1@\12\200\377       Page-Page
+ INPUT = \33I\200\10                                    BACKUP
+ INPUT = \33W\200\177\1d\12\200\37\1D\12\200\37         del right, del left
+ INPUT = \1A\12\200\15\1a\12\200\15\11\200\16           Help, Tab
+ INPUT = \1B\12\200\25\1b\12\200\25                     Do
+ INPUT = \36\200\21                                     Home
+ INPUT = \1J\12\200\22\1j\12\200\22                     End
+ INPUT = \15\200\200\12\200\200                         CR, lf
+        ho = \36        home (cursor to line 0, column 0)
+        el = \33t       erase to end of line
+        es = \33y       erase to end of screen
+        ri = \14        right-arrow (non-destructive right-space)
+        nl = \37        Unix newline char (does CR-LF)
+        fs = \12        sequence that causes forward-scrolling
+        rs = \33E       reverse line feed (used for reverse scrolling)
+        dc = \33=\201\40\202\40\207\10      direct cursor:  ESC = l+040 c+040
+        g1 = \200#
+        g2 = \200O
+        g3 = \200=
+        g4 = \200H
+        g5 = \200*
+        g6 = \200X
+;HIGHLIGHTING:
+       h1 = \33G6\200\33G0            set reverse for error msgs
+;      h2 =                           cannot use other highlights
+;      h3 =                           since they take up a character
+;      h4 =                           position and mess up the display
+;      h5 =
+;INITIALIZATION SEQUENCE:
+        is = \33u\33C            monitor mode off; conversational mode
+        is = \36G\33x1\12        clear screen; set end of line to cr/lf
+        is = \33(\33\63\33'      end prot write; clear all tabs; prot off
+        is = \33.2\33d\33N       steady block cursor; normal video; unblank
+        is = \33G0               normal video
+!
+!TVI950       24       80                 TELEVIDEO 950
+;
+;                                         Written By: Laurie Bartley
+;                                         Date      : 6-26-85
+;                                         Checked   : 6-26-85
+;                                         Comments  : 
+;
+;
+;   UP        = UP ARROW                  DOWN   = DOWN ARROW
+;   RIGHT     = RIGHT ARROW               LEFT   = LEFT ARROW
+;   BACKOUT   = ESCAPE                    RUBOUT = CTRL X
+;   DELETE    = DELETE                    HOME   = CTRL A
+;   PAGE      = F1                        END    = CTRL Z
+;   DO        = F3                        TAB    = TAB
+;   CONTINUE  = @                         GOTO   = > key
+;   HELP      = F4          
+;
+  INPUT = \15\200\200\12\200\200                CR LF
+  INPUT = \13\200\1\26\200\2\14\200\3\10\200\4  UP,DOWN,RIGHT,LEFT
+  INPUT = \1@\15\13\200\11\1@\15\26\200\12      PAGE UP, PAGE DOWN
+  INPUT = \1@\15\14\200\13\1@\15\10\200\14      PAGE RIGHT,PAGE LEFT
+  INPUT = \33\200\10                            BACKUP is ESC
+  INPUT = \30\200\177                           RUBOUT is CTRL X
+  INPUT = \27\200\37                            DELETE is DEL
+  INPUT = \36\200\21                            HOME is CTRL A
+  INPUT = \32\200\22                            END is CTRL Z
+  INPUT = \1B\15\200\25                         DO is F3
+  INPUT = \11\200\16                            TAB is TAB
+  INPUT = \01J\15\200\76                        GOTO is F11
+  INPUT = \76\200\76                            GOTO is > key 
+  INPUT = \1C\15\200\15                         HELP is F4
+  INPUT = \100\200\100                          CONTINUE is @
+  INPUT = \1A\15\200\377\1D\15\200\377          IGNORE F2,F5
+  INPUT = \1E\15\200\377\1F\15\200\377          IGNORE F6,F7
+  INPUT = \1G\15\200\377\1H\15\200\377          IGNORE F8,F9
+  INPUT = \1I\15\200\377                        IGNORE F10
+                 ho = \36       home
+                 el = \33T      erase to end of line
+                 es = \33Y      erase to end of screen
+                 ri = \14       right arrow
+                 nl = \15\12    newline
+                 fs = \33K      forward scroll
+                 rs = \33J      reverse scroll
+                 dc = \33=\201\40\202\40\207\10 <ESC> = <row+20><col+20>
+;HIGHLIGHTING:
+          h1 = \33G2\200\33G0   Blinking error message
+;INITIALIZATION SEQUENCE:
+                 is = \33u\33C   monitor mode off, conversation mode on
+                 is = \36\33Y    blank screen
+                 is = \33(       set write protect (half intensity) off
+                 is = \33l       full duplex
+                 is = \33.2\33d  steady block cursor
+                 is = \33G0      normal video
+!
+!TVI970         24      80
+;                                             Source:  R & D
+;                                             Written By: FPI
+;                                             Checked:
+;                                             Comments:
+;
+;  UP = Up Arrow key                          PAGE     = Page Key
+;  DOWN = Down Arrow key                      HELP     = F1
+;  LEFT = Left Arrow                          DO       = F2
+;  RIGHT = Right Arrow key                    CONTINUE = @ Key
+;  BACKOUT = Back Space key                   HOME     = Home Key
+;  DELETE RIGHT = Delete key                  END      = F6 Key
+;  DELETE LEFT = Char Delete key              
+;
+ INPUT = \12\200\200\15\200\200                         LF  CR
+ INPUT = \33[A\200\1\33[B\200\2                         UP  DOWN
+ INPUT = \33[C\200\3\33[D\200\4                         -->  <--
+ INPUT = \33[U\33[A\200\11\33[U\33[B\200\12             Page UP   Page DOWN
+ INPUT = \33[U\33[C\200\13\33[U\33[D\200\14             Page -->   Page <--
+ INPUT = \33[U\33[U\200\377                             Page-Page
+ INPUT = \10\200\10                                     Backout
+ INPUT = \177\200\177\33[P\200\177                      Del right; del left
+ INPUT = \33\77a\14\200\15\33\77A\14\200\15             Help
+ INPUT = \11\200\16                                     Tab
+ INPUT = \33\77b\14\200\25\33\77B\14\200\25             Do
+ INPUT = \33[H\200\21                                   Home
+ INPUT = \33\77f\14\200\22\33\77F\14\200\22             End
+        ho = \33[H        home (cursor to line 0, column 0)
+        el = \33[K        erase to end of line
+        es = \33[2J       erase to end of screen CLEAR SPACE KEY
+        ri = \33[C        right-arrow (non-destructive right-space)
+        nl = \15\12
+        fs = \12           sequence that causes forward-scrolling (normal)
+        rs = \33M          sequence that causees reverse scrolling
+        dc = \33[\204\1;\205\1H\207\10          direct cursor with 10 fillers
+        sc = \33[\204\1;\205\1r\1\1\1\1\1       set scrolling region
+        g1 = \200#
+        g2 = \200O
+        g3 = \200=
+        g4 = \200H
+        g5 = \200*
+        g6 = \200X
+;HIGHLIGHTING:
+      h1 = \33[5m\200\33[0m             set reverse for error msgs
+      h2 = \33[7m\200\33[0m             set reverse video for current cell
+      h3 = \33[7m\200\33[0m             set reverse video for row/col nums
+      h4 = \33[7m\200\33[0m             set reverse video current command
+      h5 = \33[1m\200\33[0m             set bolding for titles
+;INITIALIZATION SEQUENCE:
+        is = \33[3l\33[?10l\33[3l         process escapes; conversational mode
+        is = \33[12l\33[?17l              no echo; forms build off
+        is = \33[4l\33[2l                 replace on edit; unlock keyboard
+        is = \33[0Q\33[10l                edit within screen; to cursor right
+        is = \33[7l\33[19l                above cursor; within screen
+        is = \33[20h\33[?0l               use newline; unprotect mode
+        is = \33[?1l\33[?3l               cursor key mode off; 80 cols
+        is = \33[?4l\33[?5l               jump scroll; dark background
+        is = \33[?6l\33[?7l               absolute origin; autowrap off
+        is = \33[?8l\33[?9h               ignore CLEAR SPACE; enable control
+        is = \33[7;1z\33[3;1z             normal=low intens; steady block cursor
+        is = \33[?21l\33[0m               VT100 cursor address; normal screen
+        is = \33[1;0z\33[3g               24 lines/page; clear all tabs
+        is = \33[5;0z\17                  single size line; alpha chars.
+        is = \33>                         numeric keypad in numeric mode
+        is = \33|1;1;27;63;97\15          reset function key 1 to defaults
+        is = \33|17;1;27;63;65\15
+        is = \33|2;1;27;63;98\15          reset function key 2 to defaults
+        is = \33|18;1;27;63;66\15
+        is = \33|3;1;27;63;99\15          reset function key 3 to defaults
+        is = \33|19;1;27;63;67\15
+        is = \33|6;1;27;63;102\15         reset function key 6 to defaults
+        is = \33|22;1;27;63;70\15
+!
+;====================================================================
+;
+;             ********  PLOTTER DEFINITIONS ********
+;
+;
+; To enable the appropriate ones, copy the appropriate device definition
+; to the DEVICE section at the top of the file.  Remove the semicolons from 
+; the start of each line of the entry.  Don't forget to disable the
+; ones being replaced.
+;
+; There is a maximum of four (4) enabled  plotter definitions.  Remember to 
+; check the 20/20 logical device  names (between the IS and the ON) for 
+; conflicts -- the enabled devices must have unique names.
+;
+;====================================================================
+;                   ****  HP7475A Entries ****
+;====================================================================
+;
+; ** For making offline plots, the port name is a dummy.
+;    Device definitions are set to default to "A" sized paper.
+;    If "B" is installation standard, change to ph = 11 and pw = 17
+;
+;=====================================================================
+; * HP7475A with XON/XOFF, offline plots.
+;
+; DEVICE HP7475A IS hp6off ON PORT /dev/null
+;        ph = 8.5
+;        pw = 11
+;        is = \033.Y\033.R\033.@1024;0:\033.I80;;17:\033.N;19:
+;        ts = \033.Z
+;        of = offline
+;=====================================================================
+; * HP7475A with hardwire handshake, offline plots.
+;
+; DEVICE HP7475A IS hp6off ON PORT /dev/null
+;        ph = 8.5
+;        pw = 11
+;        is = \033.Y\033.R\033.@1024;1:
+;        ts = \033.Z
+;        of = offline
+;=====================================================================
+; * HP7475A with communications already set up, offline plots.
+;
+; DEVICE HP7475A IS hp6off ON PORT /dev/null
+;        ph = 8.5
+;        pw = 11
+;        is = \033.Y
+;        ts = \033.Z
+;        of = offline
+;=====================================================================
+;
+; **** Normal on-line HP7475A plotter entries.  Plotter has its own port,
+;      which is ASSIGNed to plot001.  Any setup necessary is done from
+;      the command file.
+;=====================================================================
+; * HP7475A with allocated plotter port, online plots, and 
+;   XON/XOFF line control.
+;
+; DEVICE HP7475A IS hp6on ON PORT /dev/plot
+;        is = \033.Y\033.J\033.K\033.R\033.@1024;0:\033.I80;;17:\033.N;19:
+;        ts = \033.Z
+;        ph = 8.5
+;        pw = 11
+;=====================================================================
+; * HP7475A with allocated plotter port, online plots, and 
+;   hardwire handshake line control.
+;
+; DEVICE HP7475A IS hp6on ON PORT /dev/plot
+;        is = \033.Y\033.R\033.@1024;1:
+;        ts = \033.Z
+;        ph = 8.5
+;        pw = 11
+;=====================================================================
+; ** On-line HP7475A plotter being driven through an eavesdrop cable.
+;    Uses XON/XOFF line control.
+;
+; DEVICE HP7475A IS hp6on ON PORT /dev/tty
+;        ph = 8.5
+;        pw = 11
+;        is = \033.Y\033.J\033.K\033.R\033.@1024;0:\033.I80;;17:\033.N;19:
+;        ts = \033.Z
+;=====================================================================
+; ** On-line HP7475A plotter being driven through an eavesdrop cable.
+;    Uses hardwire handshake line control.
+;
+; DEVICE HP7475A IS hp6on ON PORT /dev/tty
+;        ph = 8.5
+;        pw = 11
+;        is = \033.Y\033.J\033.K\033.RDF;SP0;PU;
+;        ts = \033.Z
+;=====================================================================
+; ** On-line HP7475A plotter being driven through a VT-125 
+;    printer port.  Uses XON/XOFF line control.
+;
+; DEVICE HP7475A IS hp6on ON PORT /dev/tty
+;        ph = 8.5
+;        pw = 11
+;        is = \033[5i\033[6i\033.Y\033.J\033.K\033.R\033.@1024;0:\033.I80;;17:\033.N;19:
+;        ts = \033.Z\033[7i\033[4i
+;=====================================================================
+; ** On-line HP7475A plotter being driven through a VT-125 
+;    printer port.  Uses hardwire handshake line control.
+;
+; DEVICE HP7475A IS hp6on ON PORT /dev/tty
+;        ph = 8.5
+;        pw = 11
+;        is = \033[5i\033[6i\033.Y\033.J\033.K\033.R\033.@1024;1:
+;        ts = \033.Z\033[7i\033[4i
+;=====================================================================
+; ** On-line HP7475A plotter being driven through a VT-240 
+;    printer port.    Uses XON/XOFF line control.
+;
+; DEVICE HP7475A IS hp6on ON PORT /dev/tty
+;        ph = 8.5
+;        pw = 11
+;        is = \033[5i\033.Y\033.J\033.K\033.R\033.@1024;0:\033.I80;;17:\033.N;19:
+;        ts = \033.Z\033[4i
+;=====================================================================
+; ** On-line HP7475A plotter being driven through a VT-240 
+;    printer port.   Uses hardwire handshake line control.
+;
+; DEVICE HP7475A IS hp6on ON PORT /dev/tty
+;        ph = 8.5
+;        pw = 11
+;        is = \033[5i\033.Y\033.J\033.K\033.R\033.@1024;1:
+;        ts = \033.Z\033[4i
+;=====================================================================
+; ** On-line Decwriter (LA-50 and LA-100) files
+;    The Decwriter must be plugged into the terminal's printer
+;    port.  The terminal is assumed to be the user's terminal.
+;=====================================================================
+; * LA-50 plugged into a VT-125.  Maximum chart width is 5.33 inches.
+; DEVICE VT1LA50 IS decwon ON PORT /dev/tty
+;        ph = 3.33
+;        pw = 5.33
+;=====================================================================
+; * LA-50 plugged into a VT-240.  Maximum chart width is 5.55 inches.
+; DEVICE VT2LA50 IS decwon ON PORT /dev/tty
+;        ph = 3.33
+;        pw = 5.55
+;=====================================================================
+; * LA-100 plugged into a VT-125.  Maximum chart width is 5.82 inches.
+; DEVICE VT1LA100 IS decwon ON PORT /dev/tty
+;        ph = 3.33
+;        pw = 5.82
+; * LA-100 plugged into a VT-240.  Maximum chart width is 6.06 inches.
+; DEVICE VT2LA100 IS decwon ON PORT /dev/tty
+;        ph = 3.33
+;        pw = 6.06

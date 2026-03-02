@@ -1,0 +1,48 @@
+
+#	@(#)Rrc.sh	1.6
+
+TZ=PST8PDT
+export TZ
+
+if [ ! -f /etc/mnttab ] ; then
+	/etc/devnm / | grep -v swap | grep -v root | /etc/setmnt
+fi
+set `who -r`
+CurrentState=$7
+TimesInCurrentState=$8
+PreviousState=$9
+
+case $CurrentState in
+S|1)
+	if [ $TimesInCurrentState -ne 0 ] ; then
+		# put umounts here
+		sync
+	fi
+	;;
+2)
+	# put mounts here (/usr, etc.)
+	if [ $TimesInCurrentState -eq 0 ] ; then
+		/usr/lib/ex3.9preserve -
+		rm -f /tmp/*
+	fi
+	rm -f /usr/spool/uucp/LCK*
+	rm -f /usr/adm/acct/nite/lock*
+	mv /usr/adm/sulog /usr/adm/OLDsulog
+	mv /usr/lib/cron/log /usr/lib/cron/OLDlog
+	> /usr/lib/cron/log
+	/etc/cron
+	echo cron started
+	# /bin/su - adm -c /usr/lib/acct/startup
+	# echo process accounting started
+	# rm -f /usr/spool/lp/SCHEDLOCK
+	# /usr/lib/lpsched
+	# echo "LP scheduler started"
+	#/usr/lib/errdemon
+	#echo errdemon started
+	# /bin/su - sys -c "/usr/lib/sa/sadc /usr/adm/sa/sa`date +%d`"
+	if [ $TimesInCurrentState -eq 0 ] ; then
+		/etc/dnld -d -f /usr/lib/dnld/icp -o /dev/ic1 -a 4000
+		/etc/dnld -dr -L -f /usr/lib/dnld/rker -o /dev/rk -a c00400
+	fi
+	;;
+esac

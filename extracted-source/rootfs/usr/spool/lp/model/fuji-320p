@@ -1,0 +1,113 @@
+#  
+# @(#)fuji-320p	5.1 4/22/86 
+#  
+# @(#)sp320p	1.1 12/5/85
+#
+# lp interface for Fujitsu sp320 Daisy wheel printer.
+#
+#	If the filter is not executable, then this interface will disable
+#	the lp printer which it was called to service.
+#
+
+x="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+printer=`basename $0`
+pitch=10
+lines=6
+
+for i in $5
+do
+	case "$i" in
+	b | -b)
+		ban=no
+		;;
+	12 | -12)
+		pitch=12
+		;;
+	15 | -15)
+		pitch=15
+		;;
+	8 | -8 | 8lpi| -8lpi)
+		lines=8
+		;;
+	esac
+done
+
+case $pitch in
+10)
+	echo "\033\037\015\c"
+	;;
+12)
+	echo "\033\037\013\c"
+	;;
+15)
+	echo "\033\037\011\c"
+	;;
+esac
+case $lines in
+6)
+	echo "\033\036\011\c"
+	;;
+8)
+	echo "\033\036\007\c"
+	;;
+esac
+sleep 1
+tabs
+
+# Do the banner page
+if [ -z "$ban" ]
+then
+	(
+	echo "\014\c"
+	echo "$x\n$x\n$x\n$x\n"
+	banner "$2"
+	echo "\n"
+
+# Handle usernames in finger format
+
+	line=`grep "^$2:" /etc/passwd | line`
+	id1=`echo $line | awk '{split($0,a,":");print substr(a[1],1,1)}'|\
+		tr [a-z] [A-Z]`
+	id2=`echo $line |\
+		awk '{split($0,a,":");print substr(a[1],2,length(a[1]))}'`
+	id=`echo $id1$id2`
+	user=`echo $line | cut -d: -f5|cut -d, -f1|sed 's/\&/'$id'/'`
+	if [ -n "$user" ]
+	then
+		echo "User: $user\n"
+	else
+		echo "\n"
+	fi
+	echo "Request id: $1    Printer: $printer\n"
+	date
+	echo "\n"
+	if [ -n "$3" ]
+	then
+		banner $3
+	fi
+	) | tr "\012" "\015"
+fi
+echo "\014\c"
+
+# Printing the file starts here
+
+copies=$4
+shift; shift; shift; shift; shift
+files="$*"
+i=1
+while [ $i -le $copies ]
+do
+	for file in $files
+	do
+		cat "$file" 2>&1 | tr "\012" "\015"
+		echo "\014\c"
+	done
+	i=`expr $i + 1`
+done
+errcode=$?
+if [ $errcode -ne 0 ]
+then
+	disable -r"error code $errcode from $filter filter" $printer
+	exit 1
+fi
+exit 0

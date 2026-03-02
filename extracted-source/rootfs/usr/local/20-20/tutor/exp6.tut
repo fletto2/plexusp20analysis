@@ -1,0 +1,50 @@
+#Q/MCY/SR/usr/2020/tutor/tut6.tmf#/>0,13#//WH;#TA>0,0#//FW25#/>2,9#/#N
+#TE[5,0]
+The cells in column 2 of the expense report should contain numbers.
+  When you enter numbers in the worksheet, you simply type the number
+    and press <CR>.  The cell cursor is positioned at cell [2,9] so
+      that you can enter the number 103 in that cell.
+Type:  103<CR>
+#TF#V
+#TR103#/#TT
+#TB
+#TE[5,0]
+We will enter the remaining numbers for you.
+
+
+
+                                           Press <CR>
+#TF#N
+#TR#/#TT
+>2,10#/
+85#/
+>2,15#/
+0#/
+>2,16#/
+0#/
+>1,22#/
+250#/
+>1,23#//FF2#/
+.2#/
+>2,24#/
+10#/
+>0,0#/
+#TB#TE[5,0]
+You can use the /DEFAULT command to display the numbers in
+   dollar sign format.
+
+Type:  /D$2<CR>
+#TF#TR/D$2#/#TT
+#TB
+#TE[5,0]The value in cell [1,22] should not be expressed as a dollar amount.
+Type:  >1,22<CR>#TF
+#TR>1,22#/#TT
+#TE[5,3]Use a FIXED number format with no decimal places
+  for the MILES entry.
+Type:  /FF0<CR>#TF
+#TR/FF0#/#TT
+#TB
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TB
+/SIC/usr/2020/tutor/exp7.tut#/N

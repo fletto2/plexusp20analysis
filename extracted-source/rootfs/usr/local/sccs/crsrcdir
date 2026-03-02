@@ -1,0 +1,4 @@
+: 'crsrcdir sccs_dir target_dir'
+mkdir $2
+cd $2
+get -s $1 2>GET.err

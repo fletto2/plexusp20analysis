@@ -1,0 +1,153 @@
+#Q/MCY>0,13#//wh;#TA>0,0#/
+/SP/usr/2020/tutor/tut4a.tmf#/#/#/
+>4,6#//DF0#/#n
+#TE[5,0]
+When you create your own worksheets, you can make
+   changes quickly and easily.  For example, you can
+      change a cell's contents...
+#TF
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TE[63,5]          #TF
+20.20#/
+#TE[37,3] or its display format.#TF
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TE[63,5]          #TF
+/F$2#/
+#TB
+#TE[5,0]
+You can delete rows...
+#TF
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TE[63,5]          #TF
+/MDR1#/
+#TE[24,1] or columns.
+#TF
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TE[63,5]          #TF
+/MDC1#/
+#TE[5,2]    You can blank a cell...
+#TF
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TE[63,5]          #TF
+/MB#/
+#TE[29,2], a group of cells...
+#TF
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TE[63,5]          #TF
+/MB[1..6,2..10]#/
+#TE[47,2], or the entire worksheet.
+#TF
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TE[63,5]          #TF
+#Q/MB[0..8,0..13]#/>0,0#/
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TB
+/SP/usr/2020/tutor/tut4b.tmf#/[0..5,0..30]#/#/#N
+#TE[5,0]
+The /EDIT command is useful when you want to
+    change data that is already in a cell.
+#TF
+>0,0#/
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TB
+#TE[5,0]
+To see how the /EDIT command works, change
+    the title of the worksheet from "EXPENSES"
+        to "TRAVEL AND EXPENSE REPORT".
+#TF
+#TE[63,5]Press <CR>#TF
+#TR#/#TT
+#TB
+#Q/WE#/>0,10#//WH#/;#TA#N
+#TE[5,0]
+We're back in the first row in the expense report that we started
+   earlier in this tutorial.  You can move directly to cell [1,0]
+      by using <GOTO> (the > key).
+
+Type:  > 1,0 <CR>
+#TF
+#TR>1,0#/#TT
+#TB
+#TE[5,0]
+To select the /EDIT command, type:  /E
+#TF
+#TE[5,3]The contents of cell [1,0] are displayed on the edit line at the
+top of your screen.  To position the edit cursor at the beginning of
+the line, press:  <RIGHT>
+#TF
+#TE[5,7]Next type: TRAVEL AND  (Be sure to include the spaces after each word)
+#TF
+#TR/E#RTRAVEL AND #TT
+#TB
+#V#PR#E~REPORT#/#D/E#R-----------------#/#N
+#TE[5,0]We've completed the title by deleting the "S" in "EXPENSES",
+   adding "REPORT", and extending the underline for you.#TF
+#TE[63,8]Press <CR>#TF
+#TR#/#TT
+#TB
+#TE[5,0]
+The title - TRAVEL AND EXPENSE REPORT - is called
+    a "long label" because it overflows its column width.
+#TF
+#TE[63,8]Press <CR>#TF
+#TR#/#TT
+#TB
+#TE[5,0]
+This is okay because there is nothing in the next few cells.
+  However, if these cells had contained data, the title
+     would be truncated.
+#TF
+#TE[63,8]Press <CR>#TF
+#TR#/#TT
+#TB
+#TE[5,0]
+For example, column 0 is too narrow (8 characters) to contain
+       wide row labels such as - LIVING EXPENSES.
+#TF
+#TE[63,8]Press <CR>#TF
+#TR#/#TT
+#TB
+#TE[5,0]
+Watch what happens when we enter something in cell [1,7] -
+        the word EXPENSES is cut off.
+#TF
+>1,7#/
+" $20.20#/
+#TR#/#TT
+#TB
+>0,0#/
+#TE[5,0]To avoid this, you can use the /FORMAT WIDTH command
+to change the width of column 0.
+
+Type:   /F
+#TF
+#TR/F#TT
+#TE[5,2]
+Notice the command description on the mini-HELP line.
+#TF
+#TE[5,4]
+To select column width, type:  W
+#TF
+#TRW#TT
+#TE[5,4]
+Increase the column width to 25.  Type:  25<CR>
+#TF#V
+#TR25#/#TT
+#TB#N
+#TE[5,0]
+Column 0 is now 25 characters wide.
+#TF
+#TE[63,8]Press <CR>#TF
+#TR#/#TT
+#TB
+#TF
+/SIC/usr/2020/tutor/exp5.tut#/N

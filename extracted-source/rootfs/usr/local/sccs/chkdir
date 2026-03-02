@@ -1,0 +1,8 @@
+DIR=$1
+S=/sccs
+C=/usr/src
+cd $S/$DIR
+echo "\n****   $DIR   ****" >FILES.diffs
+ls $C/$DIR |egrep -v -f $S/bin/src/notsccsable >FILES.src
+ls $S/$DIR |egrep -v -f $S/bin/src/notsccs | sed -e 's/^s\.//'|sort >FILES.sccs
+sdiff -w50 -s FILES.src FILES.sccs |grep -v '^[0-9].*[0-9]$' >>FILES.diffs

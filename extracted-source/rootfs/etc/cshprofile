@@ -1,0 +1,12 @@
+#  
+# @(#)cshprofil.sh	5.3 8/29/86 
+
+setenv LOGNAME "$LOGNAME"
+
+cat /etc/motd
+if { mail -e } then
+	echo "you have mail"
+endif
+if ( $LOGNAME != root ) then
+	news -n
+endif

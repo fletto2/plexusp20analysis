@@ -1,0 +1,99 @@
+#TB#TD
+                     THREE DIMENSIONAL MODELING
+ You can use the consolidation commands to present a group of worksheets
+ from different perspectives. Think of the worksheets as cubes, where
+ the three dimensions of the cube are the:
+
+                 o Worksheet Columns (the months in our example)
+                 o Worksheet Rows (the line items)
+                 o Worksheet Subject (the three divisions in our example)
+
+                                                   PRESS <CR>
+#TF
+#TR#/#TT
+#TB#TD
+
+  So far we have been approaching the data from one point of view.
+  Let's see what it looks like from a different angle.
+
+
+
+
+
+
+                                                   PRESS <CR>
+#TF#TR#/#TT#TB#TE[25,7]***  PLEASE WAIT  ***#TF
+#n/slc/usr/2020/tutor/jan.tmf#/R0.10,0.10#/0,0#/
+#TB#TD
+
+  Here, the columns represent the divisions, and January is the
+  subject of the worksheet model.  Let's try still another angle.
+
+
+
+
+
+
+                                                   PRESS <CR>
+#TF#TR#/#TT
+#n/slc/usr/2020/tutor/profit.tmf#/R0.10,0.10#/0,0#/
+#TB#TD
+
+  The rows in this model represent the divisions, while Gross Profit
+  is the subject.  This worksheet also has a row of formulas which
+  calculate total gross profit.
+
+
+
+
+
+                                                PRESS <CR>
+#TF
+#TR#/#TT
+#Q/mcy/wh;#TA#n#TD
+
+                       HINTS WITH CONSOLIDATION
+
+ o  You can use NAMES from  either the source or target worksheets
+    when specifying the ranges. This makes it much easier to get
+    the right cells. Just make sure you save the source worksheets
+    with /OPTION NAMES turned on.
+
+ o  Remember, adding percentage rates together doesn't give a correct
+    answer. If there are percentage values in your model, divide
+    the result by the number of models consolidated to find the
+    average percentage rate.
+
+					       PRESS <CR>
+#TF#TR#/#TT
+#TB#TD
+
+                                  SUMMARY
+
+ In this tutorial, you used the /STORAGE LINK commands to perform
+ consolidations:
+
+    STORAGE LINK CONSOLIDATE    To consolidate worksheets at the
+                                time the command is executed
+
+    STORAGE LINK DEFINE         To define consolidations that
+                                are stored with the worksheet
+
+    STORAGE LINK REVIEW         To review, edit, delete, or
+                                insert consolidation links.
+                                            PRESS <CR>.
+#TF
+#TR#/#TT
+#TB#TD
+
+ You're ready to try the consolidation commands on your own.
+
+ For more information about consolidation, see /STORAGE LINK in
+ the 20/20 Reference Manual.
+
+                                                   PRESS <CR>
+#TF
+#TR#/#TT
+#q/mcy/sr/usr/2020/tutor/cend.tmf#/
+#TR#/#TT
+/sic/usr/2020/tutor/renew.tut#/n

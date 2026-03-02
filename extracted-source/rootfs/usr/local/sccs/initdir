@@ -1,0 +1,17 @@
+
+DIR=$1
+S=/sccs/$1
+C=/usr/src/$1
+cd $S
+sed <SCCS_list -e '1,$s/^/admin -n /' |(sh >INIT.out 2>INIT.err)
+echo "\nADMIN DONE\n" >>INIT.out
+echo "\nADMIN DONE\n" >>INIT.err
+get -e -g . >>INIT.out 2>>INIT.err
+echo "\nGET DONE\n" >>INIT.out
+echo "\nGET DONE\n" >>INIT.err
+cd $C
+delta -n -y'initial delta from /usr/src' $S >>$S/INIT.out 2>>$S/INIT.err
+cd $S
+echo "\nDELTA DONE\n" >>INIT.out
+echo "\nDELTA DONE\n" >>INIT.err
+mv INIT.err INIT.done

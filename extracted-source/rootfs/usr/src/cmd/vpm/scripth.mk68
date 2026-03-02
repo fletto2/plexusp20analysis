@@ -1,0 +1,41 @@
+
+#
+# SID @(#)scripth.mk68	5.1
+#  This script make file makes HDLC scripts
+#  This make file must be used on a M68k system
+
+VPMC = vpmc
+
+ARGS = -m -x
+
+install:	vpmscript
+
+vpmscript:	vpmscript.r
+	$(VPMC) $(ARGS) -o vpmscript vpmscript.r
+	cat /usr/include/icp/opdef.h sas_tempc | /lib/cpp >tf
+	/usr/lib/vpm/vratfor <tf >tg
+	cp tg /usr/src/uts/m68/icp/hdlc/vpmicp/proto0code.s
+	cat sas_define proto0.s >th
+	cp th /usr/src/uts/m68/icp/hdlc/vpmicp/proto0.s
+	touch /usr/src/uts/m68/icp/hdlc/vpmicp/proto1.s
+	touch /usr/src/uts/m68/icp/hdlc/vpmicp/proto2.s
+	touch /usr/src/uts/m68/icp/hdlc/vpmicp/proto3.s
+	cd /usr/src/uts/m68/icp/hdlc/vpmicp;\
+	make -f vpmosh.mk68
+#	make -f vpmosh.mk68 proto0.o proto1.o proto2.o proto3.o
+	cd /usr/src/cmd/vpm;\
+	mkdir temp
+	cd /usr/src/cmd/vpm/temp;\
+	zar x /usr/src/uts/m68/icp/libvpmh.a
+	-zld -o vpm0 -r -d -X l.o mch.o c.o bcopy.o blist.o \
+	clock.o daemon.o main.o mb.o pbif.o pbs.o prf.o sched.o slp.o \
+	subr.o trap.o \
+	ctc.o dh.o dma.o tt0.o tty.o \
+	fetch.o getxfrm.o xmtfrm.o rtnxfrm.o rcvfrm.o rtnrfrm.o interp.o \
+	proto0.o proto1.o proto2.o proto3.o poppush.o
+	rm -f *.o
+
+clobber: clean
+	rm -f vpm0
+clean:
+	rm -f tf tg th

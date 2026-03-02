@@ -1,0 +1,54 @@
+# SID 
+# @(#)acpconfig	5.1 4/22/86 
+#
+#	This shell script is used to create the appropriate devices
+#	in '/dev' per the user's specified directions.  This script
+#	makes the i/o card devices (i.e. ac*) and the 
+#	corresponding tty/pio devices (i.e. tty* and pp*) for the
+#	specified numbered acp.
+#
+#	To calculate the corrent starting tty number, do:
+#		: multiply the number of icp's by 8
+#		: multiply the number of acp's below the specified one by 16
+#		: add the above two numbers together
+#	    starting tty # = (# of icp's) * 8 +
+#			     ((acp #) - (# of icp's)) * 16 
+#
+dir="dev"
+if [ ${1:-0} -eq 0 ]
+then
+	echo "syntax: sh acpconf <acp #> <starting tty #>"
+	exit 1
+fi
+if [ $1 -gt 4 ]
+then
+	echo "The maximum number can be 4.  Please try again."
+	exit 1
+fi
+echo "CONFIGURE ACP #" $1 "AT TTY #" $2
+rm -rf /$dir/ic$1 /$dir/ac$1
+rm -rf /$dir/pp$1
+ttynum=$2
+for a in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+do
+	rm -rf /$dir/tty$ttynum
+	ttynum=`expr $2 + 1` 
+done
+
+ttytop=`expr $2 + 15`
+if [ $1 -ne 0 ]
+then
+	echo "\tCreate ac"$1", pp"$1" and tty["$2"-"$ttytop"]."
+	mknod /$dir/ac$1 c 30 $1
+	mknod /$dir/pp$1 c 32 $1
+	ttynum=$2
+	for a in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+	do
+		mknod /$dir/tty$ttynum c 31 $ttynum
+		ttynum=`expr $ttynum + 1`
+	done
+fi
+sync
+sync
+echo "CONFIGURATION COMPLETE."
+

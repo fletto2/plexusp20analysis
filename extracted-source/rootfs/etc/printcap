@@ -1,0 +1,19 @@
+# 4/21/86
+# @(#)printcap	5.1 4/21/86
+#  
+# @(#)printcap	1.1 7/20/84 
+
+#
+# This is a sample of printcap entries used by various printers
+#
+lp:\
+	:tr=\f:
+vp:\
+	:sb:sf:pw#106:pl#86:\
+	:tr=\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
+\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n:
+qp:\
+	:pl#58:pw#80:tr=\f\f\f:of=/bin/pr:sp=/dev/console:
+pp:\
+	:pl#55:pw#80:tr=\f:of=/bin/pr:sp=/dev/tty22:ff=\f:sb:

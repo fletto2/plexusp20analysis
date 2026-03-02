@@ -1,0 +1,10 @@
+
+#  
+# @(#)sa1.sh	5.1 4/22/86 
+
+#	sa1.sh 1.1 of 7/15/83
+#	@(#)sa1.sh	1.1
+DATE=`date +%d`
+ENDIR=/usr/lib/sa
+DFILE=/usr/adm/sa/sa$DATE
+cd $ENDIR

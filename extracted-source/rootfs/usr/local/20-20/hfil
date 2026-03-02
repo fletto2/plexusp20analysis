@@ -1,0 +1,3429 @@
+$! !
+
+          ^       ACCESS TECHNOLOGY 20/20 HELP UTILITY        ^
+          ^                                                   ^
+          ^ (C) Copyright 1984,1985 - Access Technology, Inc. ^
+
+
+           MAIN HELP MENU:  Choose from the following topics:
+
+             {/}1. 20/20 Commands    {FUNCS}2. 20/20 Functions
+
+             {BAS}3. Basic Skills      {KBRD}4. Special Keys
+
+             {HLP}5. Help with HELP    {TRBL}6. Trouble-Shooting
+
+     For complete information about using HELP, type "?".  (Please
+     read this information before you use HELP for the first time.)
+
+     You can type <BKO> or Q to leave HELP and return to 20/20.
+
+$HLP !
+                            
+                             ^ HELP WITH HELP ^
+
+       To select a HELP Menu entry (1. 20/20 Commands, 2. 20/20 Functions, 
+       etc.), use the arrow keys or space bar to move the highlighting to 
+       that menu entry, then type <CR>.  Or, type the number that precedes 
+       the menu entry, then type <CR>.  
+
+       To select a HELP command (Menu, Next, etc.), type its first letter 
+       without a <CR>.  
+
+       To cancel or change an entry, press the <DEL> key before you 
+       type <CR>.
+
+       To move between a menu and the HELP command line, type TAB.
+
+       To obtain help with HELP, type the question mark key:  ? 
+
+                        See NEXT screen for more
+
+#NEX !
+
+
+ The HELP commands are:
+
+  Next           Displays the next screen about a topic
+  Menu           Displays the menu for the current screen
+  Previous       Redisplays previous screen (remembers up to 20 screens)
+  Help           Overrides Resume command or goes to the main HELP menu
+  Resume         Leaves HELP; next HELP session starts at current screen
+  Quit           Leaves HELP and returns to 20/20
+
+ Some or all of these commands are offered on each screen as they apply.
+ HELP does not change any entry on your worksheet.
+
+$BAS !
+
+                           ^                       ^
+                           ^   BASIC SKILLS MENU   ^
+                           ^                       ^
+
+
+
+      {ENT1} 1. Exiting 20/20                 {MOV1} 2. Moving Around
+      {CMD1} 3. The Screen Header             {ENM1} 4. Entering Numbers
+      {TXT1} 5. Entering Text                 {EDT1} 6. Using the Edit Line
+      {CRF1} 7. Cell Referencing              {EFM1} 8. Entering Formulas
+      {H1} 9. Arithmetic/Logical Operators  {CMTH}10. Recalculation Methods
+      {CLO1}11. Recalculation Order
+
+$FUNCS !
+
+                         ^                ^
+                         ^ FUNCTIONS MENU ^
+                         ^                ^
+
+                    {FNC1} 1. Rules for Using Functions
+
+              {ABS} 2. ABS       {AVG} 3. AVG       {BLA} 4. BLANK
+              {COL} 5. COL       {COU} 6. COUNT     {DAT} 7. DATE
+              {DAY} 8. DAYS      {DEP} 9. DEPR      {ERR}10. ERR
+              {EXP}11. EXP       {FVZ}12. FV        {IFZ}13. IF
+              {INDX}14. INDEX     {INT}15. INT       {IRR}16. IRR
+              {LAB}17. LABEL     {LNZ}18. LN        {LOG}19. LOG
+              {LOO}20. LOOKUP    {LSQ}21. LSQ       {MAX}22. MAX
+              {MIN}23. MIN       {MOD}24. MOD       {MON}25. MONTH
+              {NAZ}26. NA        {PIZ}27. PI        {PVZ}28. PV
+              {RAN}29. RANK      {ROW}30. ROW       {SEL}31. SEL
+              {SOR}32. SORT      {SQR}33. SQRT      {STD}34. STD
+                       {SUM}35. SUM       {TRG}36. TRIG
+
+$H1 BAS
+
+              ^      ARITHMETIC AND LOGICAL OPERATORS      ^
+  are calculated in the order of their precedences within a single formula:
+
+        ^    OPERATOR        PRECEDENCE        FUNCTION             ^
+            caret symbol         7          Exponentiation
+                -                6          Negation
+                *                5          Multiplication
+                /                5          Division
+                +                4          Addition
+                -                4          Subtraction
+             < or <LT>           3          Less Than
+             <= or <LE>          3          Less than or equal to
+             > or <GT>           3          Greater than
+             >= or <GE>          3          Greater than or equal to
+              = or <EQ>          3          Equal to
+             != or <NE>          3          Not equal to
+               <NOT>             2          Logical NOT
+               <OR>              1          Logical OR
+               <AND>             1          Logical AND
+
+$CMTH BAS
+
+                      ^                           ^
+                      ^   RECALCULATION METHODS   ^
+                      ^                           ^
+
+        The /OPTION RECALC command provides two methods for 
+        recalculating the value of all worksheet cells:
+
+ AUTOMATIC -- The entire worksheet is recalculated whenever you change
+              the contents of a cell, or when you type the <CALC> key
+              (as the first character) while Ready: is displayed.
+
+ MANUAL    -- The entire worksheet is recalculated only when you press
+              the <CALC> key (as the first character) while Ready: is
+              displayed.  Select MANUAL when you want to postpone 
+              recalculation until you are ready to compute any number 
+              of changes all at once. /OPTION RECALC MANUAL is
+              the initial default.
+
+
+# BAS
+
+                  ^ A FEW WORDS ABOUT IMMEDIATE CALCULATION ^
+
+         You can enter a formula on the Edit Line, direct 20/20 to
+         calculate the formula, and display its result -- all at once.
+         This immediate calculation method affects only the specified
+         cell; it does not recalculate the entire worksheet.
+
+         To calculate a formula immediately, add an exclamation 
+         point (!) to the end of the formula, then press <CR>.  To 
+         enter the formula result into the current cell, press <CR> 
+         once more.  That cell then contains the formula result; 
+         not the formula.  
+ 
+
+$CLO1 BAS
+
+                          ^                     ^
+                          ^ RECALCULATION ORDER ^
+                          ^                     ^
+
+         NATURAL Order is the order in which you would perform the
+         recalculations if you were doing them by hand.  That is,
+         a cell's value is recalculated only after all other cells
+         referenced in the cell's formula have been recalculated.
+
+         COLUMN ORDER  --   Recalculation begins at cell [0,0] and
+                            proceeds across columns, one at a time.
+
+         ROW ORDER     --   Recalculation begins at cell [0,0] and
+                            proceeds down rows, one at a time.
+
+#SRCO BAS
+
+                   ^   SELECTING THE RECALCULATION ORDER   ^
+
+         Recalculation ORDER is set with the /OPTION ORDER command. 
+         The default ORDER of recalculation is NATURAL, which always
+         results in all cells receiving their correct final values
+         each time the worksheet is recalculated. 
+
+         However, you cannot use NATURAL ORDER if there are recalculation 
+         loops or circular references (cell [1,3] refers to cell [1,2] 
+         and cell [1,2] refers to cell [1,3], etc.) in your model.
+         Therefore, change the ORDER to COLUMN or ROW if there are
+         recalculation loops or circular references in the model.
+
+
+
+$CRF1 BAS
+
+                         ^                       ^
+                         ^ CELL REFERENCING MENU ^
+                         ^                       ^
+
+
+    {CRIN}1. Cell Coordinates       {CRFRM}2. Cell References in Formulas
+    {CRFX}3. Fixed Cell References  {CRRL}4. Relative Cell References
+    {CRMX}5. Mixed Cell References  {CRPT}6. POINT-TO Method
+    {CRRG}7. Cell Ranges            {CRFN}8. Referencing a Label as a Filename
+                       {CRCN}9. Cell Names
+
+$CRIN CRF1
+
+                      ^      CELL COORDINATES       ^
+
+         Use the following format to reference a cell:
+
+               [column number, row number]
+
+         For example, the cell containing the label "JAN", in column 2 
+         and row 1, is referred to as cell [2,1]:
+
+                      /....0/....1/....2/....3
+                     0                       
+                     1               JAN
+                     2
+
+         Formulas require square brackets, but most commands do not.
+         You can also use column and row names instead of numbers if
+         the /OPTION NAMES command is enabled.  
+         Reference: {/ON}1. /OPTION NAMES.
+
+$CRFRM CRF1
+
+                        ^ CELL REFERENCES IN FORMULAS ^
+
+         The following example shows a simple formula that includes two
+         cell references:
+
+         Formula: [1,0] + [1,2] + 5.2
+
+   
+               This formula adds the value of cell [1,0] to the
+               value of cell [1,2] and then adds 5.2 to the first
+               result.
+
+                       /....0/....1/....2/....3
+                      0         4.3
+                      1 
+                      2         3.2
+
+         Value of Formula When Recalculated: 4.3 + 3.2 + 5.2 = 12.7 
+
+$CRFX CRF1
+
+                         ^                       ^
+                         ^ FIXED CELL REFERENCES ^
+                         ^                       ^
+
+     A fixed cell reference in a formula does not change when you move 
+     the formula to other cells (by using the /COPY or /STORAGE PASTE 
+     commands).  The dollar sign ($) preceding the column or row 
+     reference indicates a fixed cell reference.  
+
+     The following is a fixed cell reference:  [$1,$2]
+
+$CRRL CRF1
+        
+                          ^                          ^
+                          ^ RELATIVE CELL REFERENCES ^
+                          ^                          ^
+
+         Relative references adjust to any worksheet location.  To
+         enter a relative cell reference in a formula, you enclose 
+         the column and row coordinates in square brackets.
+
+         Use a relative cell reference when you want the cell reference
+         in a formula to adjust whenever the location of the formula 
+         changes (when you use the /COPY or /STORAGE PASTE commands).
+
+         The adjustment maintains a constant number of columns and rows
+         between the cell in which the formula is located and the cell
+         referenced by the formula.
+
+         The following is a relative cell reference:  [1,2]
+
+# CRF1
+
+                       ^ RELATIVE CELL REFERENCES (2) ^
+
+         For example, suppose cell [3,4] contains the following formula:
+
+                                [2,4] * 12 
+
+           ______________________________________________________________
+           | New    | Formula     |                                     |
+           | Cell   | after /COPY | Comment                             |
+           |------------------------------------------------------------|
+           | [3,5]  | [2,5]*12    | Each formula continues to reference |
+           | [4,5]  | [3,5]*12    | the cell in the previous column,    |
+           | [15,6] | [14,6]*12   | same row                            |
+           --------------------------------------------------------------
+
+$CRMX CRF1
+
+                           ^                       ^
+                           ^ MIXED CELL REFERENCES ^
+                           ^                       ^
+
+         Cell references can be mixed, so that one coordinate is fixed
+         and the other is relative.  For example, the cell reference [$0,1]
+         contains a fixed column coordinate and a relative row coordinate.
+         The cell reference [0,$1] contains a relative column coordinate
+         and a fixed row coordinate.
+
+         When a mixed reference is copied, the fixed coordinate remains
+         constant, and the relative coordinate changes.
+
+         By using mixed cell references, you can maintain the same number of
+         columns ^or^ rows between the cell containing your formula and the
+         cell referenced by your formula.  This is useful, for example, when
+         you want to multiply a number by a value from a list entered in a
+         column or row.
+
+# CRF1
+
+                         ^ MIXED CELL REFERENCES (2) ^
+
+
+         If cell [3,4] contains the formula:
+
+                            [$2,4]*12 
+
+           _____________________________________________________________
+           |        | Formula     |                                    |
+           | Cell   | after /COPY | Comment                            |
+           |-----------------------------------------------------------|
+           | [4,5]  | [$2,5]*12   | The fixed reference to column 2    |
+           |        |             | remains unchanged in the formula.  |
+           | [16,17]| [$2,17]*12  | The relative row reference changes |
+           |        |             | as the row changes.                |
+           -------------------------------------------------------------
+
+$CRPT CRF1
+
+                              ^                 ^
+                              ^ POINT-TO METHOD ^
+                              ^                 ^
+
+         POINT-TO allows you to enter a cell reference without typing
+         in the coordinates.  You can use POINT-TO to enter cell
+         references and ranges in both commands and formulas. 
+
+         To use the POINT-TO feature:
+
+           1. Press <DOWN-ARROW>
+
+           2. Move the cell cursor to the desired cell.
+
+           3. Type one of the keys listed in the table on the NEXT screen.
+
+# CRF1
+
+    <CR>     Enters a relative cell reference. Example: [4,4]
+
+     $       Enters a fixed cell reference.  Example: [$4,$4]
+
+     .       Enters a relative reference, followed by two periods to
+             indicate a range. You then specify the end of the range.
+             Example: [4,4]..
+
+     C       Enters the column coordinate as a fixed reference and
+             the row coordinate as a relative reference.  Example: [$4,4]
+
+     R       Enters the row coordinate as a fixed reference and the
+             column coordinate as a relative reference.  Example: [4,$4] 
+
+  + - / *    Enters a relative reference, followed by the specified
+             specified arithmetic operator.  Example: [4,4] + 
+
+     )       Enters a reference that is terminated with a ). Example: [4,4])
+
+$CRRG CRF1
+
+                          ^                           ^
+                          ^        CELL RANGES        ^
+                          ^                           ^
+
+   A cell range is the cell coordinate or coordinates that indicate 
+   the cell's worksheet location.  
+
+   A cell range can be:
+
+           {CRRGS}1. A single cell
+           {CRRGC}2. A contiguous group of cells
+           {CRRFN}3. A non-contiguous groups of cells
+
+    Several 20/20 commands, such as /COPY and /MODIFY BLANK, require
+    that you specify a cell range. You can also use cell ranges in
+    several 20/20 functions, such as SUM and AVG.
+
+$CRRGS CRRG
+
+                                ^             ^
+                                ^ SINGLE CELL ^
+                                ^             ^
+
+
+          To specify a single cell range, simply enter the cell's 
+          coordinates.  If the /OPTION NAMES command is enabled,
+          you can also enter the cell's names.
+          
+          For example:
+
+              [3,4]   or   [MAY,DUE]
+
+          You can also use the POINT-TO method.
+
+              {CRPT}1. POINT-TO
+              {/ON}2. /OPTION NAMES
+
+$CRRGC CRRG
+
+                         ^                           ^
+                         ^ CONTIGUOUS GROUP OF CELLS ^
+                         ^                           ^
+
+
+ Contiguous Ranges     A contiguous range is any rectangular array
+                       of cells. To specify a contiguous range, use:
+
+                         {CRRGR}1. The Rectangle Method
+
+                                   or
+
+                         {CRRGM}2. The Column and Row Method
+
+$CRRGR CRRGC
+            
+                           ^ THE RECTANGLE METHOD ^
+
+         Enter only the top left and bottom right cells in the range.
+         Note that you can use the POINT-TO method. (See POINT-TO).
+
+              ______________________________________________
+              | Range Specification | Includes cells       |
+              |____________________________________________|
+              | [0,10]..[2,10]      | [0,10] [1,10] [2,10] |
+              |                     |                      |
+              | [0,10]..[0,12]      | [0,10]               |
+              |                     | [0,11]               |
+              |                     | [0,12]               |
+              |                     |                      |
+              | [0,10]..[2,11]      | [0,10] [1,10] [2,10] |
+              |                     | [0,11] [1,11] [2,11] |
+              |_____________________|______________________|
+
+$CRRGM CRRGC
+
+                          ^ COLUMN AND ROW METHOD ^
+                          ^                       ^
+
+         Use the first and last column coordinates, followed by the
+         first and last row coordinates.
+
+                  ______________________________________________
+                 | Range Specification | Includes cells         |
+                 |_____________________|________________________|
+                 | 0..2,10             | [0,10] [1,10] [2,10]   |
+                 |                     |                        |
+                 | 0,10..12            | [0,10]                 |
+                 |                     | [0,11]                 |
+                 |                     | [0,12]                 |
+                 |                     |                        |
+                 | 0..2,10..11         | [0,10]  [1,10]  [2,10] |
+                 |                     | [0,11]  [1,11]  [2,11] |
+                  ----------------------------------------------
+
+$CRRFN CRRG
+
+                       ^                                ^
+                       ^ NON-CONTIGUOUS GROUPS OF CELLS ^
+                       ^                                ^
+
+        A non-contiguous range skips columns and/or rows between its corner
+        cells.  You specify a non-contiguous range by placing the list of
+        included columns or rows in parentheses, separated by commas.  For
+        example, the following range has non-contiguous columns and rows.
+
+                    ____________________________________________
+                   | Range Specification | Includes cells       |
+                   |--------------------------------------------|
+                   | (1,3),(2,4)         | [1,2]   [3,2]        |
+                   |                     | [1,4]   [3,4]        |
+                    --------------------------------------------
+
+        You can use contiguous or noncontiguous ranges with commands. 
+        However, 20/20 functions accept only contiguous ranges.
+
+$CRFN CRF1
+
+                        ^                                   ^
+                        ^ REFERENCING A LABEL AS A FILENAME ^
+                        ^                                   ^
+
+         The /STORAGE READ, /STORAGE IMPORT COMMAND, and /STORAGE PASTE
+         commands permit using a cell reference as a filename.
+
+         You can use a cell reference as a filename for these commands if:
+
+                 1) The contents of the cell is text data, and
+   
+                 2) The text data is the name of a stored file.
+
+$CRCN CRF1
+
+                            ^                      ^
+                            ^ CELL NAME REFERENCES ^
+                            ^                      ^
+
+         Cell naming allows you to reference a cell by column and/or row
+         name, rather than by numeric coordinates.
+
+         Use the /OPTION NAMES command to enable naming.  /OPTION NAMES
+         designates any label in row 0 as a column name and any label in
+         column 0 as a row name.
+
+         By enabling cell names, you can refer to data by common sense
+         terms, such as FEB,SALES.  Cell names are especially useful in 
+         conjunction with the /STORAGE LINK, /TOOLS DATABASE, /MODIFY 
+         MOVE and /GRAPH commands, and with the <GOTO> method of cell 
+         cursor movement.
+
+         Reference:    {/ON}1. /OPTION NAMES
+
+$CMD1 BAS
+
+                              ^                   ^
+                              ^ THE SCREEN HEADER ^
+                              ^                   ^
+
+         The screen header contains helpful information about your worksheet
+         and consists of three lines. For example:
+
+ {CMDS}1. The Status Line     - [Col: 2 Row: 9] N (F2)  103.00
+ {CMDE}2. The Edit Line       - Copy Modify ^Edit^ Format Default Storage Print
+ {CMDH}3. The Mini-HELP line  - Edit the contents of a cell
+
+$CMDS CMD1
+
+                              ^ THE STATUS LINE ^
+
+                   ^     [Col: 2 Row: 9] N (F2)  103.00     ^
+
+ The top line of the 20/20 terminal screen is the Status line. This line
+ contains information about the cell in which the cursor is currently located.
+
+ The cell indicator, located at the left corner of the Status line, identifies
+ the location of the cell cursor by its column and row coordinates.
+
+ The letter to the right indicates the kind of data contained in the current
+ cell - N (number), L (label), or F (formula).  A blank cell lists no letter
+ here.
+
+ The characters enclosed by parentheses indicate the format (set by the
+ /FORMAT or /DEFAULT commands) for numerical data entered in the current
+ cell. The initial setting is (F0) -- which means "Fixed format with 0
+ decimal places displayed".
+
+# CMD1
+
+                               ^ CELL CONTENTS ^
+
+        The last item on the Status line is the data that is contained
+        in the cell.  For example:
+
+                  [Col: 2 Row: 9] N (F2)   103.00
+
+        In this case, it is the fixed decimal number 103.  Notice the two
+        decimal places in the display -- specified by the (F2) format.
+
+$CMDE CMD1
+
+                             ^ THE EDIT LINE ^
+
+ The second line in the Header is the Edit line. Initially, this line displays:
+
+         Ready:
+
+ You can enter data or a command at Ready:.  To enter a 20/20 command, type 
+ a slash (/).   The Edit line then displays a list of the top level commands.
+ To select a command from this list, type the initial letter of the command;
+ or, use an arrow key to move to the command, and type <CR>.  If you select 
+ the /EDIT command, the Edit line displays:  
+
+         /EDIT:
+
+ When you type a label, number, or formula, the Edit line displays:
+
+         Entry:
+
+$CMDH CMD1
+
+                             ^                    ^
+                             ^ THE MINI-HELP LINE ^
+                             ^                    ^
+
+         The third line in the Header is the Mini-HELP line.  When you
+         type a slash (/), this line contains a brief description of the
+         highlighted command.  For example, the Mini-HELP description of 
+         the /COPY command is:
+
+                Copy a range of cells into a new range 
+
+         Note: If data entered on the Edit line requires more than one
+         display line, the overflow appears on the Mini-HELP line.
+
+$EDT1 BAS
+
+                      ^                             ^
+                      ^     USING THE EDIT LINE     ^
+                      ^                             ^
+
+
+         You can edit, and move around the Edit line (while /EDIT: or
+         ENTRY: is displayed), by using the following keys:  
+
+         <DEL>     Deletes the character under the cursor (usually the last
+                   character typed) and moves the cursor back one space.
+
+         <RT>      Moves the cursor to the right, without erasing any 
+                   characters.
+
+         <LF>      Moves the cursor to the left, without erasing any 
+                   characters.
+
+# BAS
+
+                        ^ USING THE EDIT LINE - 2 ^
+
+       Moving to the         <BKO> moves the cursor to the beginning of the
+       Beginning of          line.  If the beginning of the line is the
+       the Line              current cursor location, 20/20 backs out to
+                             the previous prompt.
+
+                             <PAGE> <LF> also moves the cursor to the
+                             beginning of the line.  This method is safer to
+                             use than <BKO> because you cannot back out to
+                             Ready: and lose the Edit line contents.
+
+       Moving to the         <PAGE> <RT> moves the cursor to the end of the
+       End of the Line       Edit line.
+
+# BAS
+
+                        ^ USING THE EDIT LINE - 3 ^
+
+      Adding Characters    If you type any key other than <BKO>, <DEL>,
+                           <PAGE>, <LF>, or <RT>, 20/20 enters the characters
+                           on the Edit line, just before the cursor location.
+                           The line expands as necessary to make room for the 
+                           new text.
+
+                           If you fill the Edit line, 20/20 wraps the
+                           display onto the Mini-HELP line.  You can enter 
+                           as many as 320 characters.
+
+                           You can also use the POINT-TO method to enter
+                           a cell reference on the Edit line.
+
+      References:   {KBRD}1. Special Keys  {CRPT}2. POINT-TO
+
+$ENM1 BAS
+
+                              ^                  ^
+                              ^ ENTERING NUMBERS ^
+                              ^                  ^
+
+         Enter numbers by typing the desired characters.  The following
+         characters are acceptable:
+
+                 0 1 2 3 4 5 6 7 8 9 - . E
+
+
+         Numbers can be as long as 16 characters.  Remember, the decimal
+         point is considered one of the characters.  Use E to enter
+         numbers in scientific notation.  For example:
+
+                      3.445E8  for  344,500,000
+
+#ENM2 BAS
+
+                           ^                      ^
+                           ^ ENTERING NUMBERS (2) ^
+                           ^                      ^
+
+         You cannot enter a percent sign (%) or a comma (,) as a part
+         of a number.  However, you can print or display numbers with 
+         these characters by setting the cell's display format.
+
+         For example, if you use /DEFAULT or /FORMAT to set a cell's 
+         display format to %, and enter a number as .56, the number is 
+         displayed as 56%.
+
+         You can immediately convert a mathematical expression (on 
+         the Edit line) to a number, by ending the expression with 
+         an exclamation point (!) followed by a <CR>.
+
+$TXT1 BAS
+
+                            ^ ENTERING TEXT ^
+
+      You can enter text into cells.  Text is information that 20/20 does
+      not evaluate mathematically or logically.  A text entry is also called 
+      a label.  You can precede a label with one of the following characters:
+
+      {TXTL}1. Single quote (')   Justifies text to the left side of a cell
+
+      {TXTR}2. Double quote (")   Justifies text to the right side of a cell
+
+      {TXTRP}3. Backslash (\)      Repeats a single character across worksheet
+
+      If the first character of a label is non-numeric, and if the label's
+      first two characters do not match the first two letters of a 20/20 
+      function, 20/20 automatically precedes the label with a single quote.  
+      If the label's first character is numeric, or if the label's first
+      two characters do match the first two letters of a 20/20 function, 
+      you must precede the label with a single or double quote.
+
+$TXTL TXT1
+
+                         ^                       ^
+                         ^ LEFT-JUSTIFIED LABELS ^
+                         ^                       ^
+
+      If a label is too large for a cell, it extends into the unused cell
+      or cells to the right.  If the cell to the right is not blank, the 
+      label is truncated.  If the display of your label is truncated by 
+      the contents of an adjoining cell, you can either /MODIFY BLANK the 
+      cell or use the /FORMAT WIDTH command to widen the column.
+
+      Reference: {TXTR}1. Right-Justified Labels.
+
+$TXTR TXT1
+
+                            ^                        ^
+                            ^ RIGHT-JUSTIFIED LABELS ^
+                            ^                        ^
+
+       (")      The last character is positioned at the right edge of
+                the cell.
+
+                If the label is longer than the cell is wide, the 
+                initial label characters are not displayed on the
+                worksheet.
+
+$TXTRP TXT1
+
+                              ^                ^
+                              ^ REPEATING TEXT ^
+                              ^                ^
+
+       (\)      If you precede a character with a backslash (\), that 
+                character is repeated indefinitely across the screen
+                until an occupied cell is reached.  Like left-justified
+                long labels, repeating labels are contained in only one 
+                cell.
+
+       (\")     Broken repeating text occurs when the first character
+                following the backslash (\) is a double quote (").  The 
+                character is repeated across the screen, but the first
+                character of each cell is blank.
+
+$ENT1 BAS
+
+                        ^                             ^
+                        ^        EXITING 20/20        ^
+                        ^                             ^
+
+         To exit 20/20, use the /Quit command.  If you have not stored
+         your worksheet, and want to use it again in the future, be sure
+         to store it (with /STORAGE WRITE) before you quit.
+
+$EFM1 BAS
+
+                            ^                   ^
+                            ^ ENTERING FORMULAS ^
+                            ^                   ^
+
+         Formulas define relationships among cells.  They can contain
+         any combination of:
+
+                    o  numbers
+                    o  cell references
+                    o  arithmetic and logical operators
+                    o  functions
+
+         A formula is calculated (and its result is displayed) when
+         you enter it into a cell.  However, depending on the 
+         recalculation settings (/OPTION ORDER and RECALC), the result 
+         may not be accurate until you recalculate the worksheet.
+
+         References:  {CLO1}1. Recalculation Order
+                      {CMTH}2. Recalculation Method
+
+$MOV1 BAS
+
+                          ^                             ^
+                          ^ MOVING AROUND THE WORKSHEET ^
+                          ^                             ^
+
+      20/20 provides several methods for moving the cell cursor around 
+      the worksheet.  You use the arrow keys to move short distances.
+      You use the <GOTO> key to move directly to a specific cell.  
+      You use the <PAGE> key to move in screen-size increments.
+
+         References:  {CCKEY}1. The Arrow Keys
+                      {GOTO}2. The <GOTO> Key
+                      {PAGE}3. The <PAGE> Key
+
+$CCKEY MOV1
+
+                           ^    THE ARROW KEYS     ^
+
+      The four arrow keys -- <UP>, <DN>, <LF>, and <RT> -- control 
+      cursor movement.  If the cursor is on the worksheet, and you 
+      type one of the arrow keys, the cursor moves to the next cell 
+      in the corresponding direction.
+
+      If you try to move the cursor off the screen, the window slides
+      over the worksheet, so that the cursor remains on the screen.
+      20/20 does not allow you to move the cursor off the worksheet.
+
+      You can also use the <LF> and <RT> arrow keys to move along the
+      Edit line.  Reference:  {EDT1}1. Using the Edit Line
+
+$GOTO MOV1
+
+                        ^                               ^
+                        ^             <GOTO>            ^
+                        ^                               ^
+
+      Use the <GOTO> key to move the cell cursor directly to a 
+      specific cell.  The > symbol is the <GOTO> key.  If you type 
+      > when the Edit line displays Ready:, 20/20 prompts:
+
+                Goto (c,r) or label:
+
+      You can specify the cell by typing its column number, a comma, 
+      its row number, then <CR>.  If you have enabled cell names 
+      (/OPTON NAMES), you can go to column and row names as well as 
+      numbers.  If you want to go to a cell that contains a label, 
+      you type a single quote ('), then the label.  
+
+      Reference: {CRCN}1. Cell Names
+
+$PAGE MOV1
+
+                         ^                         ^
+                         ^  SCROLLING WITH <PAGE>  ^
+                         ^                         ^
+
+         Scrolling is the movement of the screen over the worksheet,
+         enabling you to view a portion of the worksheet that lies
+         outside the window.
+
+         Use the <PAGE> key to view the area of the worksheet that
+         is directly adjacent to the section currently displayed on
+         the screen.
+
+         Type the <PAGE> key, followed by one of the four arrow keys,
+         to scroll across the worksheet in screen-size increments.
+
+$FNC1 FUNCS
+
+                 ^                                           ^
+                 ^         RULES FOR USING FUNCTIONS         ^
+                 ^                                           ^
+
+         The following rules govern the method of including a function in
+         a formula:
+
+              o  COL, ERR, NA, PI, and ROW require no further information,
+                 and can be included by using the name alone.
+
+              o  All other functions operate on one or more required argu-
+                 ment(s).  An argument can be a list or an expression that 
+                 specifies a value.
+
+              o  A function returns the value ERR if you use an argument
+                 that is not acceptable to the function.
+
+# FUNCS
+
+                ^                                            ^
+                ^        RULES FOR USING FUNCTIONS - 2       ^
+                ^                                            ^
+
+
+         A list argument is one of the following:
+
+              o  A list of cells, such as [3,4],[5,9],[12,32]
+
+              o  A cell range, [3,23..67]  (In one column or row.)
+
+              o  A collection of expressions, ranges, or a list of cells;
+                 such as [3,31], 38*72, 6.5, [21..27,12], [3,53]/12
+
+# FUNCS
+
+                 ^                                            ^
+                 ^       RULES FOR USING FUNCTIONS - 3        ^
+                 ^                                            ^
+
+         An expression is one of the following:
+
+              o  A number.  Example:  SEL(^6^,[3,4..10])
+
+              o  A fixed or relative cell reference.  Example:
+                 SEL(^[0,2]^,[3,4..10])
+
+              o  A logical expression.  Logical expressions specify the
+                 value 1 if they are TRUE, or the value 0 if they are FALSE.
+                 Example:  SEL(^[0,2]>=100^,[3,4..10])
+
+              o  Any formula that evaluates to a single value.  Example:
+                 SEL(^SUM([0,2..4]^,[3,4..10])
+
+# FUNCS
+
+                 ^                                             ^
+                 ^        RULES FOR USING FUNCTIONS - 4        ^
+                 ^                                             ^
+
+    If you attempt to enter a formula that is not formatted 
+    correctly (with a missing parenthesis, for example), 20/20 
+    displays an error message and places the Edit line cursor 
+    on the portion of the formula that is incorrectly specified.  
+    You can then edit or reenter the formula.
+
+$ABS FUNCS
+
+                                  ^                 ^
+                                  ^ ABS(expression) ^
+                                  ^                 ^
+
+         Returns the ABSolute value of the (expression), if the expression 
+         is greater than or equal to 0.  If the expression is less than 0, 
+         ABS returns the expression, times -1.
+
+
+         Example:
+                ABS(23.57) = 23.57
+                ABS(-32.4) = 32.4
+                ABS(0) = 0
+
+$AVG FUNCS
+
+                                  ^           ^
+                                  ^ AVG(list) ^
+                                  ^           ^
+
+         Calculates the AVeraGe of the values in the list.  This is
+         equivalent to:
+
+             SUM(list)
+             -----------
+             COUNT(list)
+
+                            Example: AVG(4,3,8) = 5
+
+$BLA FUNCS
+
+                                 ^             ^
+                                 ^ BLANK(list) ^
+                                 ^             ^
+
+         Returns the number of blank cells in a list.  BLANK is similar
+         to the COUNT function, except that it counts empty cells.
+
+         Example:  
+
+             If [4,9] is blank, [8,13] = 7, and [10,20] = 48, then 
+             BLANK([4,9],[8,13],[10,20]) = 1
+
+$COL FUNCS
+
+                                    ^       ^
+                                    ^  COL  ^
+                                    ^       ^
+
+         Returns the COLumn number of the cell containing the function.
+
+         Example:  
+
+                   If [4,2] contains the formula COL, then 
+                   the value of [4,2] is 4.
+
+$COU FUNCS
+
+                                
+                                 ^             ^
+                                 ^ COUNT(list) ^
+                                 ^             ^
+
+         COUNTs the number of arguments in the list and returns that
+         number as its value.  When a cell range is used as the list,
+         COUNT returns the number of non-blank cells.
+
+         Example:  
+
+              If [4,9] is blank, [8,13] = 7, and [10,20] = 48, then 
+              COUNT([4,9],[8,13],[10,20]) = 2
+
+$DAT FUNCS
+
+                            ^                  ^
+                            ^ DATE(expression) ^
+                            ^                  ^
+
+         Converts the value of the expression to a date.
+
+         The DATE function returns the date that is the number of days
+         after 31-DEC-1900.  That date is displayed in the format:
+
+                                  dd-mm-yyyy
+
+$DAY FUNCS
+
+                               ^                 ^
+                               ^ DAYS([cellref]) ^
+                               ^                 ^
+
+     DAYS is the inverse of the DATE function.  It converts a date to
+     a number. The number is the number of days since 31-DEC-1900.
+
+     The argument of the days function is a cell reference.  The cell
+     reference contains a label, in the following format:
+
+                                 dd-mm-yyyy
+
+     (For dates prior to 1-JAN-2000, 20/20 accepts the format:
+
+                                 dd-mm-yy
+
+     where "yy" is the last two digits of the year.)
+
+$DEP FUNCS
+
+                           ^ DEPR(type,period,life) ^
+     
+     Calculates the four most commonly used depreciation functions:
+     CRossover, DOuble-declining, SUm-of-digits, and STraight-line.
+
+     The type is indicated by two letters, in quotation marks -- "CR",
+     "DO", "SU", or "ST".  The valid types, their abbreviations and 
+     definitions are listed in the chart on the NEXT screen.  The period 
+     is the period for which the depreciation is being calculated.  The 
+     life is the total number of periods over which the article is 
+     depreciated.
+
+     To determine depreciated amount for any given period, multiply
+     the result of the DEPR function by the value of the article.
+
+     Example:  A piece of equipment with a lifetime of five years costs
+               $15,000.  The depreciation by the double-declining method in
+               year three is given by the formula:   15000*DEPR("DO",3,5)
+
+#DEP2 FUNCS
+
+             ----------------------------------------------------------
+             | Straight- | "ST"    | 1/life                           |
+             |  Line     |         |                                  |
+             |-----------|---------|----------------------------------|
+             | Sum-of-   | "SU"    | (life+1-period)*2/(life*(1+life))|
+             | Digits    |         |                                  |
+             |-----------|---------|----------------------------------|
+             | Double-   | "DO"    | 2/life of undepreciated balance, |
+             | Declining |         | each period except the last.     |
+             |           |         | Depreciation in the last period  |
+             |           |         | is the remaining undepreciated   |
+             |           |         | balance.                         |
+             |-----------|---------|----------------------------------|
+             | Cross-    | "CR"    | Uses a double-declining formula  |
+             | over      |         | until straight-line (applied to  |
+             |           |         | the remaining amount) increases  |
+             |           |         | the depreciation.                |
+             ----------------------------------------------------------
+
+$ERR FUNCS
+
+                          
+                                    ^       ^
+                                    ^  ERR  ^
+                                    ^       ^
+
+         Returns the special value ERR for ERRor.  Other formulas
+         referencing a cell with an ERR value are evaluated as ERR.
+
+         20/20 also assigns the value ERR to the following cases:
+
+            o  A formula requiring division by zero
+
+            o  A formula whose calculation uses a number outside the
+               machine range
+
+            o  A formula that references a cell that is blank
+
+#ERR2 FUNCS
+
+                                  ^ ERR -2- ^
+
+         When ERR is followed by a list, its value is the number of cells
+         in the list that have the value ERR.
+
+$EXP FUNCS
+
+                             ^                 ^
+                             ^ EXP(expression) ^
+                             ^                 ^
+
+      Computes the value e (2.71828..) raised to the power of the expression.
+
+$FVZ FUNCS
+
+                          ^ FV(interest rate,range) - 1 ^
+
+  Calculates the Future Value of cash flow.  The interest rate must be given
+  in decimal form (.12 for 12%) and can be a cell reference.
+
+  The range is the series of values for the cash flow at regular intervals.
+  If the values of the cells given by the range are called V1, V2, ...Vn,
+  then:
+             FV(interest rate, range)
+
+  is equivalent to..
+
+             V1(1+rate)**n + V2(1+rate)**(n-1) + ... + Vn(1+rate)
+
+  where ** means "raised to the power"
+
+  If the interest rate is less than or equal to -1.0 (-100%), then the value
+  of the function is ERR.
+
+#FVZ2 FUNCS
+
+                       ^                             ^
+                       ^ FV(interest rate,range) - 2 ^
+                       ^                             ^
+
+
+    Example:  
+
+    With a 12% interest rate, if [4,7] = $20.00 and [5,7] = $25.00, then 
+    FV(.12,[4..5,7]) = $53.09
+                       
+
+$IFZ FUNCS
+
+                       ^                                  ^
+                       ^ IF(logical expression,then,else) ^
+                       ^                                  ^
+
+         If the value of the logical expression is TRUE (or any non-zero
+         value), IF returns the value "then".  If the value of the logical
+         expression is FALSE (or zero), IF returns the value "else".
+
+         The values of "then" and "else" can be:
+
+           o  numbers
+           o  formulas
+           o  references to cells that contain formulas, labels, or numbers
+
+         For example:   IF([3,10]>=2000,[2,12]*.43,0)
+
+$INDX FUNCS
+
+                          ^                         ^
+                          ^ INDEX(expression,range) ^
+                          ^                         ^
+
+     Operates with an expression and a range of numbers in ascending order.   
+     The first value in the range has an INDEX of 0, the next has an INDEX 
+     of 1, and so on.  INDEX looks up the value of the expression in the 
+     range until it comes to a number larger than the expression and returns
+     the index of the preceding value in the range.
+
+     INDEX is an expanded LOOKUP -- it allows you to perform the LOOKUP 
+     function on non-adjacent ranges, when used in conjunction with SEL.
+
+$INT FUNCS
+
+  
+                             ^                 ^
+                             ^ INT(expression) ^
+                             ^                 ^
+
+         Returns the integer part of the expression (the digits to the
+         left of the decimal point).  INT does not round; it truncates.
+
+         For example:
+
+                             INT(0.23) = 0
+                             INT(79/9) = 8
+                             INT(-1.56) = -1
+
+$IRR FUNCS
+
+                          ^                       ^
+                          ^ IRR(expression,range) ^
+                          ^                       ^
+
+       Calculates the Internal Rate of Return of cash flow.
+
+       The expression is the value of the investment and the range contains
+       the periodic cash flows.
+
+       The Internal Rate of Return is the interest rate necessary to yield
+       a net present value of the investment of zero.  This interest rate
+       is expressed in decimal form (.12 for 12%, etc.).
+
+       IRR is the inverse function of PV.
+
+       Example: 
+
+           If [2,9] = 75, and [2,10] = 56, then IRR(45,[2,9..10]) = 1.23
+
+$LAB FUNCS
+
+                             ^              ^
+                             ^ LABEL(range) ^
+                             ^              ^
+
+
+       Counts the number of cells that contain labels.  LABEL is similar
+       to COUNT, except it counts only the cells that contain labels.
+
+       Example:  
+
+               If [4,3] = 'bal, [5,3] = 'int, and [6,3] = 'due, then
+               LABEL([4..6,3]) = 3
+
+
+$LNZ FUNCS
+
+                                ^                ^
+                                ^ LN(expression) ^
+                                ^                ^
+
+
+
+         Calculates the value of the natural logarithm of the expression.
+
+$LOG FUNCS
+
+                               ^                 ^
+                               ^ LOG(expression) ^
+                               ^                 ^
+
+
+
+         Calculates the LOGarithm to the base 10 of the expression.
+
+
+
+$LOO FUNCS
+
+                           ^                          ^
+                           ^ LOOKUP(expression,range) ^
+                           ^                          ^
+
+         Operates with an expression, a contiguous range of cells, and a set
+         of adjacent cells.  The contents of the range cells should be in
+         ascending order.  20/20 matches the "expression" against cells in
+         the "range", and finds the cell whose value is closest to the value
+         of the expression without exceeding it.  LOOKUP returns the value of
+         the corresponding cell in the adjacent range.  If the first cell in
+         the range is greater than the expression, 20/20 returns the value ERR.
+
+         The position of the set of adjacent cells is predefined by 20/20.
+         20/20 looks below or to the right of the "range" row or column.  The
+         adjacent cells can contain values or labels.
+
+         See NEXT screen for an example of LOOKUP applications.
+
+#LOO2 FUNCS
+
+
+                     ^ LOOKUP(expression,range) -2- ^
+
+         In the function LOOKUP(45,[0..5,10]), the range is the part
+         of row 10 from column 0 to 5.  20/20 assumes the set of 
+         adjacent cells is in row 11 from column 0 to 5.
+
+                     10    10    20     30     40   50   60
+                     11  0.05  0.05  0.075  0.075  0.1  0.1
+
+         LOOKUP matches the value 45 against each cell (starting with 
+         cell [0,10]) until it reaches cell [4,10].  LOOKUP then returns
+         the value of 0.075, taken from cell [3,11].
+
+$LSQ FUNCS
+
+                           ^                         ^
+                           ^ LSQ(type,range1,range2) ^
+                           ^                         ^
+
+
+
+
+         Performs a linear least-squares analysis of data.
+
+         The valid types, their abbreviations, and definitions are
+         listed in the chart on the NEXT screen.
+
+#LSQ2 FUNCS
+
+             ---------------------------------------------------------
+             | TYPE     | ABBREV. | DEFINITION                       |
+             ---------------------------------------------------------
+             | Slope    | "SL"    | The value of 'b' in the fitted   |
+             |          |         | equation y = a + bx.             |
+             |----------|---------|----------------------------------|
+             | Intercept| "IN"    | The value of 'a' in the fitted   |
+             |          |         | equation y = a + bx.             |
+             |----------|---------|----------------------------------|
+             | Correlat-| "CO"    | An estimate of how much improve- |
+             | ion      |         | ment the linear equation gives   |
+             |          |         | over simply using the mean of the|
+             |          |         | y-values as the estimate for y.  |
+             |          |         | A correlation coefficient of zero|
+             |          |         | means no improvement (and no     |
+             |          |         | correlation); a value of one     |
+             |          |         | means perfect correlation.       |
+             ---------------------------------------------------------
+
+#LSQ3 FUNCS
+
+                         ^ LSQ(type,range1,range2) -3- ^
+
+         Indicate the type by entering the first two letters (SL, IN,
+         CO), enclosed in double quotes (").  Any additional letters, if
+         included, are ignored.
+
+         Range1 is a single row or column of at least two elements
+         containing the y-values to be fit.  Range2 contains the x-values
+         of the least-squares fit and must contain the same number of
+         elements as range1. Range2 can be omitted.  If range2 is absent,
+         then it is assumed to begin at zero and to continue in
+         increments of one.
+
+
+#LSQ4 FUNCS            
+
+                       ^ LSQ(type,range1,range2) -4- ^
+
+ 
+         For example:  
+
+         If [4,2] = 11, [4,3] = 12, [5,2] = 17, and [5,3] = 9, then:
+
+         Type                 Formula 
+         ----                 -------
+         Correlation:         LSQ("CO",[4,2..3],[5,2..3]) = 0.5000
+         Intercept:           LSQ("IN",[4,2..3],[5,2..3]) = 2.5000
+         Slope:               LSQ("SL",[4,2..3],[5,2..3]) = 0.5000
+
+$MAX FUNCS
+
+                                ^           ^
+                                ^ MAX(list) ^
+                                ^           ^
+
+
+         Evaluates the list and returns the largest, or MAXimum, of the
+         values.  If the list is a range, and the range consists of only
+         blank cells, the value ERR is returned.
+
+         Example:  
+
+                     MAX(7,10,27) = 27
+
+$MIN FUNCS
+
+                                ^           ^
+                                ^ MIN(list) ^
+                                ^           ^
+
+
+         Evaluates the list and returns the smallest, or MINimum, of the
+         values.  If the list is a range, and the range consists of only
+         blank cells, the value ERR is returned.
+
+         Example:  
+
+                      MIN(7,10,27) = 7
+
+$MOD FUNCS
+
+                        ^                              ^
+                        ^ MOD(expression1,expression2) ^
+                        ^                              ^
+
+         Calculates the remainder of expression1 divided by expression2.
+
+         Example:   
+                    MOD(37,5) = 2
+
+         since the remainder of 37/5 is 2.
+
+$MON FUNCS
+
+                         ^                   ^
+                         ^ MONTH(expression) ^
+                         ^                   ^
+
+       Returns the three-letter abbreviation for the month corresponding
+       to the value of the expression.  A value of 1 returns the result
+       JAN, while 12 returns the result DEC. Values outside the range 1 
+       to 12 return ERR.  The month abbreviations (in order) are:
+
+                      JAN, FEB, MAR, APR, MAY, JUN,
+                      JUL, AUG, SEP, OCT, NOV, DEC
+
+       The expression can use the COL or ROW functions.
+
+$NAZ FUNCS
+
+                                     ^      ^
+                                     ^  NA  ^
+                                     ^      ^
+
+
+
+         Designates the special value of NA -- Not Available. Other formulas
+         referencing a cell with an NA value are evaluated as NA.  NA is
+         used to identify unavailable data.  Because NA is displayed in all 
+         other dependent cells, you can easily identify calculations that
+         are invalid because of unavailable data.
+
+$NAZ2 FUNCS
+
+                                   ^          ^
+                                   ^ NA(list) ^
+                                   ^          ^
+
+
+
+
+         Counts the number of cells in the list that contain the value
+         NA.
+
+$PIZ FUNCS
+
+             
+                                     ^      ^
+                                     ^  PI  ^
+                                     ^      ^
+
+
+
+
+         The value of PI is the ratio of the circumference of a circle to
+         its diameter to the precision of your computer (approximately
+         3.141592653589793).
+
+$PVZ FUNCS
+
+                         ^ PV(interest rate,range) ^
+
+    Returns the Present Value of cash flow contained in the range, discounted 
+    at the specified interest rate in decimal form (.12 for 12%, etc.).
+    20/20 assumes a cash flow at regular intervals. Use a monthly rate for
+    months, an annual rate for years, etc.  The range must lie in one column
+    or row, but need not be contiguous. If the value of the expression is
+    less than or equal to -1.0 (-100%), then PV returns the value ERR.
+
+    For example:
+
+          PV(rate,[10,1..n])
+
+    is equivalent to
+
+          [10,1]/(1+rate) + [10,2]/(1+rate)**2 + ... +[10,n]/(1+rate)**n
+
+    where ** means "raised to the power"
+
+#PVZ2 FUNCS
+
+                          ^ PV(expression,range) -2- ^
+
+         If you are working with an irregular cash flow, you can insert
+         zeros into the range so that each cell in the range corresponds
+         to a regular interval.
+
+         Example:  
+
+         With a 12% interest rate, if [4,7] = $20.00 and [5,7]= $25.00, then 
+         PV(.12,[4..5,7]) = $17.86
+
+
+$RAN FUNCS
+
+                            ^                        ^
+                            ^ RANK(expression,range) ^
+                            ^                        ^
+
+         Operates on a range of numbers stored in a column or row.  Each
+         value in the range is assigned a rank and an order.  The smallest
+         number in the range is given the rank of 0, the next smallest,
+         1, and so on.  The first number in the range is given the order of
+         0, the second, 1, and so on.
+
+         The first argument specifies the rank.  RANK finds the value with
+         that rank and returns the order of that value.
+
+         RANK is useful as a first argument for SEL.
+
+$ROW FUNCS
+
+                                    ^       ^
+                                    ^  ROW  ^
+                                    ^       ^
+
+
+
+         Returns the row number of the cell containing this function.
+
+         Example:  
+
+         If [4,2] contains the formula ROW, then the value of [4,2] is 2
+
+$SEL FUNCS
+
+                           ^                      ^
+                           ^ SEL(expression,list) ^
+                           ^                      ^
+
+         SELects an item in the list depending on the integer value of the
+         expression.  SEL returns the item from the list whose position in
+         the list matches this integer value.  If the integer value is
+         0, SEL returns the first item in the list.  If the integer value 
+         is 1, SEL returns the second item in the list, etc.
+
+         If an item in the list is a cell reference that contains a
+         label, SEL returns that label.
+
+         If the integer value is less than 0, or greater than or equal 
+         to the number of list items, then SEL returns the value ERR.
+
+#SEL2 FUNCS
+
+                          ^ SEL(expression,list) -2- ^
+
+         For example, if you have:
+
+                        SEL([3,2], .12, .15, .18, .23),
+
+         then the following is true:
+
+                      -------------------------------
+                      Value of     Value returned by
+                      Cell [3,2]     SEL function
+                      -------------------------------
+                         2              .18
+                         0.05           .12
+                         3              .23
+                         1.95           .15
+                         8.2            ERR
+                        -2              ERR
+
+$SOR FUNCS
+
+                         ^                       ^
+                         ^ SORT(expression,list) ^
+                         ^                       ^
+
+         Returns an item in the list depending on the integer value of the
+         expression.  SORT ranks the items in the list, assigning the smallest
+         value the rank of 0, the next smallest, 1, and so on.  SORT returns
+         the item from the list with the rank determined by the integer value
+         of the expression.
+
+         If any of the cells in the list are blank, text, or ERR, then
+         SORT returns the value ERR.  If any cell is NA, then SORT
+         returns NA, regardless of the values of the other cells in
+         the list.
+
+#SOR2 FUNCS
+
+                        ^ SORT(expression,list) -2- ^
+
+         Example:  If you have:
+
+                      SORT([3,2],87,93,111,67,45,106)
+
+         then the following is true:
+
+                     --------------------------------
+                     Value of     Value returned by
+                     Cell [3,2]     SORT function
+                     --------------------------------
+                        0.05             45
+                        4               106
+                        1.95             67
+                        8.2             ERR
+                        3.1              93
+                       -2               ERR
+
+$SQR FUNCS
+
+                            ^                  ^
+                            ^ SQRT(expression) ^
+                            ^                  ^
+
+
+
+     Calculates the SQuare RooT of the expression.  For example:
+
+                               SQRT(225) = 15
+
+     Note:  If the expression is negative, SQRT returns the value ERR.
+
+$STD FUNCS
+
+                                  ^           ^
+                                  ^ STD(list) ^
+                                  ^           ^
+
+         Calculates the unbiased STandard Deviation.  This is defined as
+         the square root of the sum of the squares of the deviations of
+         each value from the mean, divided by one less than the number of
+         values.
+
+         If the number of values is less than two, or if any of the
+         values is text, then the result is ERR.
+
+         Example:  
+
+                 If [3,4] = 11, [3,5] = 15, and [3,6] = 20, then
+                 STD([3,4..6]) = 4.5092
+
+$SUM FUNCS
+
+                                  ^           ^
+                                  ^ SUM(list) ^
+                                  ^           ^
+
+         Calculates the SUM of all arguments in the list.  If an argument
+         is a range, SUM calculates the sum of all cells in the range.  If
+         any referenced cells are blank, they are treated as zeros.  If a
+         referenced cell contains a label, the result is ERR.
+
+         For example:
+
+                                 SUM([7,3..20])
+                                 SUM([7..10,4])
+                                 SUM([3,5..7],[5,5..7],2*[8,0])
+
+$TRG FUNCS
+
+                    ^                         ^
+                    ^ TRIGONOMETRIC FUNCTIONS ^
+                    ^                         ^
+
+     The expression is interpreted in radians by the direct functions,
+     and the results are given in radians for the arc functions.
+
+                 o  SIN(expression) = SINe
+                 o  COS(expression) = COSine
+                 o  TAN(expression) = TANgent
+                 o  ASIN(expression) = ArcSINe
+                 o  ACOS(expression) = ArcCOSine
+                 o  ATAN(expression) = ArcTANgent
+                 o  ATAN2(exp1,exp2) = ArcTANgent of (exp1/exp2)
+
+     To convert degrees to radians, use the formula:  expression*PI/180
+
+     To convert radians to degrees, use the formula:  expression*180/PI
+
+$/ !
+
+                             ^          ^               
+                             ^ COMMANDS ^
+                             ^          ^
+
+ Enter a 20/20 command by typing a slash (/) when Ready: is displayed
+ on the Edit line.  20/20 then displays the following 20/20 commands:
+
+           {/C} 1. /COPY                    {/M} 2. /MODIFY
+           {/E} 3. /EDIT                    {/F} 4. /FORMAT                   
+           {/D} 5. /DEFAULT                 {/S} 6. /STORAGE                  
+           {/P} 7. /PRINT                   {/W} 8. /WINDOW
+           {/O} 9. /OPTION                  {/T}10. /TOOLS
+           {/G}11. /GRAPH                   {/H}12. /HELP
+           {/Q}13. /QUIT
+
+                     Reference: {CMDE}14. The Edit Line.
+          
+$/C /
+
+                                 ^ COPY ^
+
+   Copies cells from one worksheet range to another.  Options are:
+
+     EVERYTHING - Copies entire cell contents (formula, value, and format).
+
+     FORMAT     - Copies only the format of the cell(s).  With /COPY 
+                  FORMAT, you can easily preformat a cell range. 
+
+     VALUE      - Copies only the value (number) and format (excluding 
+                  formulas) of the cell(s).  With /COPY VALUE, you can 
+                  store model results anywhere on the worksheet.
+
+     Range prompts:     Source Range - The cell(s) you copy
+                        Target Range - The cell(s) you copy to 
+
+    Source and Target Ranges can be single cell, column, row, contiguous,
+    or non-contiguous.  
+
+$/D /
+
+                                ^         ^
+                                ^ DEFAULT ^
+                                ^         ^
+
+       Sets three types of defaults for the entire worksheet.  
+       These are:
+                         o Value (number) display format
+                         o Lock or unlock status
+                         o Column width
+
+       NOTE:  Use /FORMAT to override /DEFAULT options for individual
+       cells or columns.
+
+       References:       {/DO}1. /DEFAULT Options
+                         {/F}2. /FORMAT Command
+
+#/DO /D
+
+                          ^ DEFAULT OPTIONS - 1 ^
+
+     ALIGNED        -  Lines up decimal points of all numbers in a column.
+                       Reduces effective width of all columns by one.
+
+     , (Comma)      -  Displays and prints commas for all numeric values
+                       greater than 999 or less than -999.
+
+     $ (Dollars     -  Displays numeric values in dollars and cents form,
+       and Cents)      with comma notation.
+
+     EXPONENTIAL    -  Displays numeric values in exponential (scientific)
+                       form.
+
+     ( (Financial)  -  Displays negative numbers in parentheses, with comma
+                       notation.
+
+                    See NEXT for more options.
+
+#/DO2 /D
+
+                          ^ DEFAULT OPTIONS - 2 ^
+
+     FIXED          -  Displays numeric values in decimal form.
+
+     % (Percent     -  Displays each numeric value as a percentage.  The 
+                       value displayed is the cell value multiplied by 
+                       100, with a percent sign appended.
+
+     LOCK           -  LOCK: Locks the entire keyboard for keyboard entry,
+                       except for those cells that have been individually
+                       unlocked by /FORMAT LOCK.
+
+                       UNLOCK: Unlocks the entire worksheet for keyboard 
+                       entry, except for those cells that have been 
+                       individually locked by /FORMAT LOCK.
+
+     WIDTH          -  Sets the width (number of spaces) of all worksheet
+                       columns.  The default width is eight spaces.
+
+$/E /
+
+                                 ^      ^
+                                 ^ EDIT ^
+                                 ^      ^
+
+       Allows you to edit the contents of the current cell.
+
+       To edit a cell, first move the cursor to that cell, then select
+       /EDIT.  20/20 displays the contents of the cell on the Edit line.
+
+       Reference:      {EDT1}1. USING THE EDIT LINE
+
+$/F /
+
+                                 ^        ^
+                                 ^ FORMAT ^
+                                 ^        ^
+
+       Sets three types of formats for individual cells.  These are:
+
+                       o Value display format
+                       o Lock or unlock status
+                       o Column width
+
+       NOTE:  /FORMAT specifications for an individual cell override
+       default worksheet formats set by /DEFAULT.
+
+       References:         {/FO}1. /FORMAT Options
+                           {/D}2. /DEFAULT Command
+
+#/FO /F
+
+                          ^ FORMAT OPTIONS - 1 ^
+
+    BAR          -  Causes the cell to become part of a bar graph display.
+
+    , (Comma)    -  Displays and prints commas for all numeric values
+                    greater than 999 or less than -999.
+
+    Default      -  Cancels the current cell format, and restores the
+                    format set by the /DEFAULT command.
+
+    $ (Dollars   -  Displays numeric values in dollars and cents form,
+      and Cents)    with comma notation.
+
+    EXPONENTIAL  -  Displays numeric values in exponential (scientific)
+                    form.
+
+                 See NEXT screen for more.
+
+#/FO2 /F
+
+                          ^ FORMAT OPTIONS - 2 ^
+
+   ( (Financial) -  Displays negative numbers in parentheses, with comma
+                    notation.
+
+   FIXED         -  Displays numeric values in decimal form.
+
+   GRAPH         -  Causes the cell's value to be displayed as a series of
+                    plus or minus signs.
+
+   INVISIBLE     -  Suppresses the display of the cell's value.  This format
+                    is useful for intermediate results that should not
+                    appear in a finished report.
+
+                 See NEXT screen for more.
+
+#/FO3 /F
+
+                          ^ FORMAT OPTIONS - 3 ^
+
+   % (Percent)  -  Displays a numeric value as a percentage.  The value 
+                   displayed is the cell value multiplied by 100, with 
+                   a percent sign appended.
+
+   LOCK         -  LOCK: Locks an individual cell for keyboard entry.
+                -  UNLOCK: Unlocks an individual cell for keyboard entry.
+                -  DEFAULT: Returns the current cell to /DEFAULT status.
+
+   TRUE         -  Causes the cell's value to be displayed as either TRUE
+                   or blank.
+
+   WIDTH        -  Sets the width (number of spaces) of an individual col-
+                   umn.  The default width is eight spaces.
+
+$/G /
+
+                                ^ GRAPH ^
+
+       Creates graphic images of worksheet data.
+   
+       When you issue a /GRAPH command, 20/20 displays the graph options. 
+       These designate the kind (form) of graph, the data you want to
+       graph, and the window to display the graph.
+
+       Most /GRAPH options include defaults.  These defaults allow you
+       to select an option by simply typing <CR>.
+         
+       The /GRAPH options are:
+
+           {/GV} 1. VIEW        {/GP} 2. PLOT        {/GF} 3. FORM
+           {/GR} 4. RANGE       {/GW} 5. WINDOW      {/GG} 6. GRID
+           {/GO} 7. ORDER       {/GT} 8. TITLE       {/GS} 9. SUBT
+           {/GL}10. LABELS      {/GH}11. HEADING     {/GA}12. AXIS
+           {/GN}13. NAME
+
+$/GV /G
+
+                          ^                    ^
+                          ^ VIEW SPECIFICATION ^
+                          ^                    ^
+
+
+      VIEW  -  Displays the created graph in the current window.  If you
+               have not fully specified the graph you want, 20/20 uses 
+               default graph options as needed.  
+
+       NOTE:  You can view graphics only on a graphics terminal. Use /OPTION 
+       TERMINAL to set the terminal type.  Reference: {/OT}1. /OPTION TERMINAL
+
+
+$/GP /G
+
+                          ^                    ^
+                          ^ PLOT SPECIFICATION ^
+                          ^                    ^
+
+      PLOT -  Draws a single graph on the entire worksheet screen
+              after you specify a plotter, printer, or color monitor 
+              as a graphics output device.  The PLOT options are:
+
+                       {/GPG}1. Graph
+                       {/GPW}2. Worksheet
+                       {/GPD}3. Device
+                       {/GPP}4. Paper
+                       {/GPP}5. Margin
+                       {/GPP}6. Chart
+                       {/GPS}7. Style
+
+$/GPG /GP
+
+                       ^                   ^
+                       ^ /GRAPH PLOT GRAPH ^
+                       ^                   ^
+
+
+
+     GRAPH - Directs 20/20 to plot, print, or display the current
+             graph on the output device that you specify.
+
+     GRAPH is one of /GRAPH PLOT's two action commands.  The other 
+     action command is WORKSHEET.
+
+$/GPW /GP
+
+                       ^                       ^
+                       ^ /GRAPH PLOT WORKSHEET ^
+                       ^                       ^
+
+
+
+      WORKSHEET - Directs 20/20 to plot, print, or display the current
+                  worksheet screen (including any graphs) on the output
+                  device that you specify.
+
+      WORKSHEET is one of /GRAPH PLOT's two action commands.  The other 
+      action command is GRAPH.
+
+$/GPD /GP
+
+                       ^                    ^
+                       ^ /GRAPH PLOT DEVICE ^
+                       ^                    ^
+
+
+     DEVICE - Allows you to select the output device.  The choices 
+              depend on your system configuration, and can include 
+              plotters, printers, or color monitors.  See Appendix A 
+              of the 20/20 Handbook for details.
+
+$/GPP /GP
+
+                  ^ /GRAPH PLOT PAPER, MARGIN, CHART ^
+
+   Plots any size image to any location on the page.
+
+     PAPER -  Sets the height and width (in inches) of the paper
+              or screen onto which you plot.
+
+     MARGIN - Sets the top and left margins (in inches) around the
+              plotted image.  Some devices measure the MARGIN 
+              settings from the edges of the paper or screen; others
+              have a built-in margin to which the MARGIN settings 
+              are added.  Check your output device manual.
+
+     CHART  - Sets the height and width (in inches) of the image.
+              The CHART dimension plus the MARGIN can not exceed the 
+              PAPER setting.
+
+    Each configured device has default PAPER, MARGIN, and CHART settings
+    that appear when you select the commands.
+
+$/GPS /GP
+
+                         ^                   ^
+                         ^ /GRAPH PLOT STYLE ^
+                         ^                   ^
+
+
+      STYLE - Specifies quality of plot.  Options are:
+
+          DRAFT      - Generally high speed plotting with coarse shading
+
+          PRODUCTION - Generally low speed plotting with fine shading
+
+      Check your output device manual for more information. 
+
+$/GF /G
+
+                          ^                    ^
+                          ^ FORM SPECIFICATION ^
+                          ^                    ^
+
+     /GRAPH FORM sets the graph type. The FORM specification options are:
+
+     LINE        - Constructs a single or multiple line graph.  LINE is the
+                   default.
+ 
+     BAR         - Constructs a vertical BAR graph.
+
+     COMPARISON  - Arranges data in a series of adjacent bar graphs,
+                   allowing data COMPARISON.
+
+     STACKED     - Graphs data in layered bars by STACKing each data item
+                   proportionally.
+
+$/GR /G
+
+                     
+                          ^                     ^
+                          ^ RANGE SPECIFICATION ^
+                          ^                     ^
+
+
+
+   RANGE - Specifies the range of cells that contain the worksheet
+           data to be graphed.
+
+   DO NOT include labels or empty cells in the range.  The range
+   can be any valid range, including non-contiguous.
+ 
+   Reference:   {CRRG}1. Cell Ranges
+
+$/GW /G
+
+                         ^ WINDOW SPECIFICATION ^
+
+      WINDOW - Specifies the display window for your graph.
+
+      NOTE: You must use the /WINDOW command to create multiple 
+      windows BEFORE you use /GRAPH WINDOW to display graphics 
+      in multiple windows.
+
+      When you select /GRAPH WINDOW, a list of possible window 
+      locations appears, each preceded by a number.
+
+      The default window location (adjacent to the current window) 
+      is highlighted.  The window locations are listed in left-to-right, 
+      top-to-bottom order.  Select the default window by typing <CR>.
+      Select a different window by typing the number that precedes the
+      listed window location (for example, type 1 to select 1-top, etc.);
+      or use use the arrow keys to move to the listed window location, 
+      then type <CR>.
+
+$/GG /G
+
+                          ^                    ^
+                          ^ GRID SPECIFICATION ^
+                          ^                    ^
+
+      GRID - Designates the desired markings for the vertical axis.  The
+             options are:
+
+           TICKS - A tick mark appears on the vertical axis, to the 
+                   right of each vertical value.  This is the default.
+
+           LINE  - A horizontal line appears across the graph for each
+                   row value.
+
+           NONE  - No markings appear on the vertical axis, and no lines
+                   are drawn.
+
+$/GO /G
+
+                          ^ ORDER SPECIFICATION ^
+
+     ORDER - Specifies whether the contents of the graph are presented by
+             column or row information.  You can choose:
+
+          COLUMN - The data presented in the spreadsheet colummns is 
+                   placed on the graph's vertical axis, and the row data 
+                   becomes the like-shaded portions in the graph.  This 
+                   is the default.
+
+          ROW    - The data presented in the spreadsheet rows is placed on
+                   the graph's vertical axis, and the column data becomes
+                   the like-shaded portions.  
+
+     If the range contains only one row or column of data, ORDER is 
+     ignored, and the vertical axis contains the axis of data that is
+     greater than one.
+
+$/GT /G
+
+                          ^ TITLE SPECIFICATION ^
+
+        TITLE - Sets the graph title.  Options are:
+
+            NONE   - No subtitle appears on the graph, or the existing
+                     title is erased.  This is the default.
+
+            TOP    - Places the title at the top of the graph.
+
+            BOTTOM - Places the title at the bottom of the graph.
+
+            Suboptions are:   
+
+                     MANUAL - You type in the title you choose.
+
+                     RANGE  - You type in the range that contains 
+                              the label you want to use as a title.
+
+$/GS /G
+
+                          ^                    ^
+                          ^ SUBT SPECIFICATION ^
+                          ^                    ^
+
+      SUBT - Creates a graph subtitle.  Options are:
+
+           NONE   - No subtitle appears on the graph, or
+                    the existing subtitle is erased.  This is
+                    the default.
+
+           TOP    - Places the subtitle at the top of the graph.
+
+           BOTTOM - Places the subtitle at the bottom of the graph.
+
+       NOTE:  If you choose the same location for TITLE and SUBT, 
+       the subtitle appears below the title.  
+
+$/GL /G
+
+                      ^ LABELS SPECIFICATION - 1 ^
+
+  LABELS - Sets the names for each of the reference points on the graph's
+           axes.  Options are:
+
+           AUTOMATIC - 20/20 automatically enters the graph labels,
+                       using the graphed data's column and row labels.
+              
+           MANUAL    - You type in the labels, separating each with 
+                       a backslash (\).  For example, \Jan\Feb\Mar.
+
+           RANGE     - You type in the one-dimensional, left-to-right,
+                       range of cells that contains the desired labels.
+
+                   See NEXT screen for more
+
+#/GLO /G
+
+                       ^ LABELS SPECIFICATION - 2 ^
+
+      COLUMN or ROW  - You type in column or row labels independently.  
+                       Options are: NONE, AUTOMATIC, MANUAL, and RANGE,
+                       which are identical to the like-named /GRAPH 
+                       LABEL options, except that they affect columns 
+                       OR rows, instead of columns AND rows.
+
+               NONE  - No labels appear on the graph, or the existing
+                       label is erased.  This is the default.
+
+$/GH /G
+
+                          ^ HEADING SPECIFICATION ^
+
+       HEADING assigns categorical names to labels on either axis.
+       /GRAPH HEADING options are:
+
+         NONE    - No heading is assigned, or the existing heading
+                   is erased.  This is the initial default.
+
+         COLUMN  - Affects column or row headings.  
+         or ROW    Options are: 
+
+                 NONE   - No heading is assigned, or the existing
+                          heading is erased. This is the default.
+                          
+                 MANUAL - You type in the heading.
+ 
+                 RANGE  - You type in a cell that contains a label.  
+                          The label becomes the heading.
+
+$/GA /G
+
+                             ^                    ^
+                             ^ AXIS SPECIFICATION ^
+                             ^                    ^
+
+         AXIS - Sets the vertical range of values to be graphed.  Options
+                are:
+
+            AUTOMATIC  - 20/20 automatically sets the low end of the
+                         scale at zero (unless there is negative data),
+                         and sets the high end of the scale to include
+                         the maximum value in the range.
+                         
+            MANUAL     - You type in the lowest value to be graphed, 
+                         then the highest value to be graphed.  
+
+
+            NOTE:  AXIS designations do not apply to Pie charts.
+
+$/GN /G
+
+                             ^ NAME SPECIFICATION ^
+
+         NAME  - Names the graph so that it can be saved for later use.
+                 Options are:
+
+             SAVE   - Saves the graph that you name.  You can save as many 
+                      as five graphs with each worksheet. 
+
+             REDRAW - Redraws the specified graph.
+
+             GET    - Sets the specified graph options as defaults.
+
+             DELETE - Deletes the specified graph.
+
+             ERASE  - Deletes all graphs stored with the current worksheet.
+
+             LIST   - Lists all graphs stored with the current worksheet.
+
+$/H /
+
+                                  ^      ^
+                                  ^ HELP ^
+                                  ^      ^
+
+       Provides information about worksheet concepts, 20/20 commands,
+       and functions.
+
+       Type "?" from any screen for more information about the HELP utility.
+
+$/M /
+
+                                 ^        ^
+                                 ^ MODIFY ^
+                                 ^        ^
+
+          Modifies the worksheet in the following ways:
+
+   {/MB}1. BLANK   -  Erases the value, formula, and format of a cell or
+                      cell range.
+
+   {/MC}2. CLEAR   -  Erases the contents of all the cells in the worksheet.
+
+   {/MD}3. DELETE  -  Deletes entire columns or rows from the worksheet.
+
+   {/MI}4. INSERT  -  Inserts entire columns or rows into the worksheet.
+
+   {/MM}5. MOVE    -  Moves an entire column or row from one worksheet
+                      location to another.
+
+$/MB /M
+
+                                ^              ^
+                                ^ MODIFY BLANK ^
+                                ^              ^
+
+
+
+
+         BLANK - Erases the value, formula, and format of a cell or 
+                 cell range.
+
+         CAUTION:  Once cells are blanked, they cannot be recovered.
+
+$/MC /M
+
+                             ^ MODIFY CLEAR ^
+
+       CLEAR - Affects the worksheet in the following ways:
+
+            o  All memory occupied by the worksheet is released
+            o  /DEFAULT and /FORMAT options are reset to default status
+            o  /STORAGE LINK and /GRAPH settings are cleared
+            o  The cell cursor is positioned at [0,0]
+            o  Titles and multiple window settings are cleared
+
+       The following /OPTION command settings remain unchanged:
+
+            o  AUTO-MOVE (automatic cell cursor movement)
+            o  NAMES (cell referencing by cell names)
+            o  ORDER (recalculation order)
+            o  RECALC (recalculation method)
+            o  TERMINAL (terminal characteristics)
+
+$/MD /M
+
+                             ^ MODIFY DELETE ^
+
+       DELETE - Erases entire columns or rows from the worksheet, 
+                beginning at the current cell cursor position.  
+
+       ALWAYS position the cell cursor at the column or row you want to 
+       move before you use /MODIFY DELETE.
+
+       20/20 adjusts all cell references (including fixed, mixed, and
+       relative) within each formula, thereby maintaining correct 
+       references to cells that have shifted because columns or rows
+       have been deleted.
+
+       CAUTION:  If you reference a cell in a column or row that you
+       have deleted, an error message (indicating the location of the
+       now erroneous formula) appears the next time you recalculate
+       the worksheet.  Edit or remove the formula before you proceed.
+
+$/MI /M
+
+                             ^               ^
+                             ^ MODIFY INSERT ^
+                             ^               ^
+
+       INSERT - Inserts entire columns or rows into the worksheet, 
+                beginning at the current cell cursor position.  
+
+       ALWAYS position the cell cursor at the column or row where you want 
+       to insert columns or rows before you use /MODIFY INSERT.
+
+       20/20 adjusts all cell references within each formula so that the
+       correct reference to shifted cells is maintained.  In addition,
+       ranges are expanded to include new columns or rows inserted within
+       the range.  The same adjustment is made whether the reference is 
+       fixed or relative.
+
+$/MM /M
+
+                              ^ MODIFY MOVE ^
+
+  MOVE - Moves an entire column or row from one worksheet location to another.
+
+  ALWAYS position the cell cursor on the column or row you want to move before
+  you use /MODIFY MOVE.  20/20 adjusts cell references within each formula so 
+  that the correct reference to shifted cells is maintained.  Formula ranges 
+  are expanded or contracted to include new columns or rows, inserted/deleted
+  within the range.  Formulas that contain ranges are adjusted as follows:
+ 
+       ----------------------------------------------------------
+       | Column or row is moved out of range | Range contracts  |
+       |--------------------------------------------------------|
+       | Column or row is moved into range   | Range expands    |
+       |--------------------------------------------------------|
+       | The first or last column or row of  | -1 is substituted|
+       | the range is moved                  | into the range   |
+       ---------------------------------------------------------- 
+
+$/O /
+
+                                 ^ OPTION ^
+
+      Sets 20/20 functional features.  The Mini-HELP line displays the
+      following status information :
+
+               o  Amount of memory used by the model (in bytes)
+               o  Default column width and lock status
+               o  Recalculation order and method
+
+      /OPTION command options are:
+
+                  {/OA}1. AUTO-MOVE
+                  {/OT}2. TERMINAL
+                  {/OO}3. ORDER
+                  {/OR}4. RECALC
+                  {/ON}5. NAMES
+                  {/OJ}6. JOURNAL ECHO
+
+$/OA /O
+
+                            ^                  ^
+                            ^ OPTION AUTO-MOVE ^
+                            ^                  ^
+
+
+
+
+      AUTO-MOVE - Automatically moves the cell cursor in the direction
+                  of the last arrow key typed, each time you press <CR>.
+
+
+$/OT /O
+
+                            ^ OPTION TERMINAL ^
+
+  TERMINAL - Sets the terminal type. The default terminal type is DEC VT100
+             (unless you or your system manager specify another default
+             terminal).  At the "Terminal" prompt, type the terminal code,
+             then <CR>.  Refer to the following list for your terminal code:
+
+                TERMINAL                CODE            GRAPHICS
+
+                DEC VT100 or VT 101     VT100
+                DEC VT100 (132 column)  VT100W
+                DEC VT125               VT125             Yes
+                DEC VT125 (132 column)  VT125W            Yes
+                DEC VT220               VT220
+                DEC VT220 (132 column)  VT220W
+                DEC VT240 or VT241      VT240             Yes
+                DEC VT240 (132 column)  VT240W            Yes
+                Tektronics 4105         TEK4105           Yes 
+
+$/OO /O
+
+                              ^              ^
+                              ^ OPTION ORDER ^
+                              ^              ^
+
+      ORDER - Sets the order in which cells are calculated.  The options are:
+
+      NATURAL  - Each cell is evaluated after all the cells which it
+                 references are evaluated.
+
+      COLUMN   - Evaluation begins at cell [0,0] and proceeds across
+                 columns one at a time, beginning with the first column.
+
+      ROW      - Evaluation begins at cell [0,0] and proceeds down
+                 rows one at a time, beginning with the first row.
+
+      NOTE:  Use COLUMN or ROW order to correctly evaluate circular or
+      recursive references.  20/20's default calculation order is
+      NATURAL.
+
+$/OR /O
+
+                             ^               ^
+                             ^ OPTION RECALC ^
+                             ^               ^
+
+      RECALC - Sets the method by which cells are calculated.  The options
+               are:
+
+      AUTOMATIC - 20/20 evaluates the entire worksheet whenever you
+                  change the contents of a cell, or when you press 
+                  <CALC> (as the first character) at the Ready: prompt.
+    
+      MANUAL    - 20/20 evaluates the entire worksheet only when you
+                  press <CALC>.  MANUAL eliminates time-consuming 
+                  recalculation, when many changes are to be made, 
+                  by postponing recalculation until you are ready to 
+                  compute any number of changes at one time.  This 
+                  is the initial default.
+
+$/ON /O
+
+                              ^ OPTION NAMES ^
+                              
+ NAMES - Enables you to use cell names as cell references.  Labels in 
+         column 0 become row names and labels in row 0 become column names.  
+         You can use cell name references in formulas or command files.  
+         However, you must observe the following guidelines:
+
+        o  Use no more than the label's first 15 characters
+        o  Enter an underscore in place of any non-alphanumeric 
+             character in the column or row label
+        o  Precede the label with an underscore if its first 
+             character is numeric
+        o  Enter the label's blank spaces as underscores.
+      
+ Note:  You can always use cell reference names instead of cell reference 
+ numbers.  Cell reference names and cell reference numbers can also be used 
+ interchangeably.  Reference: {CRCN}1. Cell Name References
+
+$/OJ /O
+
+                             ^                     ^
+                             ^ OPTION JOURNAL ECHO ^
+                             ^                     ^   
+
+     JOURNAL ECHO - Enables you to create a file that stores 20/20 commands
+                    in command file sequence.  /OPTION JOURNAL ECHO prompts
+                    for a filename.  All subsequent entries are stored in
+                    this file, until you use /OPTION JOURNAL ECHO to close 
+                    the file.
+
+     NOTE:  The journal file contains only what you specify.  For example,
+     if you type <CR> to accept default specifications, only the <CR> is
+     stored.  
+      
+$/P /
+
+                                 ^ PRINT ^
+
+  PRINT - Sends all or part of a worksheet to a printer or to a file, and
+          sets printer defaults.  The options are:
+          
+     DEVICE - Changes the default printer or file name. 
+                                     
+     LENGTH - Changes the default page length. When printing a report, a form
+              feed is automatically generated at the end of each page.  The 
+              default page length is 63 lines.
+
+     WIDTH  - Changes the default page width.  The default is 80 characters.
+
+     PRINT  - Creates a print file and a printout from a range of worksheet
+              cells.
+               
+$/Q /
+
+                                  ^      ^
+                                  ^ QUIT ^
+                                  ^      ^
+
+      Quits a 20/20 session.  20/20 prompts for confirmation before actually
+      quitting.
+
+      If you have not stored your worksheet, and want to use it again in the
+      future, be sure to store it (with /STORAGE WRITE) before you quit, or
+      it will be lost.
+
+      NOTE: QUIT is included on every 20/20 command option and sub-option
+      level, and like <BKO>, brings you back to your current command option
+      level or to Ready:.  Only the /QUIT command exits from a 20/20 session.
+
+$/S /
+
+                              ^ STORAGE  ^
+
+      Stores and retrieves information to or from files.  Options are:
+
+ {/SR}1. READ    - Reads a previously saved worksheet into the current worksheet
+ {/SW}2. WRITE   - Writes the current worksheet into a disk file
+ {/SC}3. CUT     - Writes a range of worksheet cells into a disk file    
+ {/SP}4. PASTE   - Adds all or part of a worksheet file to the current worksheet
+ {/SI}5. IMPORT  - Reads a data file into the current worksheet
+ {/SE}6. EXPORT  - Creates a data file from the current worksheet
+ {/SF}7. FILES   - Manages files for 20/20
+ {/SL}8. LINK    - Overlays data from a stored worksheet onto current worksheet
+
+$/SR /S
+
+                            ^              ^
+                            ^ STORAGE READ ^
+                            ^              ^
+
+       READ - Clears the worksheet currently displayed, and reads in a 
+              previously saved worksheet.  20/20 prompts for the filename 
+              of the worksheet to be read in.
+
+       The worksheet to be read in must have been saved with either:
+
+                   {/SW}1. /STORAGE WRITE  or
+                   {/SC}2. /STORAGE CUT
+
+$/SW /S
+
+                            ^ STORAGE WRITE ^  
+
+     WRITE - Writes the current worksheet into a disk file.
+             The information that is saved includes:
+
+              DATA                   FORMAT
+                   Values                 Default format
+                   Text                   Individual cell formats
+                   Titles                 Column widths
+                   Names option
+                   Formulas          SCREEN DISPLAY
+                                          Windows
+              RECALCULATION               Cursor location
+                   Method
+                   Order             GRAPHS
+                                          Current graphs
+              DATABASE                    Saved (named) graphs
+                   Defined links
+
+$/SC /S
+
+                           ^ STORAGE CUT ^
+
+  CUT - Writes a range of cells from the current worksheet into a disk file.  
+        20/20 prompts for the filename and range.  Information saved includes:
+
+        DATA                   FORMAT
+           Values                 Default format
+           Text and Titles        Individual cell formats
+           NAMES option           Column widths
+           Formulas            
+                               SCREEN DISPLAY
+        RECALCULATION             Cursor location and Windows 
+           Method and Order
+                               GRAPHS
+        DATABASE                  Current graphs
+           Defined links          Saved (named) graphs
+
+                 See Also: {/SP}1. /STORAGE PASTE
+
+$/SP /S
+
+                             ^               ^
+                             ^ STORAGE PASTE ^
+                             ^               ^
+
+      PASTE - Adds all or part of a stored worksheet to the current
+              worksheet.  20/20 prompts for:
+
+           o  Filename of the worksheet to be read in
+           o  Input range of cells to be copied from this file
+           o  Target range of cells where the range is to appear.
+
+      Pasted cells assume the default characteristics of the current
+      worksheet.
+
+      NOTE:  /STORAGE PASTE operates only on contiguous ranges of cells.
+
+               See Also: {/SC}1. STORAGE CUT
+
+$/SI /S
+
+                             ^ STORAGE IMPORT ^  
+
+  IMPORT - Reads data files into the current worksheet at the current cursor 
+           location.  These files may have been created by /STORAGE EXPORT
+           or by a text editor.  All options overwrite current worksheet data:
+
+    {/SIM}1. MODEL     - Creates a model from a command file created by 
+                         /STORAGE EXPORT MODEL.
+
+    {/SIC}2. COMMANDS  - Executes a command file created by /STORAGE EXPORT
+                         TEXT or by a text editor.
+
+    {/SID}3. DATA      - Reads values and text from delimited data files 
+                         into the current worksheet.
+
+    {/SIT}4. TEXT      - Reads text from a data file as long labels.
+
+    {/SIN}5. NUMBERS   - Reads numbers from a data file.
+
+$/SIC /SI
+
+                        ^                         ^
+                        ^ STORAGE IMPORT COMMANDS ^
+                        ^                         ^
+
+   IMPORT COMMANDS - Runs a command file created with /STORAGE EXPORT TEXT or
+                     a text editor.  The following options set the display 
+                     action of the command file:
+
+               QUIET  - Does not update the screen display until the command
+                        file pauses, finishes, or changes display action.
+
+               NORMAL - Shows changes on screen as they occur, but does not 
+                        show commands or entries in the header.
+
+              VERBOSE - Shows changes on screen and on header as they occur.
+
+                 Reference:   {/SET}1. /STORAGE EXPORT TEXT
+
+$/SID /SI
+
+                          ^                     ^
+                          ^ STORAGE IMPORT DATA ^
+                          ^                     ^
+
+   IMPORT DATA - Imports values and text from a data file.  The fields in 
+                 the file can be separated by a delimiter character, or
+                 can have known fixed widths.  Options are:
+        
+        DELIMITED - The fields in the file are separated by a delimiter
+                    character (the default is #) which you enter when
+                    prompted.  Delimited files are created by /STORAGE
+                    EXPORT DATA. 
+
+          FIXED   - The fields in the file have fixed widths that must
+                    match the column widths into which the fields are 
+                    read.  If the field and column widths do not match,
+                    the file is not imported correctly.
+
+
+$/SIM /SI
+
+                        ^                      ^
+                        ^ STORAGE IMPORT MODEL ^
+                        ^                      ^
+
+   IMPORT MODEL - Creates a model from a command file created by /STORAGE 
+                  EXPORT MODEL.  The following options set the display
+                  action of the command file:
+
+          QUIET   - Does not update screen display until command file 
+                    pauses, finishes, or changes display action.
+
+          NORMAL  - Shows changes on screen as they occur, but does not
+                    show commands or entries in header.
+
+          VERBOSE - Shows changes on screen and on header as they occur.
+
+               Reference:   {/SEM}1. /STORAGE EXPORT MODEL
+
+$/SIN /SI
+
+                         ^                        ^
+                         ^ STORAGE IMPORT NUMBERS ^
+                         ^                        ^
+
+
+
+   IMPORT NUMBERS - Reads numbers from a data file into cells in the 
+                    current worksheet, starting at the current cursor
+                    location.  Successive rows of data file numbers 
+                    are entered in successive rows of the worksheet. 
+                    All non-numeric data is ignored.
+
+$/SIT /SI
+
+                           ^                     ^
+                           ^ STORAGE IMPORT TEXT ^
+                           ^                     ^
+
+  IMPORT TEXT - Reads text from a data file into the current worksheet.
+                Text is read in as left-justified labels, starting at 
+                the current cursor location.
+
+      NOTE:  If a left-justified label extends into a non-blank cell, 
+      the label display is truncated.  To display the entire label, 
+      blank the non-blank cell or insert a new column of blank cells.
+
+$/SE /S
+
+                             ^                ^
+                             ^ STORAGE EXPORT ^
+                             ^                ^
+
+    EXPORT - Creates data files in one of the following formats:
+         
+       {/SEM}1. MODEL  - Creates a command file of 20/20 commands that
+                         can be transported between computer systems.
+
+       {/SED}2. DATA   - Creates a delimited data file (of the numbers 
+                         and text in the current worksheet) that can be
+                         transported to other software packages.
+
+       {/SET}3. TEXT   - Creates a data file format (of worksheet labels 
+                         and numbers) that can be read by a text editor.
+                         Also creates 20/20 command files. 
+
+$/SET /SE
+
+                          ^ STORAGE EXPORT TEXT ^
+
+    EXPORT TEXT - Creates 20/20 text file formats that can be read by 
+                  text editors.  Also creates 20/20 command files which
+                  execute procedures that you define.  You list these 
+                  procedures (as left-justified labels) in each successive 
+                  row of column 0.
+
+          RANGE:  Enter a range that includes column 0, as well as all
+                  desired rows, or press <CR> to accept the default range.
+
+                  Command files use special keystrokes and operations.
+                  These are listed in the screens:
+
+           References:   {CFSK}1. Substitute keystrokes
+                         {CFSO}2. Special operations
+
+$CFSK /SET
+
+                ^                                       ^
+                ^ COMMAND FILES - SUBSTITUTE KEYSTROKES ^
+                ^                                       ^
+
+          COMMAND FILE KEYSTROKES        20/20'S INTERPRETATION
+         
+                    #/                   <CR> or new line
+                    #C                   Recalculate
+                    #U                   Up-arrow
+                    #D                   Down-arrow
+                    #R                   Right-arrow
+                    #L                   Left-arrow
+                    #PU                  Page-up
+                    #PD                  Page-down
+                    #PR                  Page-right
+                    #PL                  Page-left
+                    #B                   <BKO>
+                    #E                   <DEL>
+
+$CFSO /SET
+
+                  ^                                    ^
+                  ^ COMMAND FILES - SPECIAL OPERATIONS ^
+                  ^                                    ^
+
+   COMMAND FILE KEYSTROKES    20/20'S INTERPRETATION
+
+             #?               Interrupts command file for input from keyboard.
+             @                Returns control to command file.
+             #Q               Suppresses all command file display activity.
+             #N               Suppresses display of command line activity only.
+             #V               All command file display activity is displayed.
+             !                Separates comments from active command text.
+
+$/SED /SE
+
+                          ^                     ^
+                          ^ STORAGE EXPORT DATA ^
+                          ^                     ^
+
+    EXPORT DATA - Creates a delimited data file of the numbers and text in 
+                  the current worksheet that can be used to export 20/20
+                  worksheets to other software packages.
+
+                  20/20 prompts for the file name, range of cells, and the 
+                  delimiter.  The default delimiter is #.  For example:
+
+                WORKSHEET                           DATA FILE
+
+     ^  /........0/........1/........2/^    "NAME#"JOBCLASS#"DIVISION##
+     ^ 0^      NAME  JOBCLASS  DIVISION     "Herman#3#"ENG##
+     ^ 1^    Herman         3       ENG     "Mills#7#"FINANCE##
+     ^ 2^     Mills         7   FINANCE
+
+# /SE
+
+                        ^                         ^
+                        ^ STORAGE EXPORT DATA - 2 ^
+                        ^                         ^
+
+     /STORAGE EXPORT DATA does not save specific cell locations of data
+     or the /FORMAT or /DEFAULT settings.  Information saved includes:
+
+         DATA
+              Values
+              Text
+
+     To save /FORMAT or /DEFAULT information, use:
+
+         {/SEM}1. /STORAGE EXPORT MODEL
+
+$/SEM /SE
+
+                          ^                      ^
+                          ^ STORAGE EXPORT MODEL ^
+                          ^                      ^
+
+   EXPORT MODEL - Creates a data file of 20/20 commands that can be used
+                  to transfer models between different computers.  20/20
+                  prompts for the file name and range of cells.  Informa-    
+                  tion saved includes:
+
+             DATA                 FORMAT
+                   Values                Default format
+                   Text                  Individual cell formats
+                   Formulas              Column widths
+
+             RECALCULATION        SCREEN DISPLAY
+                   Method                Cursor location
+                   Order
+
+# /SE
+
+                        ^                          ^
+                        ^ STORAGE EXPORT MODEL (2) ^
+                        ^                          ^
+
+   To save titles, window settings, defined links, graphs, and option 
+   settings, use:
+
+     {/SC}1. /STORAGE CUT  or
+     {/SR}2. /STORAGE READ
+
+           See Also:  {/SIM}3. /STORAGE IMPORT MODEL
+
+$/SF /S
+                           ^                   ^
+                           ^   STORAGE FILES   ^
+                           ^                   ^
+
+      Manages files for 20/20.  /STORAGE FILES has two options:
+
+      LIST   - Displays selected filenames on the screen.  20/20 prompts
+               for the Filespec (directory listing option).  You can 
+               list files by directory or directory path, filename, or
+               extension.
+
+      DELETE - Deletes a file from disk storage.  20/20 prompts for the
+               filename you want to delete.  WARNING:  Once a file has 
+               been deleted, 20/20 cannot restore it.
+
+$/SL /S
+
+                              ^              ^
+                              ^ STORAGE LINK ^
+                              ^              ^
+
+   LINK - Consolidates data from a stored worksheet with data in the current
+          worksheet.  You can perform one of seven operations on these two
+          sets of data.  /STORAGE LINK differs from /STORAGE PASTE in that
+          PASTE can only replace the data in the current worksheet with the 
+          data from the stored worksheet.
+
+          /STORAGE LINK options are:
+
+               {/SLC}1. CONSOLIDATE       {/SLE}2. ERASE
+               {/SLD}3. DEFINE            {/SLR}4. REVIEW
+
+
+$/SLC /SL
+
+                       ^                          ^
+                       ^ STORAGE LINK CONSOLIDATE ^
+                       ^                          ^
+
+   LINK CONSOLIDATE - Consolidates stored and current worksheet data without 
+                      saving the links.  To link worksheets permanently, use 
+                      /STORAGE LINK DEFINE.
+
+      Consolidate worksheets by using one of the following operators:
+
+                       REPLACE, +, -, *, /, <, and >.
+
+      NOTE:  The input and target ranges should have the same /DEFAULT and
+      /FORMAT settings.  Otherwise, incomplete or inaccurate consolidations
+      may result.
+
+$/SLD /SL
+
+                          ^                     ^
+                          ^ STORAGE LINK DEFINE ^
+                          ^                     ^
+
+  LINK DEFINE - Consolidates stored and current worksheet data and saves the
+                links.  This enables you to repeat the same consolidation at 
+                a later session or to review it later in the same session.
+
+      Link worksheets by using one of the following operators:
+
+                       REPLACE, +, -, *, /, <, and >.
+
+      NOTE:  The input and target ranges should have the same /DEFAULT and
+      /FORMAT settings.  Otherwise, incomplete or inaccurate consolidations
+      may result.
+
+$/SLE /SL
+
+                           ^                    ^
+                           ^ STORAGE LINK ERASE ^
+                           ^                    ^
+
+   LINK ERASE - Erases all /STORAGE LINK DEFINE information from a worksheet.  
+                Use /STORAGE LINK ERASE to prevent continual consolidation 
+                updates each time you /STORAGE READ the file.
+
+                /STORAGE LINK ERASE does not alter current data, or undo 
+                prior consolidation operations.
+
+$/SLR /SL
+
+                          ^                     ^
+                          ^ STORAGE LINK REVIEW ^
+                          ^                     ^
+
+    LINK REVIEW - Affects consolidations created by /STORAGE LINK DEFINE.
+                  Options are:
+
+            EDIT   - Edits the link that is currently displayed. 
+            DELETE - Deletes the link that is currently displayed.
+            ERASE  - Erases all /STORAGE LINK DEFINE information
+                      from the current worksheet.
+            NEXT   - Displays the next defined link.
+            INSERT - Inserts a link created by /STORAGE LINK DEFINE.
+
+$/T /
+
+                                 ^  TOOLS  ^
+
+      Performs data utility, project scheduling, and goalseeking
+      operations.  Options are:
+
+     {/TD}1. DATABASE   - Sorts, finds, extracts, and performs mathematical/
+                          statistical operations on worksheet data.
+
+     {/TT}2. TIMECHART  - Manages time-scheduled projects by returning time
+                          allocations based on data that you enter and units
+                          of time that you select. 
+
+     {/TG}3. GOALSEEK   - Manipulates the value of a variable cell, either
+                          until a desired value in a target (goal) cell is
+                          reached, or until convergence ceases.
+
+     {/TS}4. SYSTEM     - Enables you to execute a DCL command from within 
+                          20/20.
+
+$/TD /T
+
+                             ^                ^
+                             ^ TOOLS DATABASE ^
+                             ^                ^
+
+        {/TDS}1. SORT     - Sorts alphanumeric data by column or row.
+
+        {/TDF}2. FIND     - Searches the database and identifies the data
+                            that matches the specified criteria.  Displays
+                            TRUE, if a match occurs.
+
+        {/TDE}3. EXTRACT  - Selects data matched by FIND, and writes the
+                            data to other worksheet locations.
+
+        {/TDO}4. OPERATE  - Performs mathematical and statistical operations
+                            on data matched by FIND, and writes the results
+                            to other spreadsheet locations.
+
+$/TDS /TD
+
+                            ^                     ^
+                            ^ TOOLS DATABASE SORT ^
+                            ^                     ^
+
+    DATABASE SORT - Sorts data from a range of cells to a specified target 
+                    range.  Rows are sorted based on a key column, and
+                    columns are sorted based on a key row.
+
+                    Sort in ascending or descending order.  In ascending
+                    order, the following rules apply:
+
+                        First  - Text (in ASCII order)
+                        Second - Values (in numeric order)
+                        Third  - Blank cells
+
+         NOTE:  The target range must not overlap the source range.  If a
+         cell in the source range contains a formula, only the calculated
+         value is moved to the target range.
+
+$/TDF /TD
+
+                            ^                     ^
+                            ^ TOOLS DATABASE FIND ^
+                            ^                     ^
+
+    DATABASE FIND - Finds and identifies data in the database that matches 
+                    specified criteria.  A database is a collection of 
+                    information, identified by fields and records.  Fields
+                    list information by class, such as name, city, ZIP 
+                    code, etc.  A record contains one entry in each field.
+
+                    In 20/20, fields are columns and rows are records.  Data
+                    can be text, numbers, or formulas.   
+
+                    NOTE:  FIND must precede EXTRACT and OPERATE.
+                             
+# /TD
+
+                       ^ TOOLS DATABASE FIND CRITERIA ^
+
+     FIND uses one or more criteria to identify records.  Criteria are
+     formulas that use logical operators to compare the following:
+    
+             o The contents of a cell with the contents of a cell
+             o The contents of a cell value with a number, and/or
+             o A cell value with a character string.
+
+     Criteria are entered in empty columns on the same row as the first
+     record in the database.  Each criterion must contain a cell refer-
+     ence to a field in the first record.
+
+     20/20 prompts for the criteria range.  This is the range of columns
+     that contain the criteria, and the range of database rows to be
+     searched.  Any or all of the criteria can be selected.
+
+# /TD
+
+             ^ TOOLS DATABASE FIND CRITERIA EXAMPLES - USE ^
+
+      ^  /....0/......1/....2/............3/............4/............5/^
+      ^ 0^  NAME  BADGE#   DIV     CRITERION     CRITERION  CRITERION
+      ^ 1^  John      81   ENG      [1,1]>90    [2,1]="EN" [2,1]=[$5,$0]
+      ^ 2^  Bill     302   ADM
+      ^ 3^   Sue     111   FIN
+
+   In this example, the criteria range is:  criteria - columns 3 and 4
+                                            search   - rows 1 through 3
+
+   The result is:
+
+      ^  /....0/......1/....2/............3/............4/............5/^
+      ^ 0^  NAME  BADGE#   DIV     CRITERION     CRITERION  CRITERION
+      ^ 1^  John      81   ENG                        TRUE
+      ^ 2^  Bill     302   ADM          TRUE
+      ^ 3^   Sue     111   FIN          TRUE
+
+$/TDE /TD
+
+                          ^ TOOLS DATABASE EXTRACT ^
+
+    DATABASE EXTRACT - Copies data (matched by FIND) from the database to
+                       another worksheet location.  Any or all data matched
+                       by FIND can be extracted.   20/20 prompts for the:
+
+            Source Range   - the location of the data to be extracted
+            Target Range   - the location where the extracted data is to go
+            Criteria Range - the location of the columns containing the
+                              criteria formulas and the results of FIND.
+
+       If a source cell contains a formula, a reference to the source cell
+       is entered in the target cell.  Therefore, changes in the calculated
+       value of the source cell will be reflected in the target cell.
+
+       NOTE:  You can specify more than one criterion column by using a
+       logical operator, such as <AND> or <OR>.
+
+# /TD
+
+                     ^ TOOLS DATABASE EXTRACT EXAMPLES ^
+
+        ^  /....0/......1/....2/............3/............4/............5/^
+ ^ 0^  NAME  BADGE#   DIV     CRITERION     CRITERION  CRITERION
+ ^ 1^  John      81   ENG                        TRUE
+ ^ 2^  Bill     302   ADM          TRUE
+ ^ 3^   Sue     111   FIN          TRUE
+
+       In this example, source   - columns ^NAME^ and ^DIV^, rows 1..3
+                        criteria - column 3  ([1,1]>90)
+
+       yields:         ^Bill | ADM^ and ^Sue | FIN^
+
+       and,             source   - columns ^NAME^ and ^DIV^, rows 1..3
+                        criteria - column 4  ([2,1]="EN")
+
+       yields:         ^JOHN | ENG^
+
+$/TDO /TD
+
+                        ^ TOOLS DATABASE OPERATE ^
+
+  DATABASE OPERATE - Performs calculations on data matched by FIND.  20/20
+                     prompts for the:
+
+      Source Range   - range that lists the data on which the operation 
+                        occurs (specify only one column for each operation) 
+      Target Cell    - leftmost cell location where the results are to go
+      Criteria Range - location of the columns containing the criteria
+                        formulas and the results of the FIND operation.
+
+      AVERAGE - Averages the values of the cells matched by FIND.
+      DISTRIB - Counts the number of records matched by FIND.
+      HIGH    - Returns the maximum value of the cells matched by FIND.
+      LOW     - Returns the minimum value of the cells matched by FIND.
+      SUM     - Sums the value of the cells matched by FIND.
+
+$/TG /T
+
+                             ^                ^
+                             ^ TOOLS GOALSEEK ^
+                             ^                ^
+
+     GOALSEEK - Reaches a goal by adjusting the value of a specified
+                cell in the model.  GOALSEEK employs three elements:
+
+             o Variable Cell - contains the value that 20/20 manipulates
+             o Target Cell   - contains a formula whose calculated value
+                                is dependent on the variable cell
+             o Goal          - the value that the target cell is to reach.
+
+         20/20 adjusts the value in the variable cell while recalculating 
+         the worksheet.  This modifies the value of the target cell.  20/20
+         then compares this value to the goal value until convergence is
+         reached, or until 20/20 determines that the goal is unreachable.
+
+$/TT /T
+
+^                 ^ Manages time-scheduled projects by returning time
+^ TOOLS TIMECHART ^ allocations based upon data entered.  You determine 
+^                 ^ the units of time. 
+
+        The following chart shows a TIMECHART MODEL:
+
+             ^  /.......1/........2/.......3/...3/....4/....5/....6/^
+             ^ 0^     TASK     PRED1    PRED2 TIME START   END SLACK
+             ^ 1^
+             ^ 2^   DESIGN                      30     0    30    12
+             ^ 3^ MATERIAL                      42     0    42     0
+             ^ 4^    FOUND     DESIGN MATERIAL  35    42    77     0
+
+        TIMECHART calculates three elements:
+
+             o  Start time - The time each task is to begin.
+             o  End time   - The time of task completion.
+             o  Slack time - The amount of time a task can be delayed
+                              without affecting the task it precedes.
+
+$/TS /T
+                                ^ SYSTEM ^
+
+   SYSTEM - Enables you to execute a DCL command without exiting from 20/20.  
+            At the "ENTER SYSTEM COMMAND" prompt, type the command exactly 
+            as you would at the dollar sign ($) prompt.  When the command is 
+            completed, or when you exit from any software package you have 
+            run, 20/20 prompts "Hit <CR> to return to 20/20".        
+
+$/W /
+
+                                ^ WINDOWS ^
+
+         Controls the division of the screen into one, two, three, or
+         four windows.  These windows can display different parts of the 
+         worksheet.  /WINDOW options are:
+
+         {/WH}1. HORIZONTAL
+                 VERTICAL     - Splits the screen into worksheet windows.
+
+         {/WT}2. TITLE        - Sets column and/or row titles. 
+
+         {/WR}3. REFRESH      - Removes a graph display or system message.
+
+         {/WS}4. SYNCHRONIZE  - Enables windows to scroll together.
+
+         {/WS}5. DELETE       - Deletes the most recently created window.
+
+         {/WS}6. ERASE        - Removes all windows.
+
+$/WH /W
+
+                         ^ /WINDOW: HORIZONTAL or VERTICAL ^
+   HORIZONTAL  
+   or VERTICAL - Splits the screen once, horizontally or vertically, starting
+                 at the column or row cell cursor position.  Each resulting
+                 window can then be split once more in either direction,
+                 allowing a maximum of four windows.
+                 
+                 You move from window to window by pressing a semicolon (;).
+
+   Because each split occurs below or to the right of the cell cursor, you
+   cannot split a window vertically with the cell cursor positioned at the
+   rightmost worksheet column; nor can you split a window horizontally with 
+   the cell cursor positioned at the bottom row of the worksheet. 
+
+   DELETE, ERASE, and SYNCHRONIZE are displayed as options when the worksheet 
+   is split into more than one window.
+
+              Reference:  {/WS}1. DELETE, ERASE, and SYNCHRONIZE
+
+$/WT /W
+
+                             ^ /WINDOWS: Titles ^
+
+   TITLES - Sets column and/or row titles along the top or left edge of a 
+            worksheet window, causing the titles to remain displayed no
+            matter where you scroll throughout the worksheet. You can set 
+            titles in every worksheet window.  Options are:
+ 
+         BOTH       - Sets column and row titles simultaneously.
+         HORIZONTAL - Sets row titles.
+         VERTICAL   - Sets column titles.
+         NONE       - Clears all TITLES settings.
+
+$/WR /W
+
+                           ^ /WINDOW: REFRESH ^
+
+     REFRESH  - Redisplays the worksheet window.  This is useful for 
+                removing graphic displays, as well as characters generated 
+                by sources other than 20/20 (such as operating system 
+                prompts). 
+
+$/WS /W
+
+                    ^ /WINDOW:  DELETE ERASE SYNCHRONIZE ^
+
+     DELETE       - Removes window splits, one at a time, in reverse order
+                    of their creation.
+
+     ERASE        - Removes all window splits at once.
+
+     SYNCHRONIZE  - Synchronizes the scrolling of the upper left window
+                    with the window containing the cell cursor.  If the
+                    window split is vertical, the rows align and stay 
+                    aligned as you scroll in either of the synchronized
+                    windows.  If the split is horizontal, the columns
+                    align.  Option:
+
+      UNSYNCHRONIZE  - Unsynchronizes the upper left window with the window
+                       containing the cell cursor.  Use this option before
+                       you synchronize the upper left window with a new
+                       window containing the cell cursor.
+                       
+$KBRD !
+
+                                ^              ^
+                                ^ SPECIAL KEYS ^
+                                ^              ^
+
+         20/20 uses several special keys to perform various operations.
+         In on-line text, such as HELP, 20/20 tutorials, and on-line
+         messages, these keys are indicated by abbreviations in angle
+         brackets - for example <PAGE> or <DN>.
+
+
+              References:  {KFN}1. Functions of Special Keys
+                           {KLC}2. Location of Special Keys
+
+$KFN KBRD
+
+  KEY SYMBOL          FUNCTION IN 20/20
+  ------------------------------------------------------------------------
+  | <BKO>  |  Backs out to the previous prompt.                          |
+  | <CALC> |  Recalculates the worksheet.                                |
+  | <CONT> |  Continues a command file.                                  |
+  | <CR>   |  Enters information in the 20/20 worksheet.                 |
+  | <DEL>  |  Erases to the right on the Edit line.                      |
+  | <DN>   |  Moves the cell cursor down one cell.                       |
+  | <DO>   |  Runs a command file.                                       |
+  | <END>  |  Moves the cell cursor to the lower right corner of a model.|
+  | <HELP> |  Enters the HELP system.                                    |
+  | <HOME> |  Moves the cell cursor to [0,0].                            |
+  | <GOTO> |  Moves the cell cursor directly to a specified cell.        |
+  | <LF>   |  Moves the cell cursor one cell to the left.                |
+  | <PAGE> |  Moves to another area of the worksheet, in page-size       |
+  |        |   increments, in a specified direction.                     |
+  ------------------------------------------------------------------------
+
+                       See NEXT screen for more
+
+# KBRD
+
+  KEY SYMBOL            FUNCTION IN 20/20
+  ------------------------------------------------------------------------
+  | <PTO>  |  Enters POINT-TO.
+  | <RBO>  |  Erases characters to the left of the Edit line cursor.     |
+  | <RT>   |  Moves the cell cursor one cell to the right.               |
+  | <UP>   |  Moves the cell cursor up one cell.                         | 
+  ------------------------------------------------------------------------
+
+$KLC KBRD
+
+      Key      VT100,VT125  VT220,VT240   Tek4100      
+      Symbol   Keys         Keys          series Keys        
+      -----------------------------------------------
+      <BKO>    Backspace    F12           Backspace        
+      <CALC>   space bar    space bar     space bar
+      <CONT>   PF3          F9            F7
+      <DEL>    Delete       Delete        Rubout
+      <DO>     PF2          F8            F6  
+      <DN>     down arrow   down arrow    F2
+      <END>    control Z    F7            control Z
+      <GOTO>   >            > or Find     >        
+      <HELP>   PF4          Help          F8
+      <HOME>   control A    F6            control A
+      <LF>     left arrow   left arrow    F3
+      <PAGE>   PF1          Next Screen   F5
+      <PTO>    down arrow   down arrow    F2
+      <RBO>    control X    control X     
+      <RT>     right arrow  right arrow   F4
+      <UP>     up arrow     up arrow      F1
+
+$TRBL !
+
+                          ^ Trouble-Shooting ^
+
+    There may be times when the worksheet display doesn't seem right, or
+    when 20/20 displays an error message that you don't understand.  If
+    this should happen, refer to the following:
+    
+            {TRDSP}1. Display Problems.
+            {TRERR}2. Error Messages.      
+
+    For a complete list of suggested solutions to error messages, refer to
+    the Trouble-Shooting Guide, located in Appendix B of the 20/20 HANDBOOK.
+
+
+$TRDSP TRBL
+
+                              ^ DISPLAY PROBLEMS ^
+ 
+      20/20 DOES NOT START.  Double-check your installation procedures;
+      read Entering and Exiting, in the Reference section of the 20/20
+      HANDBOOK; or contact your system manager.
+
+      ASTERISKS **** DISPLAY INSTEAD OF A NUMBER.  Increase the column 
+      width of the current cell by using /FORMAT WIDTH.  
+      Reference:  {ENM1}1. Entering Numbers.
+
+      COMMAND NOT ISSUED.  Press <BKO> to Ready:, then type /.
+
+      DISPLAY IS DISTORTED.  Press <BKO> to Ready:, or use /WINDOW
+      REFRESH.   
+
+
+                 See NEXT screen for more 
+
+#TRDSP TRBL
+
+      ERR IS DISPLAYED IN A CELL.  Check all cell references in formula;
+      correct any that are blank, or contain ERR, labels instead of numbers,
+      or result in division by zero; then recalculate.
+
+      LABEL IS CUT OFF.  Increase the column width of the current
+      cell by using /FORMAT WIDTH.  
+      Reference: {TXTL}1. Left-Justified Labels.
+
+      THE RESULTS OF A LOGICAL OPERATION APPEAR TO BE WRONG.  Your
+      computer's "floating point" precision requires exact specification
+      of numbers.  Use an exact formula such as [0,0] < 3.0001 <AND>
+      [0,0] > 2.999 instead of [0,0] = 3. 
+
+
+$TRERR TRBL
+                             
+                             ^                ^
+                             ^ ERROR MESSAGES ^
+                             ^                ^
+
+      BAD FORMULA AT CELL C,R.  Use /EDIT to edit the formula.  If a cell
+      displays -1, the column or row that contained the referenced cell has
+      been moved or deleted.
+
+      CIRCULAR REFERENCES AT C,R.  To retain the circular reference, change
+      /OPTION ORDER to COLUMN or ROW.  
+      Reference: {SRCO}1. Setting the Recalculation Order.
+
+                     See NEXT screen for more
+
+#TRERR TRBL
+
+      ILLEGAL FORMULA, VALUE, LABEL:
+
+      When entering a FORMULA, enclose all cell references in square 
+      brackets [ ], enter ranges within a single column or row, correct 
+      function syntax, and/or enter equal number of open and close 
+      parentheses.  
+      Reference:  {EFM1}1. Entering Formulas.
+
+      When entering a LABEL, precede the label with single (') or double (") 
+      quotes.  
+      Reference:  {TXT1}2. Entering Text.  
+      
+      When entering a VALUE (number), use the following characters: 
+      0, 1, 2, 3, 4, 5, 6, 7, 8, 9, - , . or E.  Display characters 
+      ($, %, etc.) can be entered only by using the /DEFAULT or /FORMAT 
+      command options.  
+      Reference:  {ENM1}3. Entering Numbers.    
+
+#TRERR TRBL
+
+      MEMORY FULL - OPERATION NOT COMPLETED.  To access more memory, 
+      divide your worksheet into smaller, independent worksheets.  Use
+      /STORAGE CUT and PASTE, or /STORAGE EXPORT and IMPORT to accomplish
+      this.  If you cannot divide your model, /STORAGE WRITE, then 
+      /STORAGE READ your worksheet.  Disable /OPTION NAMES.  Also, your
+      system manager may be able to increase your available memory.
+      Reference: {/S}1. /STORAGE Commands.   
+
+$END
+

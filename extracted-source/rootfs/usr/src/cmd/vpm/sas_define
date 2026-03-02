@@ -1,0 +1,6 @@
+
+/* 
+ * SID @(#)sas_define	5.1
+ */
+
+#define	SSTACK	256
