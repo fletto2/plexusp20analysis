@@ -41,8 +41,7 @@ Watch the Plexus P/20 video series:
 
 | File | Description |
 |------|-------------|
-| `ROM_analysis.md` | First-pass function-by-function ROM analysis (AI-assisted) |
-| `ROM_analysis_v2.md` | Enhanced analysis with full hardware context and cross-references |
+| `ROM_analysis.md` | Function-by-function ROM analysis with full hardware context and cross-references |
 | `U15_disasm.txt` | Raw MC68000 disassembly of U15 boot loader ROM |
 | `U17_disasm.txt` | Raw MC68000 disassembly of U17 self-test/debug ROM |
 ### Tools
